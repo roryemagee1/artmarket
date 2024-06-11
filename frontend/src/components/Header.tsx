@@ -9,7 +9,7 @@ export default function Header(): JSX.Element {
       <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
         <Container>
           <Navbar.Brand href="/">
-            <img src={logo} height="70vw"/>
+            <img src={logo} height="70vw" alt="Audasite LLC Logo"/>
             ArtMarket
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
