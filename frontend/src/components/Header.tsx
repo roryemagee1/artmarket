@@ -1,5 +1,7 @@
 import { JSX } from 'react'
-import { Navbar, Nav, Container } from 'react-bootstrap'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import Container from 'react-bootstrap/Container'
 import { FaShoppingCart, FaUser} from 'react-icons/fa'
 import logo from '@src/assets/audasite.png'
 

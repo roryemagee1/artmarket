@@ -1,5 +1,5 @@
 import { JSX } from 'react'
-import { Card } from 'react-bootstrap'
+import Card from 'react-bootstrap/Card'
 
 interface IProduct {
   product: {
