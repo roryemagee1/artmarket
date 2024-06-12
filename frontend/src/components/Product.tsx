@@ -2,20 +2,24 @@ import { JSX } from 'react'
 import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 
-interface IProduct {
-  product: {
-    _id: string;
-    name: string;
-    image: string;
-    description: string;
-    brand: string;
-    category: string;
-    price: number;
-    countInStock: number;
-    rating: number;
-    numReviews: number;
-    }
-  }
+import Rating from '@src/components/Rating'
+
+import { IProduct } from '@src/types/interfaces'
+
+// interface IProduct {
+//   product: {
+//     _id: string;
+//     name: string;
+//     image: string;
+//     description: string;
+//     brand: string;
+//     category: string;
+//     price: number;
+//     countInStock: number;
+//     rating: number;
+//     numReviews: number;
+//     }
+//   }
 
 export default function Product({ product }: IProduct): JSX.Element {
   return (
@@ -28,10 +32,15 @@ export default function Product({ product }: IProduct): JSX.Element {
 
       <Card.Body>
         <Link to={`/product/${product._id}`}>
-          <Card.Title as="div">
+          <Card.Title as="div" className="product-title">
             <strong>{product.name}</strong>
           </Card.Title>
         </Link>
+
+        <Card.Text as="div">
+          <Rating rating={product.rating} text={`${product.numReviews} reviews`} />
+        </Card.Text>
+
       </Card.Body>
 
       <Card.Text as="h3">
