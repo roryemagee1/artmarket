@@ -2,34 +2,16 @@ import { JSX, useState, useEffect } from 'react'
 import axios from 'axios';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-// import products from '@src/products.js'
 
 import Product from '@src/components/Product'
 
-interface IProduct {
-_id: string;
-name: string;
-image: string;
-description: string;
-brand: string;
-category: string;
-price: number;
-countInStock: number;
-rating: number;
-numReviews: number;
-}
+import { IProductKeys } from '@src/types/interfaces'
 
 export default function HomePage(): JSX.Element {
-  const [ products, setProducts ] = useState<IProduct[] | null>(null);
+  const [ products, setProducts ] = useState<IProductKeys[] | null>(null);
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/api/products`)
-  //     .then(res => res.json())
-  //     .then(data => setProducts(data));
-  // }, [products])
-
-  async function fetchProducts(): void {
-    const { data } = await axios.get(`http://localhost:3000/api/products`);
+  async function fetchProducts(): Promise<void> {
+    const { data } = await axios.get(`/api/products`);
     setProducts(data);
   }
 
@@ -37,13 +19,15 @@ export default function HomePage(): JSX.Element {
     fetchProducts();
   }, [])
   
-  const productsOutput = !products ? <h1>Loading...</h1> : products.map((product: IProduct): JSX.Element => {
-    return (
-      <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-        <Product product={product} />
-      </Col>
-    )  
-  })
+  const productsOutput = !products ? 
+    <h1>Loading...</h1> : 
+    products.map((product: IProductKeys): JSX.Element => {
+      return (
+        <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+          <Product product={product} />
+        </Col>
+      )  
+    })
   
   return (
     <>
@@ -54,15 +38,3 @@ export default function HomePage(): JSX.Element {
     </>
   )
 }
-
-// _id: '1',
-// name: 'Airpods Wireless Bluetooth Headphones',
-// image: '/images/airpods.jpg',
-// description:
-//   'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
-// brand: 'Apple',
-// category: 'Electronics',
-// price: 89.99,
-// countInStock: 10,
-// rating: 4.5,
-// numReviews: 12,
