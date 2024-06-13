@@ -1,4 +1,5 @@
 import { JSX, useState, useEffect } from 'react'
+import axios from 'axios';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 // import products from '@src/products.js'
@@ -21,12 +22,20 @@ numReviews: number;
 export default function HomePage(): JSX.Element {
   const [ products, setProducts ] = useState<IProduct[] | null>(null);
 
+  // useEffect(() => {
+  //   fetch(`http://localhost:3000/api/products`)
+  //     .then(res => res.json())
+  //     .then(data => setProducts(data));
+  // }, [products])
+
+  async function fetchProducts() {
+    const { data } = await axios.get(`http://localhost:3000/api/products`);
+    setProducts(data);
+  }
+
   useEffect(() => {
-    fetch(`http://localhost:3000/api/products`)
-      .then(res => res.json())
-      .then(data => setProducts(data));
-  }, [products])
-  
+    fetchProducts();
+  }, [])
   
   const productsOutput = !products ? <h1>Loading...</h1> : products.map((product: IProduct): JSX.Element => {
     return (
