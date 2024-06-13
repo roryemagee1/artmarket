@@ -1,6 +1,7 @@
-import { JSX } from 'react'
+import { JSX, useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import products from '@src/products'
+import axios from 'axios'
+// import products from '@src/products'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -11,11 +12,23 @@ import Button  from 'react-bootstrap/Button'
 
 import Rating from '@src/components/Rating'
 
-// import { IProduct } from '@src/types/interfaces'
+import { IProductKeys } from '@src/types/interfaces'
 
 export default function ProductPage(): JSX.Element {
   const { id: productId } = useParams();
-  const product = products.find(product => product._id === productId);
+  const [ product, setProduct] = useState<IProductKeys | null>(null);
+
+  async function getProduct(id: string | undefined): Promise<void> {
+    const { data } = await axios.get(`http://localhost:3000/api/products/${id}`);
+    setProduct(data);
+  }
+
+  useEffect(() => {
+    getProduct(productId);
+  }, [productId])
+
+
+  // const product = products.find(product => product._id === productId);
 
   if (!product) {
     return (
