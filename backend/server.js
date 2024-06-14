@@ -1,14 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
+import connectDB from './config/db.js';
 import cors from 'cors';
-const corsOptions = {
-  allowedOrigin: 'http://localhost:5173'
-};
+const corsOptions = { allowedOrigin: 'http://localhost:5173' };
 import products from './data/products.js';
-
 const port = process.env.PORT || 3000;
 
+connectDB();
 const app = express();
 app.use(cors(corsOptions));
 
