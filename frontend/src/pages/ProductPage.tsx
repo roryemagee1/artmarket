@@ -32,7 +32,7 @@ export default function ProductPage(): JSX.Element {
         <Link className="btn btn-light my-3" to="/">
           Back
         </Link>
-        <h1>Product Error has occurred.</h1>
+        <h1>Loading...</h1>
       </>
 
     )
