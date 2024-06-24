@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 
 import Product from '@src/components/Product'
+import Loader from '@src/components/Loader'
 
 import { IProductKeys } from '@src/types/interfaces'
 
@@ -25,7 +26,7 @@ export default function HomePage(): JSX.Element {
     <>
       { 
         isLoading ? 
-          <h1> Loading... </h1> : 
+          <Loader /> : 
           error ? 
             <div>{ /*error?.data?.message || error.error ||*/ "Error!" }</div> : null 
       }

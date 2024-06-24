@@ -11,12 +11,13 @@ import Button  from 'react-bootstrap/Button'
 import { useGetProductsDetailsQuery } from '../slices/productsApiSlice';
 
 import Rating from '@src/components/Rating'
+import Loader from '@src/components/Loader'
+
 
 export default function ProductPage(): JSX.Element {
   const { id: productId } = useParams();
   
   const { data: product, isLoading, error } = useGetProductsDetailsQuery(productId);
-  console.log(error);
 
   return (
     <>
@@ -25,7 +26,7 @@ export default function ProductPage(): JSX.Element {
       </Link>
       { 
         isLoading ? 
-          <h1> Loading... </h1> : 
+          <Loader /> : 
           error ? 
             <div>{ /*error?.data?.message || error?.error ||*/ "Error!" }</div> :
       <>
