@@ -1,6 +1,9 @@
 import { defineConfig, /*loadEnv*/ } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// For information about setting up a proxy server with vite:
+// https://stackoverflow.com/questions/72266050/vite-react-proxy-sends-requests-to-different-endpoints-depending-on-current-loca
+
 export default defineConfig({ 
   plugins: [react()],
   server: {
