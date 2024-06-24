@@ -1,6 +1,5 @@
-import { JSX, /*useState, useEffect*/ } from 'react'
+import { JSX } from 'react'
 import { useParams, Link } from 'react-router-dom'
-// import axios from 'axios'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -13,34 +12,11 @@ import { useGetProductsDetailsQuery } from '../slices/productsApiSlice';
 
 import Rating from '@src/components/Rating'
 
-// import { IProductKeys } from '@src/types/interfaces'
-
 export default function ProductPage(): JSX.Element {
   const { id: productId } = useParams();
-  // const [ product, setProduct] = useState<IProductKeys | null>(null);
-
-  // async function getProduct(id: string | undefined): Promise<void> {
-  //   const { data } = await axios.get(`/api/products/${id}`);
-  //   setProduct(data);
-  // }
-
-  // useEffect(() => {
-  //   getProduct(productId);
-  // }, [productId])
-
+  
   const { data: product, isLoading, error } = useGetProductsDetailsQuery(productId);
   console.log(error);
-
-  // if (!product) {
-  //   return (
-  //     <>
-  //       <Link className="btn btn-light my-3" to="/">
-  //         Back
-  //       </Link>
-  //       <h1>Loading...</h1>
-  //     </>
-  //   )
-  // }
 
   return (
     <>
