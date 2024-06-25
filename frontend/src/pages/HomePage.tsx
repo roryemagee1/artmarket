@@ -6,6 +6,7 @@ import { useGetProductsQuery } from '../slices/productsApiSlice';
 
 import Product from '@src/components/Product'
 import Loader from '@src/components/Loader'
+import Message from '@src/components/Message'
 
 import { IProductKeys } from '@src/types/interfaces'
 
@@ -21,14 +22,14 @@ export default function HomePage(): JSX.Element {
         </Col>
       )  
     })
-  
+
   return (
     <>
       { 
         isLoading ? 
           <Loader /> : 
           error ? 
-            <div>{ /*error?.data?.message || error.error ||*/ "Error!" }</div> : null 
+            <Message variant="danger">{/*error?.data?.message ? error?.data?.message :*/ "error" in error ? error?.error : "Error!"}</Message> : null 
       }
       <h1>Latest Products</h1>
       <Row>

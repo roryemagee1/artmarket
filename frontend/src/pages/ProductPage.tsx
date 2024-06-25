@@ -12,7 +12,7 @@ import { useGetProductsDetailsQuery } from '../slices/productsApiSlice';
 
 import Rating from '@src/components/Rating'
 import Loader from '@src/components/Loader'
-
+import Message from '@src/components/Message'
 
 export default function ProductPage(): JSX.Element {
   const { id: productId } = useParams();
@@ -28,7 +28,7 @@ export default function ProductPage(): JSX.Element {
         isLoading ? 
           <Loader /> : 
           error ? 
-            <div>{ /*error?.data?.message || error?.error ||*/ "Error!" }</div> :
+            <Message variant="danger">{ /*error?.data?.message ? error?.data?.message :*/ "error" in error ? error?.error : "Error!" }</Message> :
       <>
         <Row>
 
