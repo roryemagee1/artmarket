@@ -12,8 +12,9 @@ import { IProductKeys } from '@src/types/interfaces'
 
 export default function HomePage(): JSX.Element {
   const { data: products, isLoading, error } = useGetProductsQuery(null);
-  
-  const productsOutput = !products ? 
+  const res = useGetProductsQuery(null);
+
+  const productsOutput = !res.data ? 
     <h1>Loading...</h1> : 
     products.map((product: IProductKeys): JSX.Element => {
       return (
@@ -29,7 +30,7 @@ export default function HomePage(): JSX.Element {
         isLoading ? 
           <Loader /> : 
           error ? 
-            <Message variant="danger">{/*error?.data?.message ? error?.data?.message :*/ "error" in error ? error?.error : "Error!"}</Message> : null 
+            <Message variant="danger">{ res?.data?.message ? res?.data?.message : res?.error ? res?.error : "Unknown Error!" }</Message> : null 
       }
       <h1>Latest Products</h1>
       <Row>

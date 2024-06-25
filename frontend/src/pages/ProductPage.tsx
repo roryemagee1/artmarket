@@ -14,12 +14,11 @@ import Rating from '@src/components/Rating'
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 
-// The commented out parts of this code are for an issue I am having with unknown types and my fetch requests.  This problem can be found in the Message component, the HomePage component, and the ProducePage component.
-
 export default function ProductPage(): JSX.Element {
   const { id: productId } = useParams();
   
   const { data: product, isLoading, error } = useGetProductsDetailsQuery(productId);
+  const res = useGetProductsDetailsQuery(productId);
 
   return (
     <>
@@ -30,7 +29,7 @@ export default function ProductPage(): JSX.Element {
         isLoading ? 
           <Loader /> : 
           error ? 
-            <Message variant="danger" /*text={"data" in error ? error?.data : null}*/>{ /*error?.data?.message ? error?.data?.message :*/ "error" in error ? error?.error : "Error!" }</Message> :
+            <Message variant="danger">{ res?.data?.message ? res?.data?.message : res?.error ? res?.error : "Unknown Error!" }</Message> :
       <>
         <Row>
 
