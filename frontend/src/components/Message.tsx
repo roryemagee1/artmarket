@@ -1,6 +1,8 @@
 import { JSX } from 'react'
 import { Alert } from 'react-bootstrap'
 
+
+// The commented out parts of this code are for an issue I am having with unknown types and my fetch requests.  This problem can be found in the Message component, the HomePage component, and the ProducePage component.
 interface IMessage {
   variant: string;
   children: string;
