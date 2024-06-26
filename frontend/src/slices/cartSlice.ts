@@ -5,10 +5,6 @@ import { updateCart } from '@src/utils/cartUtils'
 
 const initialState = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")!) : { cartItems: [] };
 
-const addDecimals = (num: number): string => {
-  return (Math.round(num * 100) /100).toFixed(2);
-}
-
 const cartSlice = createSlice({
   name: "cart",
   initialState,
