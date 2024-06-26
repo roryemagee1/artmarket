@@ -1,5 +1,6 @@
-import { JSX } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { JSX, ChangeEvent, useState } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -7,8 +8,10 @@ import Image from 'react-bootstrap/Image'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Card from 'react-bootstrap/Card'
 import Button  from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 
-import { useGetProductsDetailsQuery } from '../slices/productsApiSlice';
+import { useGetProductsDetailsQuery } from '@src/slices/productsApiSlice';
+import { addToCart } from '@src/slices/cartSlice';
 
 import Rating from '@src/components/Rating'
 import Loader from '@src/components/Loader'
@@ -16,9 +19,24 @@ import Message from '@src/components/Message'
 
 export default function ProductPage(): JSX.Element {
   const { id: productId } = useParams();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [ qty, setQty ] = useState<number | string>(1);
+
+  function handleQty(event: ChangeEvent) {
+    const { value } = event.target as HTMLSelectElement
+    setQty(value);
+  }
   
-  const { data: product, isLoading, error } = useGetProductsDetailsQuery(productId);
+  // const { data: product, isLoading, error } = useGetProductsDetailsQuery(productId);
   const res = useGetProductsDetailsQuery(productId);
+
+  function handleAddToCart() {
+    dispatch(addToCart({ ...res.data, qty }));
+    navigate('/cart');
+  }
 
   return (
     <>
@@ -26,34 +44,34 @@ export default function ProductPage(): JSX.Element {
           Back
       </Link>
       { 
-        isLoading ? 
+        res.isLoading ? 
           <Loader /> : 
-          error ? 
+          res.error ? 
             <Message variant="danger">{ res?.data?.message ? res?.data?.message : res?.error ? res?.error : "Unknown Error!" }</Message> :
       <>
         <Row>
 
           <Col md={5}>
-            <Image src={product?.image} alt={product?.name} fluid />
+            <Image src={res.data?.image} alt={res.data?.name} fluid />
           </Col>
 
           <Col md={4}>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h3>{product?.name}</h3>
+                <h3>{res.data?.name}</h3>
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <Rating rating={product?.rating} text={`${product?.numReviews} reviews`}/>
+                <Rating rating={res.data?.rating} text={`${res.data?.numReviews} reviews`}/>
               </ListGroup.Item>
 
               <ListGroup.Item>
-                Price: ${product?.price}
+                Price: ${res.data?.price}
               </ListGroup.Item>
 
               {/* This section is a modified version of the section commented out below. */}
               <ListGroup.Item>
-                <strong>Description: </strong>{product?.description}
+                <strong>Description: </strong>{res.data?.description}
               </ListGroup.Item>
               {/* This section is a modified version of the section commented out below. */}
             </ListGroup>
@@ -66,7 +84,7 @@ export default function ProductPage(): JSX.Element {
                   <Row>
                     <Col>Price:</Col>
                     <Col>
-                      <strong>${product?.price}</strong>
+                      <strong>${res.data?.price}</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -75,16 +93,38 @@ export default function ProductPage(): JSX.Element {
                   <Row>
                     <Col>Status</Col>
                     <Col>
-                      <strong>{product?.countInStock > 0 ? "In Stock" : "Out of Stock"}</strong>
+                      <strong>{res.data?.countInStock > 0 ? "In Stock" : "Out of Stock"}</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>
+
+                { 
+                res.data?.countInStock > 0 && (
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Qty</Col>
+                      <Col>
+                        <Form.Control
+                          as="select"
+                          value={qty}
+                          onChange={(event: ChangeEvent) => handleQty(event)}
+                        >
+                          {[...Array(res.data?.countInStock).keys()].map((key) => (
+                            <option key={key + 1 } value={key + 1}>{key + 1}</option>
+                          ))}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                  )
+                }
 
                 <ListGroup.Item>
                   <Button
                     className="btn-block"
                     type="button"
-                    disabled={product?.countInStock === 0}
+                    disabled={res.data?.countInStock === 0}
+                    onClick={handleAddToCart}
                   >
                     Add to Cart
                   </Button>
