@@ -12,7 +12,7 @@ import userRoutes from './routes/userRoutes.js';
 
 connectDB();
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors(corsOptions), express.json(), express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.send("API is running...");
