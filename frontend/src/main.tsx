@@ -12,12 +12,14 @@ import '@src/assets/styles/index.css'
 import App from '@src/App.tsx'
 import HomePage from '@src/pages/HomePage'
 import ProductPage from '@src/pages/ProductPage'
+import CartPage from '@src/pages/CartPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={ <App /> }>
       <Route index element={ <HomePage /> } />
       <Route path="product/:id" element={ <ProductPage /> } />
+      <Route path="cart" element={ <CartPage /> } />
     </Route>
   )
 )

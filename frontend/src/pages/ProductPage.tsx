@@ -17,17 +17,21 @@ import Rating from '@src/components/Rating'
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 
+// import QuantityDropdown from '@src/components/QuantityDropdown'
+
+// import { IItem } from '@src/types/interfaces'
+
 export default function ProductPage(): JSX.Element {
   const { id: productId } = useParams();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [ qty, setQty ] = useState<number | string>(1);
+  const [ qty, setQty ] = useState<number>(1);
 
   function handleQty(event: ChangeEvent) {
     const { value } = event.target as HTMLSelectElement
-    setQty(value);
+    setQty(Number(value));
   }
   
   // const { data: product, isLoading, error } = useGetProductsDetailsQuery(productId);
@@ -115,6 +119,7 @@ export default function ProductPage(): JSX.Element {
                         </Form.Control>
                       </Col>
                     </Row>
+                    {/* <QuantityDropdown data={res?.data ? res?.data : null} /> */}
                   </ListGroup.Item>
                   )
                 }
