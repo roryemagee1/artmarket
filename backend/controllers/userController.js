@@ -64,4 +64,14 @@ const updateUser = asyncHandler(async (req, res) => {
   res.send("Update user");
 });
 
-export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, getUsers, getUserById, deleteUser, updateUser }
+export { 
+  authUser, 
+  registerUser, 
+  logoutUser, 
+  getUserProfile, 
+  updateUserProfile, 
+  getUsers, 
+  getUserById, 
+  deleteUser, 
+  updateUser 
+}
