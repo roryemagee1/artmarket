@@ -11,13 +11,9 @@ import Card from 'react-bootstrap/Card'
 import Button  from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
-// import { useGetProductsQuery } from '../slices/productsApiSlice';
 import { addToCart, removeFromCart } from '@src/slices/cartSlice';
 
-// import Product from '@src/components/Product'
-// import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
-// import QuantityDropdown from '@src/components/QuantityDropdown'
 
 import type { RootState } from '@src/store'
 import { IItemKeys } from '@src/types/interfaces'
@@ -79,7 +75,6 @@ export default function HomePage(): JSX.Element {
                         ))}
                       </Form.Control>
                     </Col>
-                    {/* <QuantityDropdown data={item}/> */}
                     <Col md={2}>
                       <Button type="button" onClick={() => handleRemoveFromCart(item._id)}><FaTrash /></Button>
                     </Col>
