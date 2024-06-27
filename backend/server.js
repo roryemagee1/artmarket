@@ -8,6 +8,7 @@ const corsOptions = { allowedOrigin: 'http://localhost:5173' };
 const port = process.env.PORT || 3000;
 
 import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 connectDB();
 const app = express();
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
 app.use(notFound, errorHandler);
 
