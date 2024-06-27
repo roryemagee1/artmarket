@@ -12,7 +12,7 @@ import Button  from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
 // import { useGetProductsQuery } from '../slices/productsApiSlice';
-import { addToCart } from '@src/slices/cartSlice';
+import { addToCart, removeFromCart } from '@src/slices/cartSlice';
 
 // import Product from '@src/components/Product'
 // import Loader from '@src/components/Loader'
@@ -31,6 +31,10 @@ export default function HomePage(): JSX.Element {
     const { value } = event.target as HTMLSelectElement
     const output = Number(value);
     dispatch(addToCart({ ...product, qty: output }));
+  }
+
+  function handleRemoveFromCart(itemId: string) {
+    dispatch(removeFromCart(itemId));
   }
 
   return (
@@ -72,7 +76,7 @@ export default function HomePage(): JSX.Element {
                     </Col>
                     {/* <QuantityDropdown data={item}/> */}
                     <Col md={2}>
-                      <Button type="button"><FaTrash /></Button>
+                      <Button type="button" onClick={() => handleRemoveFromCart(item._id)}><FaTrash /></Button>
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -87,9 +91,9 @@ export default function HomePage(): JSX.Element {
             <ListGroup variant="flush">
               <ListGroup.Item>
                 <h2>
-                  Subtotal ({ cartItems.reduce((acc: number, curr: IItemKeys) => acc + curr.qty, 0)}) Items
+                  Subtotal ({ cartItems?.reduce((acc: number, curr: IItemKeys) => acc + curr.qty, 0)}) Items
                 </h2>
-                ${cartItems.reduce((acc: number, curr: IItemKeys) => acc + curr.qty * curr.price, 0).toFixed(2)}
+                ${cartItems?.reduce((acc: number, curr: IItemKeys) => acc + curr.qty * curr.price, 0).toFixed(2)}
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button type="button" className="btn-block" disabled={ cartItems.length === 0}>

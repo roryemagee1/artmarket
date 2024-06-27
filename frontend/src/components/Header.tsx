@@ -31,9 +31,9 @@ export default function Header(): JSX.Element {
                 <Nav.Link>
                   <FaShoppingCart /> Cart
                   {
-                    cartItems.length > 0 && (
+                    (cartItems.length) > 0 && (
                       <Badge pill bg="success" style={{marginLeft: "5px"}}>
-                        {cartItems.reduce((acc: number, curr: { qty: number }) => acc + curr.qty, 0)}
+                        {cartItems?.reduce((acc: number, curr: { qty: number }) => acc + curr.qty, 0)}
                       </Badge>
                     )
                   }
