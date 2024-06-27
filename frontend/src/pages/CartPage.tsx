@@ -1,5 +1,5 @@
 import { JSX, ChangeEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaTrash } from 'react-icons/fa'
 
@@ -24,6 +24,7 @@ import { IItemKeys } from '@src/types/interfaces'
 
 export default function HomePage(): JSX.Element {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const  { cartItems }  = useSelector((state: RootState) => state.cart);
 
@@ -35,6 +36,10 @@ export default function HomePage(): JSX.Element {
 
   function handleRemoveFromCart(itemId: string) {
     dispatch(removeFromCart(itemId));
+  }
+
+  function handleCheckout() {
+    navigate("./login?redirect=/shipping");
   }
 
   return (
@@ -96,7 +101,12 @@ export default function HomePage(): JSX.Element {
                 ${cartItems?.reduce((acc: number, curr: IItemKeys) => acc + curr.qty * curr.price, 0).toFixed(2)}
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button type="button" className="btn-block" disabled={ cartItems.length === 0}>
+                <Button 
+                  type="button" 
+                  className="btn-block" 
+                  disabled={ cartItems.length === 0}
+                  onClick={() => handleCheckout()}
+                >
                   Proceed to Checkout
                 </Button>
               </ListGroup.Item>
