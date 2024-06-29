@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 dotenv.config();
 import connectDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
@@ -12,7 +13,9 @@ import userRoutes from './routes/userRoutes.js';
 
 connectDB();
 const app = express();
-app.use(cors(corsOptions), express.json(), express.urlencoded({ extended: true }));
+
+// Middleware: CORS Options, JSON Body Parser, URL Body Parser, and Cookie Parser
+app.use(cors(corsOptions), express.json(), express.urlencoded({ extended: true }), cookieParser());
 
 app.get('/', (req, res) => {
   res.send("API is running...");
