@@ -13,6 +13,7 @@ import App from '@src/App.tsx'
 import HomePage from '@src/pages/HomePage'
 import ProductPage from '@src/pages/ProductPage'
 import CartPage from '@src/pages/CartPage'
+import LoginPage from '@src/pages/LoginPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route index element={ <HomePage /> } />
       <Route path="product/:id" element={ <ProductPage /> } />
       <Route path="cart" element={ <CartPage /> } />
+      <Route path="login" element={ <LoginPage /> } />
     </Route>
   )
 )
