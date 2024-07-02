@@ -22,7 +22,7 @@ export default function HomePage(): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const  { cartItems }  = useSelector((state: RootState) => state.cart);
+  const { cartItems }  = useSelector((state: RootState) => state.cart);
 
   function handleAddToCart(product: IItemKeys, event: ChangeEvent) {
     const { value } = event.target as HTMLSelectElement

@@ -1,6 +1,8 @@
 import { JSX } from 'react';
 import Container from 'react-bootstrap/Container'
 import { Outlet } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import './App.css';
 
 import Header from '@src/components/Header'
@@ -16,6 +18,7 @@ function App(): JSX.Element {
         </Container>
       </main>
       <Footer />
+      <ToastContainer />
     </>
   )
 }

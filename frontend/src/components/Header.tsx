@@ -8,11 +8,17 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import logo from '@src/assets/audasite.png'
 import Badge from 'react-bootstrap/Badge'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import type { RootState } from '@src/store'
 
 export default function Header(): JSX.Element {
-  const  { cartItems }  = useSelector((state: RootState) => state.cart)
+  const  { cartItems }  = useSelector((state: RootState) => state.cart);
+  const  { userInfo }  = useSelector((state: RootState) => state.auth);
+
+  function handleLogout() {
+    console.log("Logout placeholder")
+  }
 
   return (
     <header>
@@ -39,11 +45,23 @@ export default function Header(): JSX.Element {
                   }
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/login">
+              {
+                userInfo ? 
+              (
+                <NavDropdown title={userInfo.name} id="username">
+                  <LinkContainer to="/profile">
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <LinkContainer to="/auth">
                 <Nav.Link>
                   <FaUser /> Sign In
                 </Nav.Link>
               </LinkContainer>
+              )
+            }
             </Nav>
           </Navbar.Collapse>
         </Container>
