@@ -8,8 +8,8 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import { useLoginMutation } from '../slices/usersApiSlice';
-import { setCredentials } from '../slices/authSlice';
+import { useLoginMutation } from '@src/slices/usersApiSlice';
+import { setCredentials } from '@src/slices/authSlice';
 
 // import Product from '@src/components/Product'
 import Loader from '@src/components/Loader'
@@ -41,8 +41,8 @@ export default function LoginPage(): JSX.Element {
   }, [userInfo, redirect, navigate])
 
   function handleChangeEntry(event: ChangeEvent) {
-    const { value, type } = event.target as HTMLFormElement
-    switch(type) {
+    const { value, name } = event.target as HTMLFormElement
+    switch(name) {
       case "email":
         setEmail(value);
         break;
@@ -56,7 +56,7 @@ export default function LoginPage(): JSX.Element {
     event.preventDefault();
     try {
       const res = await login({ email, password }).unwrap();
-      dispatch(setCredentials({...res}));
+      dispatch(setCredentials({ ...res }));
       navigate(redirect);
     } catch (err) {
       toast.error("Invalid Email or Password." /*err?.data.message) || err?.error*/);
@@ -67,11 +67,12 @@ export default function LoginPage(): JSX.Element {
     <>
       <FormContainer>
         <>
-          <h1>Sign In</h1>
+          <h1>Create Account</h1>
           <Form>
             <Form.Group controlId="email" className="my-3">
               <Form.Label>Email Address</Form.Label>
               <Form.Control
+                name="email"
                 type="email"
                 placeholder="Enter email"
                 value={email}
@@ -80,8 +81,9 @@ export default function LoginPage(): JSX.Element {
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="password" className="my-3">
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label>Password</Form.Label>
               <Form.Control
+                name="password"
                 type="password"
                 placeholder="Enter password"
                 value={password}
