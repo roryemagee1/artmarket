@@ -12,8 +12,8 @@ import logo from '@src/assets/audasite.png'
 import Badge from 'react-bootstrap/Badge'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
-import { useLogoutMutation } from '../slices/usersApiSlice';
-import { removeCredentials } from '../slices/authSlice';
+import { useLogoutMutation } from '@src/slices/usersApiSlice';
+import { removeCredentials } from '@src/slices/authSlice';
 
 import type { RootState } from '@src/store'
 

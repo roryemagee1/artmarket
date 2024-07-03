@@ -35,7 +35,7 @@ export default function HomePage(): JSX.Element {
   }
 
   function handleCheckout() {
-    navigate("./login?redirect=/shipping");
+    navigate("/login?redirect=/shipping");
   }
 
   return (
