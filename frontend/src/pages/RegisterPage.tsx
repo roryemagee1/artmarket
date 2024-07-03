@@ -1,4 +1,4 @@
-import { JSX, FormEvent, ChangeEvent, useState, useEffect } from 'react'
+import { JSX, FormEvent, useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
@@ -11,13 +11,10 @@ import Button from 'react-bootstrap/Button'
 import { useRegisterMutation } from '@src/slices/usersApiSlice';
 import { setCredentials } from '@src/slices/authSlice';
 
-// import Product from '@src/components/Product'
 import Loader from '@src/components/Loader'
-// import Message from '@src/components/Message'
 import FormContainer from '@src/components/FormContainer'
 
 import type { RootState } from '@src/store'
-// import { IProductKeys } from '@src/types/interfaces'
 
 export default function RegisterPage(): JSX.Element {
   const [ name, setName ] = useState<string>("");
@@ -41,24 +38,6 @@ export default function RegisterPage(): JSX.Element {
       navigate(redirect);
     }
   }, [userInfo, redirect, navigate])
-
-  function handleChangeEntry(event: ChangeEvent) {
-    const { value, name } = event.target as HTMLFormElement
-    switch(name) {
-      case "name":
-        setName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "password":
-        setPassword(value);
-        break;
-      case "confirmPassword":
-        setConfirmPassword(value);
-        break;
-    }
-  }
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -88,7 +67,7 @@ export default function RegisterPage(): JSX.Element {
                 type="textbox"
                 placeholder="Enter name"
                 value={name}
-                onChange={(event) => handleChangeEntry(event)}
+                onChange={(event) => setName(event.target.value)}
               >
               </Form.Control>
             </Form.Group>
@@ -99,7 +78,7 @@ export default function RegisterPage(): JSX.Element {
                 type="email"
                 placeholder="Enter email"
                 value={email}
-                onChange={(event) => handleChangeEntry(event)}
+                onChange={(event) => setEmail(event.target.value)}
               >
               </Form.Control>
             </Form.Group>
@@ -110,7 +89,7 @@ export default function RegisterPage(): JSX.Element {
                 type="password"
                 placeholder="Enter password"
                 value={password}
-                onChange={(event) => handleChangeEntry(event)}
+                onChange={(event) => setPassword(event.target.value)}
               >
               </Form.Control>
             </Form.Group>
@@ -121,7 +100,7 @@ export default function RegisterPage(): JSX.Element {
                 type="password"
                 placeholder="Confirm password"
                 value={confirmPassword}
-                onChange={(event) => handleChangeEntry(event)}
+                onChange={(event) => setConfirmPassword(event.target.value)}
               >
               </Form.Control>
             </Form.Group>
