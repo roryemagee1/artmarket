@@ -16,6 +16,7 @@ import CartPage from '@src/pages/CartPage'
 import LoginPage from '@src/pages/LoginPage'
 import RegisterPage from '@src/pages/RegisterPage'
 import ShippingPage from '@src/pages/ShippingPage'
+import PaymentPage from '@src/pages/PaymentPage'
 import PrivateRoute from '@src/components/PrivateRoute'
 
 const router = createBrowserRouter(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="register" element={ <RegisterPage />}  />
       <Route path="" element={ <PrivateRoute /> }>
         <Route path="shipping" element={ <ShippingPage /> } />
+        <Route path="payment" element={ <PaymentPage /> } />
       </Route>
       <Route path="*" element={<h1>Page Not Found</h1>} />
     </Route>

@@ -58,34 +58,34 @@ export default function ShippingPage(): JSX.Element {
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="city" className="my-2">
-            <Form.Label>Address</Form.Label>
+            <Form.Label>City</Form.Label>
             <Form.Control
               name="city"
               type="text"
               placeholder="Enter city"
-              value={address}
+              value={city}
               onChange={event => setCity(event.target.value)}
             >
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="postal code" className="my-2">
-            <Form.Label>Address</Form.Label>
+            <Form.Label>Postal code</Form.Label>
             <Form.Control
               name="postal code"
               type="text"
               placeholder="Enter postal code"
-              value={address}
+              value={postalCode}
               onChange={event => setPostalCode(event.target.value)}
             >
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="country" className="my-2">
-            <Form.Label>Address</Form.Label>
+            <Form.Label>Country</Form.Label>
             <Form.Control
               name="country"
               type="text"
               placeholder="Enter country"
-              value={address}
+              value={country}
               onChange={event => setCountry(event.target.value)}
             >
             </Form.Control>

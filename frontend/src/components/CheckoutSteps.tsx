@@ -10,8 +10,6 @@ interface ICheckoutSteps {
 }
 
 export default function CheckoutSteps({ step1=false, step2=false, step3=false, step4=false }: ICheckoutSteps): JSX.Element {
-  console.log(step1, step2, step3, step4);
-
   return (
     <Nav className="justify-content-center mb-4">
       <Nav.Item>
@@ -24,6 +22,8 @@ export default function CheckoutSteps({ step1=false, step2=false, step3=false, s
             <Nav.Link disabled>Sign In</Nav.Link>
           )
         }
+      </Nav.Item>
+      <Nav.Item>
         {
           step2 ? (
               <LinkContainer to="/shipping">
@@ -33,6 +33,8 @@ export default function CheckoutSteps({ step1=false, step2=false, step3=false, s
             <Nav.Link disabled>Shipping</Nav.Link>
           )
         }
+      </Nav.Item>
+      <Nav.Item>
         {
           step3 ? (
               <LinkContainer to="/payment">
@@ -42,6 +44,8 @@ export default function CheckoutSteps({ step1=false, step2=false, step3=false, s
             <Nav.Link disabled>Payment</Nav.Link>
           )
         }
+      </Nav.Item>
+      <Nav.Item>
         {
           step4 ? (
               <LinkContainer to="/payment">
