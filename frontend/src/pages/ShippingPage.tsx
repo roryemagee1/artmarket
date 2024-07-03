@@ -37,18 +37,6 @@ export default function ShippingPage(): JSX.Element {
     }
   }
 
-  // function handleChangeEntry(event: ChangeEvent) {
-  //   const { value, name } = event.target as HTMLFormElement
-  //   switch(name) {
-  //     case "address":
-  //       setAddress(value);
-  //       break;
-  //     case "password":
-  //       setPassword(value);
-  //       break;
-  //   }
-  // }
-
   return (
     <FormContainer>
       <>
@@ -98,7 +86,13 @@ export default function ShippingPage(): JSX.Element {
             >
             </Form.Control>
           </Form.Group>
-          <Button type="submit" variant="primary" className="my-2" onClick={event => handleSubmit(event)}>Continue</Button>
+          <Button 
+            type="submit" 
+            variant="primary" 
+            className="my-2" 
+            onClick={event => handleSubmit(event)}
+          >Continue
+          </Button>
         </Form>
       </>
     </FormContainer>

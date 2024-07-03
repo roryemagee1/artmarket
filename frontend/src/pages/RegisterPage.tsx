@@ -111,8 +111,7 @@ export default function RegisterPage(): JSX.Element {
               onClick={(event) => handleSubmit(event)}
               // onSubmit={(event) => handleSubmit(event)}
               disabled={ isLoading }
-            >
-              Sign In
+            >Sign In
             </Button>
             { isLoading && <Loader />}
           </Form>
