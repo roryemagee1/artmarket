@@ -16,6 +16,7 @@ import CartPage from '@src/pages/CartPage'
 import LoginPage from '@src/pages/LoginPage'
 import RegisterPage from '@src/pages/RegisterPage'
 import ShippingPage from '@src/pages/ShippingPage'
+import PrivateRoute from '@src/components/PrivateRoute'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,7 +26,10 @@ const router = createBrowserRouter(
       <Route path="cart" element={ <CartPage /> } />
       <Route path="login" element={ <LoginPage /> } />
       <Route path="register" element={ <RegisterPage />}  />
-      <Route path="shipping" element={ <ShippingPage /> } />
+      <Route path="" element={ <PrivateRoute /> }>
+        <Route path="shipping" element={ <ShippingPage /> } />
+      </Route>
+      <Route path="*" element={<h1>Page Not Found</h1>} />
     </Route>
   )
 )

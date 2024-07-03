@@ -24,9 +24,6 @@ export default function ShippingPage(): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
- 
-
-
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
     if (address && city && postalCode && country) {
