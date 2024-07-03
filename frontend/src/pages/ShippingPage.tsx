@@ -6,9 +6,10 @@ import { toast } from 'react-toastify'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import { saveShippingAddress } from '@src/slices/cartSlice';
+import { saveShippingAddress } from '@src/slices/cartSlice'
 
-import FormContainer from '@src/components/FormContainer';
+import FormContainer from '@src/components/FormContainer'
+import CheckoutSteps from '@src/components/CheckoutSteps'
 
 import type { RootState } from '@src/store'
 
@@ -37,6 +38,12 @@ export default function ShippingPage(): JSX.Element {
   return (
     <FormContainer>
       <>
+        <CheckoutSteps 
+          step1={true}
+          step2={true}
+          step3={false}
+          step4={false}
+        />
         <h1>Shipping</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="address" className="my-2">
