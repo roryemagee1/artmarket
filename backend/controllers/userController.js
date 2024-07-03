@@ -3,7 +3,7 @@ import User from '../models/userModel.js';
 import generateToken from '../utils/generateToken.js';
 
 // @desc Authorize user and get token
-// @routes POST /api/users/auth
+// @routes POST /api/users/login
 // @access Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;

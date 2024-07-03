@@ -19,7 +19,7 @@ router.route('/')
 
 router.post('/logout', logoutUser);
 
-router.post('/auth', authUser);
+router.post('/login', authUser);
 
 router.route('/profile')
   .get(protect, getUserProfile)

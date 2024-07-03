@@ -1,7 +1,9 @@
 import { JSX } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FaShoppingCart, FaUser} from 'react-icons/fa'
 import { LinkContainer } from 'react-router-bootstrap'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -10,14 +12,28 @@ import logo from '@src/assets/audasite.png'
 import Badge from 'react-bootstrap/Badge'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
+import { useLogoutMutation } from '../slices/usersApiSlice';
+import { removeCredentials } from '../slices/authSlice';
+
 import type { RootState } from '@src/store'
 
 export default function Header(): JSX.Element {
   const  { cartItems }  = useSelector((state: RootState) => state.cart);
   const  { userInfo }  = useSelector((state: RootState) => state.auth);
 
-  function handleLogout() {
-    console.log("Logout placeholder")
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [logout] = useLogoutMutation();
+
+  async function handleLogout() {
+    try {
+      await logout({}).unwrap();
+      dispatch(removeCredentials());
+      navigate('/login');
+    } catch (err) {
+      toast.error("Failed to logout." /*err?.data.message) || err?.error*/);
+    }
   }
 
   return (
@@ -37,7 +53,7 @@ export default function Header(): JSX.Element {
                 <Nav.Link>
                   <FaShoppingCart /> Cart
                   {
-                    (cartItems.length) > 0 && (
+                    (cartItems.length > 0) && (
                       <Badge pill bg="success" style={{marginLeft: "5px"}}>
                         {cartItems?.reduce((acc: number, curr: { qty: number }) => acc + curr.qty, 0)}
                       </Badge>
@@ -55,7 +71,7 @@ export default function Header(): JSX.Element {
                   <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <LinkContainer to="/auth">
+                <LinkContainer to="/login">
                 <Nav.Link>
                   <FaUser /> Sign In
                 </Nav.Link>

@@ -54,7 +54,6 @@ export default function LoginPage(): JSX.Element {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    console.log("Test it!");
     try {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({...res}));
