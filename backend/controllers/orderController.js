@@ -24,8 +24,8 @@ const getMyOrders = asyncHandler(async (req, res) => {
 
 // @desc Get logged in user's orders by ID
 // @routes GET /api/orders/:id
-// @access Private
-const getOrdersById = asyncHandler(async (req, res) => {
+// @access Private/Admin
+const getOrderById = asyncHandler(async (req, res) => {
   res.send("Get orders by ID.")
 });
 
@@ -53,7 +53,7 @@ const getOrders = asyncHandler(async (req, res) => {
 export { 
   addOrderItems, 
   getMyOrders, 
-  getOrdersById, 
+  getOrderById, 
   updateOrderToPaid, 
   updateOrderToDelivered, 
   getOrders 
