@@ -33,6 +33,7 @@ export interface IProduct {
     createdAt: string;
     updatedAt: string;
     __v: number;
+    product?: string;
   }
 
   export interface IItem {
