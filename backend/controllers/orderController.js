@@ -5,7 +5,6 @@ import Order from '../models/orderModel.js';
 // @routes POST /api/orders
 // @access Private
 const addOrderItems = asyncHandler(async (req, res) => {
-  // res.send("Add order items.");
   const { 
     orderItems, 
     shippingAddress, 
@@ -75,7 +74,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
 // @routes GET /api/orders/myorders
 // @access Private
 const getMyOrders = asyncHandler(async (req, res) => {
-  // res.send("Get my orders.");
   const orders = await Order.find({ user: req.user._id });
 
   if (orders) {
@@ -90,7 +88,6 @@ const getMyOrders = asyncHandler(async (req, res) => {
 // @routes GET /api/orders/:id
 // @access Private/Admin
 const getOrderById = asyncHandler(async (req, res) => {
-  // res.send("Get orders by ID.");
   const order = await Order.findById(req.params.id).populate("user", "name email");
 
   if (order) {
