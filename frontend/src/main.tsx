@@ -18,6 +18,7 @@ import RegisterPage from '@src/pages/RegisterPage'
 import ShippingPage from '@src/pages/ShippingPage'
 import PaymentPage from '@src/pages/PaymentPage'
 import PlaceOrderPage from '@src/pages/PlaceOrderPage'
+import OrderPage from '@src/pages/OrderPage'
 import PrivateRoute from '@src/components/PrivateRoute'
 
 const router = createBrowserRouter(
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
         <Route path="shipping" element={ <ShippingPage /> } />
         <Route path="payment" element={ <PaymentPage /> } />
         <Route path="placeorder" element={ <PlaceOrderPage />} />
+        <Route path="order/:id" element={ <OrderPage />} />
       </Route>
       <Route path="*" element={<h1>Page Not Found</h1>} />
     </Route>
