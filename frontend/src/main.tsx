@@ -21,22 +21,28 @@ import PaymentPage from '@src/pages/PaymentPage'
 import PlaceOrderPage from '@src/pages/PlaceOrderPage'
 import OrderPage from '@src/pages/OrderPage'
 import ProfilePage from '@src/pages/ProfilePage'
+import OrderListPage from '@src/pages/admin/OrderListPage'
+
 import PrivateRoute from '@src/components/PrivateRoute'
+import AdminRoute from '@src/components/AdminRoute'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={ <App /> }>
       <Route index element={ <HomePage /> } />
-      <Route path="product/:id" element={ <ProductPage /> } />
-      <Route path="cart" element={ <CartPage /> } />
-      <Route path="login" element={ <LoginPage /> } />
-      <Route path="register" element={ <RegisterPage />}  />
+      <Route path="/product/:id" element={ <ProductPage /> } />
+      <Route path="/cart" element={ <CartPage /> } />
+      <Route path="/login" element={ <LoginPage /> } />
+      <Route path="/register" element={ <RegisterPage />}  />
       <Route path="" element={ <PrivateRoute /> }>
-        <Route path="shipping" element={ <ShippingPage /> } />
-        <Route path="payment" element={ <PaymentPage /> } />
-        <Route path="placeorder" element={ <PlaceOrderPage />} />
-        <Route path="order/:id" element={ <OrderPage />} />
-        <Route path="profile" element={ <ProfilePage /> } />
+        <Route path="/shipping" element={ <ShippingPage /> } />
+        <Route path="/payment" element={ <PaymentPage /> } />
+        <Route path="/placeorder" element={ <PlaceOrderPage />} />
+        <Route path="/order/:id" element={ <OrderPage />} />
+        <Route path="/profile" element={ <ProfilePage /> } />
+      </Route>
+      <Route path="" element={ <AdminRoute /> }>
+        <Route path="/admin/orderList" element={ <OrderListPage /> } />
       </Route>
       <Route path="*" element={<h1>Page Not Found</h1>} />
     </Route>
