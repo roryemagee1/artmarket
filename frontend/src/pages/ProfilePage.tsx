@@ -1,20 +1,23 @@
 import { JSX, FormEvent, useState, useEffect } from 'react'
-// import { LinkContainer } from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { FaTimes } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
-// import Table from 'react-bootstrap/Table'
+import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
 import { useUpdateProfileMutation } from '@src/slices/usersApiSlice'
 import { setCredentials } from '@src/slices/authSlice'
+import { useGetMyOrdersQuery } from '@src/slices/ordersApiSlice'
 
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 
+import { IOrderKeys } from '@src/types/interfaces'
 import type { RootState } from '@src/store'
 
 export default function ProfilePage(): JSX.Element {
@@ -27,7 +30,9 @@ export default function ProfilePage(): JSX.Element {
 
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
-  const [ updateProfile, { isLoading: loadingUpdateProfile, error } ] = useUpdateProfileMutation();
+  const [ updateProfile, { isLoading: updateProfileLoading, error: updateProfileError } ] = useUpdateProfileMutation();
+
+  const { data: orders, isLoading: myOrdersLoading, error: myOrdersError } = useGetMyOrdersQuery(null);
 
   useEffect(() => {
     if (userInfo) {
@@ -106,15 +111,73 @@ export default function ProfilePage(): JSX.Element {
             className="my-2"
             onClick={(event) => handleSubmit(event)}
             // onSubmit={(event) => handleSubmit(event)}
-            disabled={ loadingUpdateProfile }
+            disabled={ updateProfileLoading }
           >
             Update
           </Button>
-          { loadingUpdateProfile && <Loader /> }
-          { error && <Message variant="danger">An Error has occurred.</Message> }
+          { updateProfileLoading && <Loader /> }
+          { updateProfileError && <Message variant="danger">An Error has occurred.</Message> }
         </Form>
       </Col>
-      <Col md={9}>Column</Col>
+      <Col md={9}>
+        <h2>My Orders</h2>
+        { myOrdersLoading ? 
+          <Loader /> : 
+          myOrdersError ?
+          <Message variant="danger">Error loading orders.</Message> : (
+            <Table striped hover responsive className="table-sm">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>DATE</th>
+                  <th>TOTAL</th>
+                  <th>PAID</th>
+                  <th>DELIVERED</th>
+                </tr>
+              </thead>
+              <tbody>
+                { 
+                  orders?.map((order: IOrderKeys) => {
+                    console.log(order);
+                    return (
+                    <tr key={order._id}>
+                      <td>{order._id}</td>
+                      <td>{order.createdAt.substring(0, 10)}</td>
+                      <td>{order.totalPrice}</td>
+                      <td>
+                        { 
+                          order.isPaid && order.paidAt ? (
+                            order.paidAt.substring(0, 10)
+                          ) : (
+                            <FaTimes style={{ color: "red" }} />
+                          )
+                        }
+                      </td>
+                      <td>
+                        { 
+                          order.isDelivered && order?.deliveredAt ? (
+                            order.deliveredAt?.substring(0, 10)
+                          ) : (
+                            <FaTimes style={{ color: "red" }} />
+                          )
+                        }
+                      </td>
+                      <td>
+                        <LinkContainer to={`/order/${order._id}`}>
+                          <Button className="btn-sm" variant="light">
+                            Details
+                          </Button>
+                        </LinkContainer>
+                      </td>
+                    </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </Table>
+          )
+        }
+      </Col>
     </Row>
   )
 }
