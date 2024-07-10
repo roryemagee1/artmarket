@@ -137,9 +137,7 @@ export default function ProfilePage(): JSX.Element {
               </thead>
               <tbody>
                 { 
-                  orders?.map((order: IOrderKeys) => {
-                    console.log(order);
-                    return (
+                  orders?.map((order: IOrderKeys) => (
                     <tr key={order._id}>
                       <td>{order._id}</td>
                       <td>{order.createdAt.substring(0, 10)}</td>
@@ -171,7 +169,7 @@ export default function ProfilePage(): JSX.Element {
                       </td>
                     </tr>
                     )
-                  })
+                  )
                 }
               </tbody>
             </Table>

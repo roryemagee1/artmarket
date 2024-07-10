@@ -42,7 +42,7 @@ const router = createBrowserRouter(
         <Route path="/profile" element={ <ProfilePage /> } />
       </Route>
       <Route path="" element={ <AdminRoute /> }>
-        <Route path="/admin/orderList" element={ <OrderListPage /> } />
+        <Route path="/admin/orderlist" element={ <OrderListPage /> } />
       </Route>
       <Route path="*" element={<h1>Page Not Found</h1>} />
     </Route>
