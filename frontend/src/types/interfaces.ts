@@ -56,3 +56,29 @@ export interface IProduct {
       numReviews: number;
     }
   }
+
+  export interface IShippingAddress {
+    address: string;
+    city: string;
+    country: string;
+    postalCode: string;
+  }
+
+  export interface IOrderKeys {
+    createdAt: string;
+    isDelivered: boolean;
+    isPaid: boolean;
+    itemsPrice: number;
+    orderItems: IItemKeys;
+    paidAt?: string;
+    deliveredAt?: string;
+    paymentMethod: string;
+    shippingAddress: IShippingAddress;
+    shppingPrice: number;
+    taxPrice: number;
+    totalPrice: number;
+    updatedAt: string;
+    user: string;
+    __v: number;
+    _id: string;
+  }
