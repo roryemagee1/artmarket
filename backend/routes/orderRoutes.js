@@ -16,7 +16,7 @@ router.route('/')
   .get(protect, admin, getOrders);
 
 router.route('/myorders')
-  .get(getMyOrders)
+  .get(protect, getMyOrders)
 
 router.route('/:id')
   .get(protect, getOrderById);
