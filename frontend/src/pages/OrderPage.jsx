@@ -14,7 +14,8 @@ import Card from 'react-bootstrap/Card'
 import { 
   useGetOrderByIdQuery, 
   usePayOrderMutation, 
-  useGetPayPalClientIdQuery 
+  useGetPayPalClientIdQuery,
+  useDeliverOrderMutation, 
 } from '@src/slices/ordersApiSlice'
 
 import Message from '@src/components/Message'
@@ -33,12 +34,13 @@ export default function OrderPage() {
   
   const [ payOrder, { isLoading: payLoading } ] = usePayOrderMutation();
 
+  const [ deliverOrder, { isLoading: deliverLoading } ] = useDeliverOrderMutation();
+
   const [ { isPending }, payPalDispatch ] = usePayPalScriptReducer();
 
   const { data: payPalData, isLoading: payPalLoading, error: payPalError } = useGetPayPalClientIdQuery({});
 
   const { userInfo } = useSelector((state) => state.auth);
-  console.log(userInfo);
 
   useEffect(() => {
     if (!payPalError && !payPalLoading && payPalData.clientId) {
@@ -96,6 +98,16 @@ export default function OrderPage() {
     }).then(orderId => {
       return orderId;
     })
+  }
+
+  async function handleDeliverOrder() {
+    try {
+      await deliverOrder({ id });
+      refetch();
+      toast.success("Delivery marked complete!");
+    } catch(err) {
+      toast.error(err?.data.message || err.message);
+    }
   }
 
   return isOrderLoading ? (
@@ -224,7 +236,20 @@ export default function OrderPage() {
                 )
               }
 
-              {/* Mark as Paid Button Placeholder */}
+              { deliverLoading && <Loader /> }
+              
+              { 
+                userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                  <ListGroup.Item>
+                    <Button
+                      type="button"
+                      className="btn btn-block"
+                      onClick={handleDeliverOrder}
+                    >Mark as Delivered.
+                    </Button>
+                  </ListGroup.Item>
+                )
+              }
             </ListGroup>
           </Card>
         </Col>
