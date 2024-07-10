@@ -72,10 +72,10 @@ export default function Header(): JSX.Element {
                 </NavDropdown>
               ) : (
                 <LinkContainer to="/login">
-                <Nav.Link>
-                  <FaUser /> Sign In
-                </Nav.Link>
-              </LinkContainer>
+                  <Nav.Link>
+                    <FaUser /> Sign In
+                  </Nav.Link>
+                </LinkContainer>
               )
             }
             </Nav>
