@@ -1,28 +1,104 @@
-import { JSX } from 'react'
+import { /*JSX,*/ useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { PayPalButtons, usePayPalScriptReducer} from '@paypal/react-paypal-js'
+import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 
-// import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Col'
 import Col from 'react-bootstrap/Col'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Image from 'react-bootstrap/Image'
 import Card from 'react-bootstrap/Card'
 
-import { useGetOrderByIdQuery } from '@src/slices/ordersApiSlice'
+import { 
+  useGetOrderByIdQuery, 
+  usePayOrderMutation, 
+  useGetPayPalClientIdQuery 
+} from '@src/slices/ordersApiSlice'
 
 import Message from '@src/components/Message'
 import Loader from '@src/components/Loader'
 
-import { IItemKeys } from '@src/types/interfaces'
+// import { IItemKeys } from '@src/types/interfaces'
+// import type { RootState } from '@src/store'
 
-export default function OrderPage(): JSX.Element {
-  const { id: orderId } = useParams();
+// Note: This file is coded in JSX instead of TSX because the the "type" key in
+// loadPayPalScript does not play well with the reserved word "type" in Typescript.
 
-  const { data: order, /* refetch,*/ isLoading, isError } = useGetOrderByIdQuery(orderId);
+export default function OrderPage() {
+  const { id } = useParams();
+
+  const { data: order, refetch, isLoading: isOrderLoading, isError } = useGetOrderByIdQuery(id);
   
-  console.log(order);
+  const [ payOrder, { isLoading: payLoading } ] = usePayOrderMutation();
 
-  return isLoading ? (
+  const [ { isPending }, payPalDispatch ] = usePayPalScriptReducer();
+
+  const { data: payPalData, isLoading: payPalLoading, error: payPalError } = useGetPayPalClientIdQuery({});
+
+  const { userInfo } = useSelector((state) => state.auth);
+  console.log(userInfo);
+
+  useEffect(() => {
+    if (!payPalError && !payPalLoading && payPalData.clientId) {
+      loadPayPalScript();
+    }
+    if (order && !order.isPaid) {
+      if (!payPalData) {
+        loadPayPalScript();
+      }
+    }
+    async function loadPayPalScript() {
+      payPalDispatch({
+        type: "resetOptions",
+        value: {
+          "client-id": payPalData.clientId,
+          currency: "USD",
+        }
+      });
+      payPalDispatch({ type: "setLoadingStatus", value: "pending" });
+    }
+  }, [order, payPalData, payPalDispatch, payPalLoading, payPalError]);
+
+  function onApprove(data, actions) {
+    return actions.order.capture()
+      .then(async function(details) {
+        try {
+          await payOrder({ id, details });
+          refetch();
+          toast.success("Payment successful!");
+        } catch(err) {
+          toast.error(err?.data.message || err.message);
+        }
+      })
+  }
+
+  async function onApproveTest() {
+    await payOrder({ id, details: { payer: {} } });
+      refetch();
+      toast.success("Payment successful!");
+  }
+
+  function onError(err) {
+    toast.error(err.message);
+  }
+  
+  function createOrder(data, actions) {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: order.totalPrice
+          }
+        }
+      ]
+    }).then(orderId => {
+      return orderId;
+    })
+  }
+
+  return isOrderLoading ? (
     <Loader />
   ) : isError ? (
     <Message variant="danger">Order Error!</Message>
@@ -46,7 +122,7 @@ export default function OrderPage(): JSX.Element {
               { 
                 order.isDelivered ? (
                   <Message variant="success">
-                    <> Delivered on {order.deliveredAt} </>
+                    {`Delivered on ${order.deliveredAt}`}
                   </Message>
                 ) : (
                   <Message variant="danger">
@@ -63,7 +139,7 @@ export default function OrderPage(): JSX.Element {
               { 
                 order.isPaid ? (
                   <Message variant="success">
-                    <> Paid on {order.paidAt} </>
+                    {`Paid on ${order.paidAt}`}
                   </Message>
                 ) : (
                   <Message variant="danger">
@@ -75,7 +151,7 @@ export default function OrderPage(): JSX.Element {
             <ListGroup.Item>
               <h2>Order Items</h2>
               { 
-                order.orderItems.map((item: IItemKeys, i: number) => (
+                order.orderItems.map((item, i) => (
                     <ListGroup.Item key={i}>
                       <Row>
                         <Col md={1}>
@@ -121,7 +197,33 @@ export default function OrderPage(): JSX.Element {
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              {/* Pay Order Button Placeholder */}
+              
+              { 
+                !order.isPaid && (
+                  <ListGroup.Item>
+                    { payLoading && <Loader /> }
+                  
+                  { isPending ? <Loader /> : (
+                    <div>
+                      <Button 
+                        onClick={onApproveTest} 
+                        style={{marginBottom: "10px"}}
+                      >Test Pay Order
+                      </Button>
+                      <div>
+                        <PayPalButtons 
+                          createOrder={createOrder}
+                          onApprove={onApprove}
+                          onError={onError}
+                        />
+                      </div>
+                    </div>
+                    )
+                  }
+                  </ListGroup.Item>
+                )
+              }
+
               {/* Mark as Paid Button Placeholder */}
             </ListGroup>
           </Card>

@@ -36,7 +36,6 @@ export default function PlaceOrder(): JSX.Element {
   }, [cart.shippingAddress.address, cart.paymentMethod, navigate]);
 
   async function handlePlaceOrder() {
-    console.log("Handled!");
     try {
       const res = await createOrder({
         orderItems: cart.cartItems,
@@ -48,15 +47,11 @@ export default function PlaceOrder(): JSX.Element {
         totalPrice: cart.totalPrice
       }).unwrap()
       dispatch(clearCartItems());
-      console.log(res)
       navigate(`/order/${res._id}`);
     } catch(err) {
-      console.log(err);
       toast.error("Place Order Error!");
     }
   }
-
-  console.log(cart.cartItems);
   
   return (
     <>

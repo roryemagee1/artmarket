@@ -17,10 +17,6 @@ import Rating from '@src/components/Rating'
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 
-// import QuantityDropdown from '@src/components/QuantityDropdown'
-
-// import { IItem } from '@src/types/interfaces'
-
 export default function ProductPage(): JSX.Element {
   const { id: productId } = useParams();
 
