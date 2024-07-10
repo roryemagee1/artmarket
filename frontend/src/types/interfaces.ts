@@ -1,3 +1,5 @@
+// import { ReactNode } from 'react';
+
 export interface IProduct {
   product: {
     _id: string;
@@ -64,6 +66,14 @@ export interface IProduct {
     postalCode: string;
   }
 
+  export interface IUser {
+    name: string;
+    email?: string;
+    _id?: string;
+    isAdmin?: boolean;
+    password?: string;
+  }
+
   export interface IOrderKeys {
     createdAt: string;
     isDelivered: boolean;
@@ -78,7 +88,7 @@ export interface IProduct {
     taxPrice: number;
     totalPrice: number;
     updatedAt: string;
-    user: string;
+    user: IUser;
     __v: number;
     _id: string;
   }
