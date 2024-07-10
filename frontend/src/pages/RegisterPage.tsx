@@ -25,7 +25,7 @@ export default function RegisterPage(): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [register, { isLoading }] = useRegisterMutation();
+  const [ register, { isLoading } ] = useRegisterMutation();
 
   const { userInfo }  = useSelector((state: RootState) => state.auth);
 
