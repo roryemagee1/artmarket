@@ -113,13 +113,13 @@ export default function RegisterPage(): JSX.Element {
               disabled={ isLoading }
             >Sign In
             </Button>
-            { isLoading && <Loader />}
           </Form>
           <Row>
             <Col>
               Already a Customer? <Link to={ redirect ? `/login?redirect=${redirect}` : `/login`}>Login</Link>
             </Col>
           </Row>
+          { isLoading && <Loader />}
         </>
       </FormContainer>
     </>

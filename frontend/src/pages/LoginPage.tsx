@@ -86,14 +86,13 @@ export default function LoginPage(): JSX.Element {
             >
               Sign In
             </Button>
-
-            { isLoading && <Loader />}
           </Form>
           <Row>
             <Col>
               New Customer? <Link to={ redirect ? `/register?redirect=${redirect}` : `/register`}>Register</Link>
             </Col>
           </Row>
+          { isLoading && <Loader />}
         </>
       </FormContainer>
     </>
