@@ -1,12 +1,10 @@
 import { JSX } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-// import { useSelector } from 'react-redux'
-import { /*FaTimes,*/ FaEdit, FaTrash } from 'react-icons/fa'
+import { FaEdit, FaTrash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-// import Form from 'react-bootstrap/Form'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
@@ -16,7 +14,6 @@ import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 
 import { IProductKeys } from '@src/types/interfaces'
-// import type { RootState } from '@src/store'
 
 export default function ProductListPage(): JSX.Element {
   const { data: products, isLoading, error, refetch } = useGetProductsQuery(null);
@@ -45,7 +42,7 @@ export default function ProductListPage(): JSX.Element {
           <h1>Products</h1>
         </Col>
         <Col className="text-end">
-          { createProductLoading && <Loader size="20px"/> }
+          { createProductLoading && <Loader size="20px" display=""/> }
           <Button 
             className="btn-sm m-3"
             onClick={handleCreateProduct}
@@ -81,7 +78,7 @@ export default function ProductListPage(): JSX.Element {
                       <td>{product.category}</td>
                       <td>{product.brand}</td>
                       <td>
-                        <LinkContainer to={`/admin/product/${product._id}`}>
+                        <LinkContainer to={`/admin/product/${product._id}/edit`}>
                           <Button variant="light" className="btn-sm mx-2">
                             <FaEdit />
                           </Button>
