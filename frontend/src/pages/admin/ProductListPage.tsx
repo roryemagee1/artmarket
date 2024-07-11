@@ -22,7 +22,7 @@ export default function ProductListPage(): JSX.Element {
   const { data: products, isLoading, error } = useGetProductsQuery(null);
 
   function handleDelete(id: string) {
-    console.log("Delet: ", id);
+    console.log("Delete: ", id);
   }
 
   return (

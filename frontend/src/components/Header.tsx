@@ -63,7 +63,7 @@ export default function Header(): JSX.Element {
               </LinkContainer>
               {
                 userInfo && userInfo.isAdmin ? (
-                  <NavDropdown title={userInfo.name} id="username">
+                  <NavDropdown title={userInfo.name} id="username" style={{marginLeft: "10px", marginRight: "55px"}}>
                     <LinkContainer to="/admin/productlist">
                       <NavDropdown.Item>Products</NavDropdown.Item>
                     </LinkContainer>
