@@ -30,12 +30,9 @@ export default function ProductListPage(): JSX.Element {
   async function handleCreateProduct() {
     if (window.confirm("Are you sure you want to create a new product?")) {
       try {
-        console.log("Creating!");
-        const res = await createProduct(null);
-        console.log(res);
+        await createProduct(null);
         refetch();
       } catch(err) {
-        console.log("err: ", err);
         toast.error("Product Error!"/* || err?.data?.message || err?.message */);
       }
     }
