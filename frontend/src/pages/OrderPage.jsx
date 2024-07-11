@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
 import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Image from 'react-bootstrap/Image'
@@ -116,7 +116,7 @@ export default function OrderPage() {
     <Message variant="danger">Order Error!</Message>
   ) : (
     <>
-      <h1>Order ID: {order._id}</h1>
+      <h1>Order ID: {order._id}</h1>  
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
@@ -237,7 +237,7 @@ export default function OrderPage() {
               }
 
               { deliverLoading && <Loader /> }
-              
+
               { 
                 userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
                   <ListGroup.Item>
