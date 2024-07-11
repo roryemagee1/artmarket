@@ -20,7 +20,6 @@ import { IOrderKeys } from '@src/types/interfaces'
 
 export default function OrderListPage(): JSX.Element {
   const { data: orders, isLoading, error } = useGetOrdersQuery(null);
-  console.log(orders);
 
   return (
     <>
@@ -35,7 +34,7 @@ export default function OrderListPage(): JSX.Element {
             <thead>
                 <tr>
                   <th>ID</th>
-                  <th>User</th>
+                  <th>USER</th>
                   <th>DATE</th>
                   <th>TOTAL</th>
                   <th>PAID</th>
@@ -45,9 +44,7 @@ export default function OrderListPage(): JSX.Element {
               </thead>
               <tbody>
                 { 
-                  orders?.map((order: IOrderKeys) => {
-                    console.log(order);
-                    return (
+                  orders?.map((order: IOrderKeys) => (
                       <tr key={order._id}>
                         <td>{order._id}</td>
                         <td>{order?.user && order?.user?.name}</td>
@@ -79,8 +76,7 @@ export default function OrderListPage(): JSX.Element {
                           </LinkContainer>
                         </td>
                       </tr>
-                      )
-                    }
+                    )
                   )
                 }
               </tbody>
