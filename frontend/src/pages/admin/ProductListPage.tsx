@@ -1,8 +1,8 @@
 import { JSX } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 // import { useSelector } from 'react-redux'
-import { FaTimes, FaEdit, FaTrash } from 'react-icons/fa'
-// import { toast } from 'react-toastify'
+import { /*FaTimes,*/ FaEdit, FaTrash } from 'react-icons/fa'
+import { toast } from 'react-toastify'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
-import { useGetProductsQuery } from '@src/slices/productsApiSlice'
+import { useGetProductsQuery, useCreateProductMutation } from '@src/slices/productsApiSlice'
 
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
@@ -19,10 +19,26 @@ import { IProductKeys } from '@src/types/interfaces'
 // import type { RootState } from '@src/store'
 
 export default function ProductListPage(): JSX.Element {
-  const { data: products, isLoading, error } = useGetProductsQuery(null);
+  const { data: products, isLoading, error, refetch } = useGetProductsQuery(null);
+
+  const [ createProduct, { isLoading: createProductLoading }] = useCreateProductMutation();
 
   function handleDelete(id: string) {
     console.log("Delete: ", id);
+  }
+
+  async function handleCreateProduct() {
+    if (window.confirm("Are you sure you want to create a new product?")) {
+      try {
+        console.log("Creating!");
+        const res = await createProduct(null);
+        console.log(res);
+        refetch();
+      } catch(err) {
+        console.log("err: ", err);
+        toast.error("Product Error!"/* || err?.data?.message || err?.message */);
+      }
+    }
   }
 
   return (
@@ -32,8 +48,11 @@ export default function ProductListPage(): JSX.Element {
           <h1>Products</h1>
         </Col>
         <Col className="text-end">
-          <Button className="btn-sm m-3">
-            <FaEdit /> Create Product
+          { createProductLoading && <Loader size="20px"/> }
+          <Button 
+            className="btn-sm m-3"
+            onClick={handleCreateProduct}
+          ><FaEdit /> Create Product
           </Button>
         </Col>
       </Row>
