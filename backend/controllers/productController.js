@@ -1,7 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
 
-// @desc Fetch all products
+// @desc   Fetch all products
 // @routes GET /api/products
 // @access Public
 const getProducts = asyncHandler(async (req, res) => {
@@ -14,7 +14,7 @@ const getProducts = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc Fetch a products
+// @desc   Fetch a product by ID
 // @routes GET /api/products/:id
 // @access Public
 const getProductById = asyncHandler(async (req, res) => {
@@ -75,7 +75,51 @@ const createProduct = asyncHandler(async (req, res) => {
   }
 });
 
-export { getProducts, getProductById, createProduct }
+// @desc   Update a product
+// @routes PUT /api/products/:id
+// @access Private/Admin
+const updateProduct = asyncHandler(async (req, res) => {
+  const {  
+    name, 
+    image, 
+    brand, 
+    category, 
+    description, 
+    price, 
+    countInStock,
+  } = req.body
+
+  const product = await Product.findById(req.params.id);
+
+  if (!product) {
+    res.status(404);
+    throw new Error("Product not found.");
+  } else {
+    product.name = name;
+    product.image = image;
+    product.brand = brand;
+    product.category = category;
+    product.description = description;
+    product.price = price;
+    product.countInStock = countInStock;
+
+    const updatedProduct = await product.save();
+    
+    if (updatedProduct) {
+      res.status(200).json(updatedProduct);
+    } else {
+      res.status(404);
+      throw new Error("Product failed to update.");
+    }
+  }
+});
+
+export { 
+  getProducts, 
+  getProductById, 
+  createProduct, 
+  updateProduct 
+}
 
 // const productSchema = new mongoose.Schema({
 //   user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
