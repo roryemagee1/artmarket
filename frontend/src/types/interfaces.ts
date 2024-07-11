@@ -2,16 +2,21 @@
 
 export interface IProduct {
   product: {
-    _id: string;
-    name: string;
-    image: string;
-    description: string;
-    brand: string;
-    category: string;
-    price: number;
-    countInStock: number;
-    rating: number;
-    numReviews: number;
+      _id: string;
+      name: string;
+      image: string;
+      description: string;
+      brand: string;
+      category: string;
+      price: number;
+      countInStock: number;
+      rating: number;
+      numReviews: number;
+      reviews?: [];
+      createdAt?: string;
+      updatedAt?: string;
+      user?: string;
+      __v?: string;
     }
   }
 
@@ -26,6 +31,11 @@ export interface IProduct {
     countInStock: number;
     rating: number;
     numReviews: number;
+    reviews?: [];
+    createdAt?: string;
+    updatedAt?: string;
+    user?: string;
+    __v?: number;
   }
 
   export interface IItemKeys extends IProductKeys {
