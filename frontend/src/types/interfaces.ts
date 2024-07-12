@@ -77,12 +77,16 @@ export interface IProduct {
     postalCode: string;
   }
 
-  export interface IUser {
+  export interface IUserKeys {
     name: string;
     email?: string;
     _id?: string;
     isAdmin?: boolean;
     password?: string;
+  }
+
+  export interface IUser {
+    data: IUserKeys
   }
 
   export interface IOrderKeys {
@@ -99,7 +103,7 @@ export interface IProduct {
     taxPrice: number;
     totalPrice: number;
     updatedAt: string;
-    user: IUser;
+    user: IUserKeys;
     __v: number;
     _id: string;
   }
