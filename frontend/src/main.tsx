@@ -24,6 +24,7 @@ import ProfilePage from '@src/pages/ProfilePage'
 import OrderListPage from '@src/pages/admin/OrderListPage'
 import ProductListPage from '@src/pages/admin/ProductListPage'
 import ProductEditPage from '@src/pages/admin/ProductEditPage'
+import UserListPage from '@src/pages/admin/UserListPage'
 
 import PrivateRoute from '@src/components/PrivateRoute'
 import AdminRoute from '@src/components/AdminRoute'
@@ -47,6 +48,7 @@ const router = createBrowserRouter(
         <Route path="/admin/orderlist" element={ <OrderListPage /> } />
         <Route path="/admin/productlist" element={ <ProductListPage /> } />
         <Route path="/admin/product/:id/edit" element={ <ProductEditPage /> } />
+        <Route path="/admin/userlist" element={ <UserListPage /> } />
       </Route>
       <Route path="*" element={<h1>Page Not Found</h1>} />
     </Route>
