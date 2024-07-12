@@ -5,7 +5,11 @@ import { toast } from 'react-toastify'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import { useGetProductsDetailsQuery, useUpdateProductMutation } from '@src/slices/productsApiSlice'
+import { 
+  useGetProductsDetailsQuery, 
+  useUpdateProductMutation, 
+  useUploadProductImageMutation 
+} from '@src/slices/productsApiSlice'
 
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
@@ -22,9 +26,11 @@ export default function ProductEditPage(): JSX.Element {
   const [ countInStock, setCountInStock ] = useState<number>(0);
   const [ description, setDescription ] = useState<string>("");
 
-  const { data: product, isLoading: productLoading, error: productError, /*refetch*/ } = useGetProductsDetailsQuery(id);
+  const { data: product, isLoading: productLoading, error: productError } = useGetProductsDetailsQuery(id);
 
   const [ updateProduct, { isLoading: updateLoading } ] = useUpdateProductMutation();
+
+  const [ uploadProductImage, /*{ isLoading: uploadImageLoading }*/ ] = useUploadProductImageMutation();
 
   const navigate = useNavigate();
 
@@ -53,11 +59,26 @@ export default function ProductEditPage(): JSX.Element {
       description
     }
     try {
-      await updateProduct(updatedProduct);
+      await updateProduct(updatedProduct).unwrap();
       toast.success("Product updated successfully!");
       navigate("/admin/productlist");
     } catch(err) {
       toast.error("Product update failed."/* || err?.data?.message || err?.error*/);
+    }
+  }
+
+  async function handleUploadFile(event: FormEvent) {
+    event.preventDefault();
+    const formData = new FormData();
+    const target = (event.target as HTMLInputElement);
+    const file: File = (target.files as FileList)[0];
+    formData.append("image", file); 
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      setImage(res.image);
+    } catch(err) {
+      toast.error("Image upload failed."/* || err?.data?.message || err?.error*/);
     }
   }
 
@@ -103,19 +124,26 @@ export default function ProductEditPage(): JSX.Element {
                   </Form.Group>
 
                   {/* Image Input */}
-                  {/*
+                  
                   <Form.Group controlId="image" className="my-2">
                     <Form.Label>Image</Form.Label>
                     <Form.Control
                       name="image"
-                      type="name"
-                      placeholder="Enter image link"
+                      type="text"
+                      placeholder="Enter image url"
                       value={image}
-                      onChange={(event) => setPrice(parseInt(event.target.value))}
+                      onChange={(event) => setImage(event.target.value)}
+                    >
+                    </Form.Control>
+                    <Form.Control
+                      name="file"
+                      type="file"
+                      placeholder="Choose file"
+                      onChange={(event) => handleUploadFile(event) }
                     >
                     </Form.Control>
                   </Form.Group>
-                  */}
+                 
 
                   <Form.Group controlId="brand" className="my-2">
                     <Form.Label>Brand</Form.Label>
