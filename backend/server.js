@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -18,11 +18,12 @@ connectDB();
 const app = express();
 
 // Middleware: CORS Options, JSON Body Parser, URL Body Parser, and Cookie Parser
+// Note: For some reason, CORS Options break the functions in uploadRoutes.js.
 app.use(cors(corsOptions), express.json(), express.urlencoded({ extended: true }), cookieParser());
 
-app.get('/', (req, res) => {
-  res.send("API is running...");
-});
+// app.get('/', (req, res) => {
+//   res.send("API is running...");
+// });
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
@@ -33,7 +34,7 @@ app.get('/api/config/paypal', (req, res) => res.send({ clientId: process.env.PAY
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-
+  
 app.use(notFound, errorHandler);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
