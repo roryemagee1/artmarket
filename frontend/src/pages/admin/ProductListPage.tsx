@@ -8,7 +8,11 @@ import Col from 'react-bootstrap/Col'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
-import { useGetProductsQuery, useCreateProductMutation } from '@src/slices/productsApiSlice'
+import { 
+  useGetProductsQuery, 
+  useCreateProductMutation,
+  useDeleteProductMutation,
+} from '@src/slices/productsApiSlice'
 
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
@@ -20,8 +24,18 @@ export default function ProductListPage(): JSX.Element {
 
   const [ createProduct, { isLoading: createProductLoading }] = useCreateProductMutation();
 
-  function handleDelete(id: string) {
-    console.log("Delete: ", id);
+  const [ deleteProduct, { isLoading: deleteProductLoading }] = useDeleteProductMutation();
+
+  async function handleDelete(product: IProductKeys) {
+    if (window.confirm(`Are you sure you want to delete ${product.name}?`)) {
+      try {
+        await deleteProduct(product);
+        refetch();
+        toast.success(`${product.name} deleted!`);
+      } catch (err) {
+        toast.error("Delete Error!"/* || err?.data?.message || err?.message */);
+      }
+    }
   }
 
   async function handleCreateProduct() {
@@ -29,7 +43,8 @@ export default function ProductListPage(): JSX.Element {
       try {
         await createProduct(null);
         refetch();
-      } catch(err) {
+        toast.success("Product created!");
+      } catch (err) {
         toast.error("Product Error!"/* || err?.data?.message || err?.message */);
       }
     }
@@ -51,7 +66,7 @@ export default function ProductListPage(): JSX.Element {
         </Col>
       </Row>
       {
-        isLoading ? 
+        isLoading || deleteProductLoading ? 
           <Loader /> : 
         error ?
           <Message variant="danger">{`${error}`}</Message> : 
@@ -86,7 +101,7 @@ export default function ProductListPage(): JSX.Element {
                         <Button 
                           variant="danger" 
                           className="btn-sm"
-                          onClick={() => handleDelete(product._id)}
+                          onClick={() => handleDelete(product)}
                           ><FaTrash />
                         </Button>
                       </td>
