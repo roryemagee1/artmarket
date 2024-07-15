@@ -47,7 +47,7 @@ export default function UserListPage(): JSX.Element {
         isLoading || deleteUserLoading ? 
           <Loader /> : 
         error ?
-          <Message variant="danger">{`${error}`}</Message> : 
+          <Message evalBool={false} variant="danger">{`${error}`}</Message> : 
         (
           <>
             <Table striped hover responsive className="table-sm">

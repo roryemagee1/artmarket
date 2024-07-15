@@ -116,7 +116,7 @@ export default function ProfilePage(): JSX.Element {
             Update
           </Button>
           { updateProfileLoading && <Loader /> }
-          { updateProfileError && <Message variant="danger">An Error has occurred.</Message> }
+          { updateProfileError && <Message evalBool={false} variant="danger">An Error has occurred.</Message> }
         </Form>
       </Col>
       <Col md={9}>
@@ -124,7 +124,7 @@ export default function ProfilePage(): JSX.Element {
         { myOrdersLoading ? 
           <Loader /> : 
           myOrdersError ?
-          <Message variant="danger">Error loading orders.</Message> : (
+          <Message evalBool={false} variant="danger">Error loading orders.</Message> : (
             <Table striped hover responsive className="table-sm">
               <thead>
                 <tr>

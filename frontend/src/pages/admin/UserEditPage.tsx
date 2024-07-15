@@ -67,7 +67,7 @@ export default function UserEditPage(): JSX.Element {
             userLoading ? 
               <Loader /> : 
               userError ?
-              <Message variant="danger">{`${userError}`}</Message> : (
+              <Message evalBool={false} variant="danger">{`${userError}`}</Message> : (
                 <Form>
                   <Form.Group controlId="name" className="my-2">
                     <Form.Label>Name</Form.Label>

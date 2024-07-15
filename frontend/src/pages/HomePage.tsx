@@ -32,7 +32,7 @@ export default function HomePage(): JSX.Element {
         isLoading ? 
           <Loader /> : 
           error ? 
-            <Message variant="danger">{ res?.data?.message ? res?.data?.message : res?.error ? res?.error : "Unknown Error!" }</Message> : null 
+            <Message evalBool={true} variant="danger">{ res?.data?.message ? res?.data?.message : res?.error ? res?.error : "Unknown Error!" }</Message> : null 
       }
       <Row>
         {productsOutput}

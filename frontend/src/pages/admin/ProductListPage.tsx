@@ -69,7 +69,7 @@ export default function ProductListPage(): JSX.Element {
         isLoading || deleteProductLoading ? 
           <Loader /> : 
         error ?
-          <Message variant="danger">{`${error}`}</Message> : 
+          <Message evalBool={false} variant="danger">{`${error}`}</Message> : 
         (
           <>
             <Table striped hover responsive className="table-sm">

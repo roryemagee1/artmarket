@@ -79,7 +79,7 @@ export default function PlaceOrder(): JSX.Element {
               <h2>Order Items</h2>
               {
                 cart.cartItems.length === 0 ? (
-                  <Message variant="">Your cart is empty.</Message>
+                  <Message evalBool={false} variant="">Your cart is empty.</Message>
                 ) : (
                   <ListGroup variant="flush">
                     { cart.cartItems.map((item: IItemKeys, i: number) => (
@@ -154,7 +154,7 @@ export default function PlaceOrder(): JSX.Element {
               </ListGroup.Item>
 
               <ListGroup.Item>
-                { error && <Message variant="danger">Error!{/*error*/}</Message>}
+                { error && <Message evalBool={false} variant="danger">{`${error}`}</Message>}
               </ListGroup.Item>
 
               <ListGroup.Item>

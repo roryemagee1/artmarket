@@ -97,7 +97,7 @@ export default function ProductEditPage(): JSX.Element {
             productLoading ? 
               <Loader /> : 
               productError ?
-              <Message variant="danger">{`${productError}`}</Message> : (
+              <Message evalBool={false} variant="danger">{`${productError}`}</Message> : (
                 <Form>
                   <Form.Group controlId="name" className="my-2">
                     <Form.Label>Name</Form.Label>

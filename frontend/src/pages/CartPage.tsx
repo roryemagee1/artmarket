@@ -46,7 +46,7 @@ export default function HomePage(): JSX.Element {
         { 
           cartItems.length === 0 ? (
             <>
-              <Message variant="info">
+              <Message evalBool={false} variant="info">
                 Your cart is empty.
               </Message>
             </>
