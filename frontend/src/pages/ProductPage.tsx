@@ -195,7 +195,8 @@ export default function ProductPage(): JSX.Element {
                           name="comment"
                           as="textarea"
                           style={{height: "120px"}}
-                          value="Comment"
+                          value={comment}
+                          placeholder="Click here to write a review."
                           onChange={(event) => setComment(event.target.value)}
                         >
                         </Form.Control>

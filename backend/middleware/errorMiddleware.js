@@ -14,7 +14,7 @@ const errorHandler = (err, req, res, next) => {
   }
 
   res.status(statusCode).json({
-    message,
+    message: message,
     stack: process.env.NODE_ENV === "production" ? "Stack not available in production mode." : err.stack
   });
 }
