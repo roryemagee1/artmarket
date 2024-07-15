@@ -7,9 +7,10 @@ interface IPage {
   pages: number;
   page: number;
   isAdmin: boolean;
+  keyword: string;
 }
 
-export default function Paginate({ pages, page, isAdmin=false }: IPage): JSX.Element {
+export default function Paginate({ pages, page, isAdmin=false, keyword="" }: IPage): JSX.Element {
   
   return (
     <>
@@ -17,12 +18,16 @@ export default function Paginate({ pages, page, isAdmin=false }: IPage): JSX.Ele
         pages > 1 && (
           <Pagination>
             { 
-              [...Array(pages).keys()].map((pageKey) => (
+              [...Array(pages).keys()].map((pageNum) => (
                 <LinkContainer
-                  key={pageKey + 1}
-                  to={ !isAdmin ? `/page/${pageKey + 1}` : `/admin/productList/${pageKey + 1}`}
+                  key={pageNum + 1}
+                  to={ !isAdmin ? 
+                    keyword ? 
+                    `/search/${keyword}/page/${pageNum + 1}` : 
+                    `/page/${pageNum + 1}` : 
+                    `/admin/productList/${pageNum + 1}`}
                 >
-                  <Pagination.Item active={pageKey + 1 === page}>{pageKey + 1}</Pagination.Item>
+                  <Pagination.Item active={pageNum + 1 === page}>{pageNum + 1}</Pagination.Item>
                 </LinkContainer>
               )) 
             }

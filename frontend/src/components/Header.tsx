@@ -15,6 +15,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import { useLogoutMutation } from '@src/slices/usersApiSlice';
 import { removeCredentials } from '@src/slices/authSlice';
 
+import SearchBox from '@src/components/SearchBox'
+
 import type { RootState } from '@src/store'
 
 export default function Header(): JSX.Element {
@@ -49,6 +51,7 @@ export default function Header(): JSX.Element {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              <SearchBox />
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <FaShoppingCart /> Cart

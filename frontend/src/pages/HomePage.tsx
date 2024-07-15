@@ -1,5 +1,5 @@
 import { JSX } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, /*Link*/ } from 'react-router-dom'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -14,9 +14,9 @@ import Paginate from '@src/components/Paginate'
 import { IProductKeys } from '@src/types/interfaces'
 
 export default function HomePage(): JSX.Element {
-  const { pageNumber } = useParams();
+  const { keyword, pageNumber } = useParams();
   
-  const { data, isLoading, error } = useGetProductsQuery({ pageNumber });
+  const { data, isLoading, error } = useGetProductsQuery({ keyword, pageNumber });
 
   const productsOutput = !data?.products ?
     <></> : 
@@ -30,6 +30,7 @@ export default function HomePage(): JSX.Element {
 
   return (
     <>
+      {/* { keyword && <Link to="/" className="btn btn-light mb-4">Go Back</Link> } */}
       <h1>Latest Products</h1>
       { 
         isLoading ? 
@@ -44,7 +45,8 @@ export default function HomePage(): JSX.Element {
         data?.pages && <Paginate
           pages={data?.pages}
           page={data?.page}
-          isAdmin={false} 
+          isAdmin={false}
+          keyword={keyword ? keyword : ""} 
           /> 
       }
     </>
