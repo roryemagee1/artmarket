@@ -107,3 +107,12 @@ export interface IProduct {
     __v: number;
     _id: string;
   }
+
+  export interface IReviewKeys {
+    _id: string;
+    name: string;
+    rating: number;
+    comment: string;
+    
+    createdAt: string;
+  }
