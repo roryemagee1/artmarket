@@ -9,6 +9,7 @@ import { useGetProductsQuery } from '../slices/productsApiSlice';
 import Product from '@src/components/Product'
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
+import Paginate from '@src/components/Paginate'
 
 import { IProductKeys } from '@src/types/interfaces'
 
@@ -39,6 +40,13 @@ export default function HomePage(): JSX.Element {
       <Row>
         {productsOutput}
       </Row>
+      { 
+        data?.pages && <Paginate
+          pages={data?.pages}
+          page={data?.page}
+          isAdmin={false} 
+          /> 
+      }
     </>
   )
 }

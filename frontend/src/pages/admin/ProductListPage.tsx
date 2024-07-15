@@ -1,4 +1,5 @@
 import { JSX } from 'react'
+import { useParams } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
@@ -16,11 +17,14 @@ import {
 
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
+import Paginate from '@src/components/Paginate'
 
 import { IProductKeys } from '@src/types/interfaces'
 
 export default function ProductListPage(): JSX.Element {
-  const { data: products, isLoading, error, refetch } = useGetProductsQuery(null);
+  const { pageNumber } = useParams();
+  
+  const { data, isLoading, error, refetch } = useGetProductsQuery({ pageNumber });
 
   const [ createProduct, { isLoading: createProductLoading }] = useCreateProductMutation();
 
@@ -85,7 +89,7 @@ export default function ProductListPage(): JSX.Element {
               </thead>
               <tbody>
                 { 
-                  products.map((product: IProductKeys) => (
+                  data.products.map((product: IProductKeys) => (
                     <tr key={product._id}>
                       <td>{product._id}</td>
                       <td>{product.name}</td>
@@ -110,6 +114,7 @@ export default function ProductListPage(): JSX.Element {
                 }
               </tbody>
             </Table>
+            <Paginate pages={data.pages} page={data.page} isAdmin={true} />
           </>
         )
       }
