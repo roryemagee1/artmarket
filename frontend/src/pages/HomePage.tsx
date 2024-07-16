@@ -10,11 +10,13 @@ import Product from '@src/components/Product'
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 import Paginate from '@src/components/Paginate'
+import ProductCarousel from '@src/components/ProductCarousel'
 
 import { IProductKeys } from '@src/types/interfaces'
 
 export default function HomePage(): JSX.Element {
   const { keyword, pageNumber } = useParams();
+  console.log(keyword);
   
   const { data, isLoading, error } = useGetProductsQuery({ keyword, pageNumber });
 
@@ -31,6 +33,7 @@ export default function HomePage(): JSX.Element {
   return (
     <>
       {/* { keyword && <Link to="/" className="btn btn-light mb-4">Go Back</Link> } */}
+      { !keyword && <ProductCarousel /> }
       <h1>Latest Products</h1>
       { 
         isLoading ? 

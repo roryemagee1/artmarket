@@ -6,7 +6,7 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import store from './store';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import '@src/assets/styles/bootstrap.custom.css'
+import '@src/assets/styles/bootstrap.custom.css'
 import '@src/assets/styles/index.css'
 // import './index.css'
 
