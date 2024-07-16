@@ -14,6 +14,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import { useLogoutMutation } from '@src/slices/usersApiSlice';
 import { removeCredentials } from '@src/slices/authSlice';
+import { resetCart } from '@src/slices/cartSlice';
 
 import SearchBox from '@src/components/SearchBox'
 
@@ -29,12 +30,24 @@ export default function Header(): JSX.Element {
   const [ logout ] = useLogoutMutation();
 
   async function handleLogout() {
+    let message = "";
     try {
-      await logout({}).unwrap();
-      dispatch(removeCredentials());
-      navigate('/login');
+      const res = await logout({});
+      if (res?.error) {
+        const dataObj = res?.error as { data: { message: string, stack: string }}
+        message = dataObj.data.message as string;
+        toast.error(message);
+      } else {
+        dispatch(removeCredentials());
+        dispatch(resetCart());
+        navigate('/login');
+      }
     } catch (err) {
-      toast.error("Failed to logout." /*err?.data.message) || err?.error*/);
+      if (err instanceof Error && "data" in err) {
+        const output = err?.data as { message: string }
+        message = output.message;
+      }
+      toast.error(message || "Failed to logout!");
     }
   }
 
