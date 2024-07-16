@@ -21,10 +21,6 @@ const app = express();
 // Note: For some reason, CORS Options break the functions in uploadRoutes.js.
 app.use(cors(corsOptions), express.json(), express.urlencoded({ extended: true }), cookieParser());
 
-// app.get('/', (req, res) => {
-//   res.send("API is running...");
-// });
-
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
@@ -34,6 +30,18 @@ app.get('/api/config/paypal', (req, res) => res.send({ clientId: process.env.PAY
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  })
+} else {
+  app.get('/', (req, res) => {
+    res.send("API is running on dev server...");
+  })
+}
   
 app.use(notFound, errorHandler);
 
