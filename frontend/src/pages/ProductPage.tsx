@@ -32,62 +32,73 @@ export default function ProductPage(): JSX.Element {
   const [ rating, setRating ] = useState<number>(0);
   const [ comment, setComment ] = useState<string>("");
   
-  const res = useGetProductsDetailsQuery(id);
+  const { data, refetch, isLoading, error } = useGetProductsDetailsQuery(id);
 
   const [ createReview, { isLoading: productReviewLoading} ] = useCreateReviewMutation();
 
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
   function handleAddToCart() {
-    dispatch(addToCart({ ...res.data, qty }));
+    dispatch(addToCart({ ...data, qty }));
     navigate('/cart');
   }
 
   async function handleSubmitReview(event: FormEvent) {
     event.preventDefault();
+    let message = "";
     try {
-      await createReview({ id, rating, comment }).unwrap();
-      toast.success("Review submitted successfully!");
-      res.refetch();
+      const res = await createReview({ id, rating, comment });
+      if (res?.error) {
+        const dataObj = res?.error as { data: { message: string, stack: string }}
+        message = dataObj.data.message as string;
+        toast.error(`Review failed!`);
+      } else {
+        toast.success("Review submitted successfully!");
+      }
+      refetch();
     } catch(err) {
-      toast.error("Review submission failed."/* || err?.data?.message || err?.error*/);
+      if (err instanceof Error && "data" in err) {
+        const output = err?.data as { message: string }
+        message = output.message;
+      }
+      toast.error(message);
     }
   }
 
   return (
     <>
-      <Meta title={res?.data?.name} description={res?.data?.description}/>
+      <Meta title={data?.name} description={data?.description}/>
       <Link className="btn btn-light my-3" to="/">
           Back
       </Link>
       { 
-        res.isLoading ? 
+        isLoading ? 
           <Loader /> : 
-          res.error ? 
-            <Message evalBool={false} variant="danger">{ res?.data?.message ? res?.data?.message : res?.error ? res?.error : "Unknown Error!" }</Message> :
+          error ? 
+            <Message evalBool={false} variant="danger">{`${error}`}</Message> :
       <>
         <Row>
 
           <Col md={5}>
-            <Image src={res.data?.image} alt={res.data?.name} fluid />
+            <Image src={data?.image} alt={data?.name} fluid />
           </Col>
 
           <Col md={4}>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h3>{res.data?.name}</h3>
+                <h3>{data?.name}</h3>
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <Rating rating={res.data?.rating} text={`${res.data?.numReviews} reviews`}/>
+                <Rating rating={data?.rating} text={`${data?.numReviews} reviews`}/>
               </ListGroup.Item>
 
               <ListGroup.Item>
-                Price: ${res.data?.price}
+                Price: ${data?.price}
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <strong>Description: </strong>{res.data?.description}
+                <strong>Description: </strong>{data?.description}
               </ListGroup.Item>
             </ListGroup>
           </Col>
@@ -99,7 +110,7 @@ export default function ProductPage(): JSX.Element {
                   <Row>
                     <Col>Price:</Col>
                     <Col>
-                      <strong>${res.data?.price}</strong>
+                      <strong>${data?.price}</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -108,13 +119,13 @@ export default function ProductPage(): JSX.Element {
                   <Row>
                     <Col>Status</Col>
                     <Col>
-                      <strong>{res.data?.countInStock > 0 ? "In Stock" : "Out of Stock"}</strong>
+                      <strong>{data?.countInStock > 0 ? "In Stock" : "Out of Stock"}</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>
 
                 { 
-                res.data?.countInStock > 0 && (
+                data?.countInStock > 0 && (
                   <ListGroup.Item>
                     <Row>
                       <Col>Qty</Col>
@@ -125,7 +136,7 @@ export default function ProductPage(): JSX.Element {
                           value={qty}
                           onChange={(event) => setQty(Number(event.target.value))}
                         >
-                          {[...Array(res.data?.countInStock).keys()].map((key) => (
+                          {[...Array(data?.countInStock).keys()].map((key) => (
                             <option key={key + 1 } value={key + 1}>{key + 1}</option>
                           ))}
                         </Form.Control>
@@ -139,7 +150,7 @@ export default function ProductPage(): JSX.Element {
                   <Button
                     className="btn-block"
                     type="button"
-                    disabled={res.data?.countInStock === 0}
+                    disabled={data?.countInStock === 0}
                     onClick={handleAddToCart}
                   >
                     Add to Cart
@@ -154,10 +165,10 @@ export default function ProductPage(): JSX.Element {
         <Row className="review">
           <Col md={6}>
             <h2>Reviews</h2>
-            {res?.data.reviews.length === 0 && <Message evalBool={false} variant="info">No Reviews</Message>}
+            {data.reviews.length === 0 && <Message evalBool={false} variant="info">No Reviews</Message>}
             <ListGroup variant="flush">
               {
-                res?.data.reviews.map((review: IReviewKeys) => (
+                data.reviews.map((review: IReviewKeys) => (
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>
                     <Rating rating={review.rating} text="" />

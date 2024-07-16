@@ -30,7 +30,7 @@ import Loader from '@src/components/Loader'
 export default function OrderPage() {
   const { id } = useParams();
 
-  const { data: order, refetch, isLoading: isOrderLoading, isError } = useGetOrderByIdQuery(id);
+  const { data: order, refetch, isLoading: isOrderLoading, error } = useGetOrderByIdQuery(id);
   
   const [ payOrder, { isLoading: payLoading } ] = usePayOrderMutation();
 
@@ -112,8 +112,8 @@ export default function OrderPage() {
 
   return isOrderLoading ? (
     <Loader />
-  ) : isError ? (
-    <Message variant="danger">Order Error!</Message>
+  ) : error ? (
+    <Message variant="danger">{error?.data?.message || error?.error}</Message>
   ) : (
     <>
       <h1>Order ID: {order._id}</h1>  

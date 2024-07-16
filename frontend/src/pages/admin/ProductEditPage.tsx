@@ -58,12 +58,23 @@ export default function ProductEditPage(): JSX.Element {
       countInStock,
       description
     }
+    let message: string = "";
     try {
-      await updateProduct(updatedProduct).unwrap();
-      toast.success("Product updated successfully!");
+      const res = await updateProduct(updatedProduct);
+      if (res?.error) {
+        const dataObj = res?.error as { data: { message: string, stack: string }}
+        message = dataObj.data.message as string;
+        toast.error(message);
+      } else {
+        toast.success(`${updatedProduct.name} updated successfully!`);
+      }
       navigate("/admin/productlist");
     } catch(err) {
-      toast.error("Product update failed."/* || err?.data?.message || err?.error*/);
+      if (err instanceof Error && "data" in err) {
+        const output = err?.data as { message: string }
+        message = output.message;
+      }
+      toast.error(message);
     }
   }
 
@@ -73,15 +84,26 @@ export default function ProductEditPage(): JSX.Element {
     const target = (event.target as HTMLInputElement);
     const file: File = (target.files as FileList)[0];
     formData.append("image", file); 
+    let message: string = "";
     try {
       const res = await uploadProductImage(formData).unwrap();
-      toast.success(res.message);
-      setImage(res.image);
+      if (res?.error) {
+        const dataObj = res?.error as { data: { message: string, stack: string }}
+        message = dataObj.data.message as string;
+        toast.error(message);
+      } else {
+        toast.success(res.message);
+        setImage(res.image);
+      }
     } catch(err) {
-      toast.error("Image upload failed."/* || err?.data?.message || err?.error*/);
+      if (err instanceof Error && "data" in err) {
+        const output = err?.data as { message: string }
+        message = output.message;
+      }
+      toast.error(message);
     }
   }
-
+  
   return (
     <>
       <Link to='/admin/productlist' className="btn btn-light my-3">

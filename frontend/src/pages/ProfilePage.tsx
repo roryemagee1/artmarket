@@ -43,6 +43,7 @@ export default function ProfilePage(): JSX.Element {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+    let message = ""
     if (password !== confirmPassword) {
       return toast.error("Passwords do not match.");
     } else {
@@ -51,7 +52,11 @@ export default function ProfilePage(): JSX.Element {
         dispatch(setCredentials({ ...res }));
         toast.success("Profile updated successfully.");
       } catch (err) {
-        toast.error("Invalid profile update." /*|| err?.data.message) || err?.error*/);
+        if (err instanceof Error && "data" in err) {
+          const output = err?.data as { message: string }
+          message = output.message;
+        }
+        toast.error(message);
       }
     }
   }

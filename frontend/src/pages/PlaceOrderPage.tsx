@@ -154,7 +154,7 @@ export default function PlaceOrder(): JSX.Element {
               </ListGroup.Item>
 
               <ListGroup.Item>
-                { error && <Message evalBool={false} variant="danger">{`${error}`}</Message>}
+                { error && <Message evalBool={true} variant="danger">{`${error}`}</Message>}
               </ListGroup.Item>
 
               <ListGroup.Item>

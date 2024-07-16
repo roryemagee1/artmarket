@@ -39,12 +39,23 @@ export default function LoginPage(): JSX.Element {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+    let message: string = "";
     try {
       const res = await login({ email, password }).unwrap();
-      dispatch(setCredentials({ ...res }));
-      navigate(redirect);
+      if (res?.error) {
+        const dataObj = res?.error as { data: { message: string, stack: string }}
+        message = dataObj.data.message as string;
+        toast.error(message);
+      } else {
+        dispatch(setCredentials({ ...res }));
+        navigate(redirect);
+      }
     } catch (err) {
-      toast.error("Invalid Email or Password." /*err?.data.message) || err?.error*/);
+      if (err instanceof Error && "data" in err) {
+        const output = err?.data as { message: string }
+        message = output.message;
+      }
+      toast.error(message);
     }
   }
 

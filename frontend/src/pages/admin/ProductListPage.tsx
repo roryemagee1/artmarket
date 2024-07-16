@@ -32,24 +32,46 @@ export default function ProductListPage(): JSX.Element {
 
   async function handleDelete(product: IProductKeys) {
     if (window.confirm(`Are you sure you want to delete ${product.name}?`)) {
+      let message: string = ""
       try {
-        await deleteProduct(product);
+        const res = await deleteProduct(product);
+        if (res?.error) {
+          const dataObj = res?.error as { data: { message: string, stack: string }}
+          message = dataObj.data.message as string;
+          toast.error(message);
+        } else {
+          toast.success(`${product.name} deleted!`);
+        }
         refetch();
-        toast.success(`${product.name} deleted!`);
       } catch (err) {
-        toast.error("Delete Error!"/* || err?.data?.message || err?.message */);
+        if (err instanceof Error && "data" in err) {
+          const output = err?.data as { message: string }
+          message = output.message;
+        }
+        toast.error(message);
       }
     }
   }
 
   async function handleCreateProduct() {
     if (window.confirm("Are you sure you want to create a new product?")) {
+      let message = "";
       try {
-        await createProduct(null);
+        const res = await createProduct(null);
+        if (res?.error) {
+          const dataObj = res?.error as { data: { message: string, stack: string }}
+          message = dataObj.data.message as string;
+          toast.error(message);
+        } else {
+          toast.success(`New product created!`);
+        }
         refetch();
-        toast.success("Product created!");
       } catch (err) {
-        toast.error("Product Error!"/* || err?.data?.message || err?.message */);
+        if (err instanceof Error && "data" in err) {
+          const output = err?.data as { message: string }
+          message = output.message;
+        }
+        toast.error(message);
       }
     }
   }
