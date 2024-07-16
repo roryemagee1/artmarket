@@ -110,10 +110,8 @@ export default function ProfilePage(): JSX.Element {
             variant="primary" 
             className="my-2"
             onClick={(event) => handleSubmit(event)}
-            // onSubmit={(event) => handleSubmit(event)}
             disabled={ updateProfileLoading }
-          >
-            Update
+          >Update
           </Button>
           { updateProfileLoading && <Loader /> }
           { updateProfileError && <Message evalBool={false} variant="danger">An Error has occurred.</Message> }

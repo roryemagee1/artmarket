@@ -12,7 +12,6 @@ export default function SearchBox(): JSX.Element {
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     if (keyword.trim()) {
-      // setKeyword("");
       navigate(`/search/${keyword}`)
     } else {
       navigate("/")

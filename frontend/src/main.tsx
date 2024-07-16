@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, createRoutesFromElements, /*BrowserRouter, Routes,*/ Route, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { HelmetProvider } from 'react-helmet-async'
@@ -62,16 +62,6 @@ const router = createBrowserRouter(
     </Route>
   )
 )
-
-// const router = (
-//   <BrowserRouter>
-//     <Routes>
-//       <Route path="/" element={ <App /> }>
-//         <Route index element={ <HomeScreen /> } />
-//       </Route>
-//     </Routes>
-//   </BrowserRouter>
-// )
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

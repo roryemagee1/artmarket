@@ -71,7 +71,7 @@ export default function OrderPage() {
           refetch();
           toast.success("Payment successful!");
         } catch(err) {
-          toast.error(err?.data.message || err.message);
+          toast.error(err?.data.message || err?.message);
         }
       })
   }

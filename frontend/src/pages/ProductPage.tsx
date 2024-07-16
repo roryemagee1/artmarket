@@ -32,7 +32,6 @@ export default function ProductPage(): JSX.Element {
   const [ rating, setRating ] = useState<number>(0);
   const [ comment, setComment ] = useState<string>("");
   
-  // const { data: product, isLoading, error } = useGetProductsDetailsQuery(id);
   const res = useGetProductsDetailsQuery(id);
 
   const [ createReview, { isLoading: productReviewLoading} ] = useCreateReviewMutation();
@@ -87,11 +86,9 @@ export default function ProductPage(): JSX.Element {
                 Price: ${res.data?.price}
               </ListGroup.Item>
 
-              {/* This section is a modified version of the section commented out below. */}
               <ListGroup.Item>
                 <strong>Description: </strong>{res.data?.description}
               </ListGroup.Item>
-              {/* This section is a modified version of the section commented out below. */}
             </ListGroup>
           </Col>
 
@@ -134,7 +131,6 @@ export default function ProductPage(): JSX.Element {
                         </Form.Control>
                       </Col>
                     </Row>
-                    {/* <QuantityDropdown data={res?.data ? res?.data : null} /> */}
                   </ListGroup.Item>
                   )
                 }
@@ -222,18 +218,6 @@ export default function ProductPage(): JSX.Element {
         </Row>
       </>
       }
-
-      {/* This section is a modified version of the section commented out above. */}
-      {/* <Row>
-        <Col md={10}>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              <strong>Description:</strong> {product.description}
-            </ListGroup.Item>
-          </ListGroup>
-        </Col>
-      </Row> */}
-      {/* This section is a modified version of the section commented out above. */}
     </>
   )
 }

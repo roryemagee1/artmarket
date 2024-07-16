@@ -15,36 +15,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
     totalPrice 
   } = req.body;
 
-  // Attempt
-  // if (orderItems && orderItems.length === 0) {
-  //   res.status(400);
-  //   throw new Error("No order items were submitted.")
-  // } else {
-  //   const order = Order.create({
-  //     orderItems: orderItems.map(item => ({
-  //       ...item,
-  //       product: item._id,
-  //       _id: undefined,
-  //     })), 
-  //     user: user._id,
-  //     shippingAddress, 
-  //     paymentMethod, 
-  //     itemsPrice, 
-  //     taxPrice, 
-  //     shippingPrice, 
-  //     totalPrice
-  //   });
-
-  //   if (order) {
-  //     res.status(201).json({
-  //       ...order
-  //     });
-  //   } else {
-  //     res.status(400);
-  //     throw new Error("Invalid order data.");
-  //   }
-  // }
-
   if (orderItems && orderItems.length === 0) {
     res.status(400);
     throw new Error("No order items were submitted.")

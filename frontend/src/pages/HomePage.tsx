@@ -1,5 +1,5 @@
 import { JSX } from 'react'
-import { useParams, /*Link*/ } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -33,7 +33,6 @@ export default function HomePage(): JSX.Element {
   return (
     <>
       <Meta title="Welcome to Artmarket!" />
-      {/* { keyword && <Link to="/" className="btn btn-light mb-4">Go Back</Link> } */}
       { !keyword && <ProductCarousel /> }
       <h1>Latest Products</h1>
       { 

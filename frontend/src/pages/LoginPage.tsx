@@ -81,7 +81,6 @@ export default function LoginPage(): JSX.Element {
               variant="primary" 
               className="mt-2"
               onClick={(event) => handleSubmit(event)}
-              // onSubmit={(event) => handleSubmit(event)}
               disabled={ isLoading }
             >
               Sign In

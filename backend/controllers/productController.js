@@ -46,28 +46,6 @@ const getProductById = asyncHandler(async (req, res) => {
 // @routes POST /api/products
 // @access Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
-  // const { 
-  //   user, 
-  //   name, 
-  //   image, 
-  //   brand, 
-  //   category, 
-  //   description, 
-  //   price, 
-  //   countInStock,
-  //   numReviews,
-  // } = req.body
-  
-  // const product = new Product({
-  //   user,
-  //   name,
-  //   image,
-  //   brand,
-  //   category,
-  //   description,
-  //   price,
-  //   countInStock
-  // });
 
   const product = new Product({
     user: req.user._id,
@@ -160,7 +138,6 @@ const createProductReview = asyncHandler(async (req, res) => {
 
     if (alreadyReviewed) {
       res.status(400);
-      console.log("Here!");
       throw new Error("Product already reviewed by user.");
     }
 
@@ -212,19 +189,3 @@ export {
   createProductReview,
   getTopProducts,
 }
-
-// const productSchema = new mongoose.Schema({
-//   user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
-//   name: { type: String, required: true },
-//   image: { type: String, required: true },
-//   brand: { type: String, required: true },
-//   category: { type: String, required: true },
-//   description: { type: String, required: true },
-//   reviews: [reviewSchema],
-//   rating: { type: Number, required: true, default: 0 },
-//   numReviews: { type: Number, required: true, default: 0 },
-//   price: { type: Number, required: true, default: 0 },
-//   countInStock: { type: Number, required: true, default: 0 },
-// }, {
-//   timestamps: true,
-// });
