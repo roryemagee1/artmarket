@@ -172,7 +172,7 @@ const updateUser = asyncHandler(async (req, res) => {
   } else {
     user.name = name || user.name;
     user.email = email || user.email;
-    user.isAdmin = Boolean(isAdmin || user.isAdmin);
+    user.isAdmin = isAdmin;
 
     const updatedUser = await user.save();
     

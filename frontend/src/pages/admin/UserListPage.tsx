@@ -21,17 +21,28 @@ import { IUserKeys } from '@src/types/interfaces'
 export default function UserListPage(): JSX.Element {
   const { data: users, isLoading, error, refetch } = useGetUsersQuery(null);
 
-
   const [ deleteUser, { isLoading: deleteUserLoading }] = useDeleteUserMutation();
 
   async function handleDelete(user: IUserKeys) {
     if (window.confirm(`Are you sure you want to delete ${user.name}?`)) {
+      console.log(user);
+      const userToDelete = {...user, id: user._id};
+      console.log("d",userToDelete);
+      let message = "";
       try {
-        await deleteUser(user);
+        console.log("user: ", user._id);
+        const res = await deleteUser({ data: user, id: user._id });
+        if (res?.error) {
+          const dataObj = res?.error as { data: { message: string, stack: string }}
+          message = dataObj.data.message as string;
+          // console.log(dataObj.data.stack);
+          toast.error(message);
+        } else {
+          toast.success(`${user.name} deleted!`);
+        }
         refetch();
-        toast.success(`${user.name} deleted!`);
       } catch (err) {
-        toast.error("User Delete Error!"/* || err?.data?.message || err?.message */);
+        toast.error(message);
       }
     }
   }
