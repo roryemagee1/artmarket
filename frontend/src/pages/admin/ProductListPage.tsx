@@ -114,7 +114,7 @@ export default function ProductListPage(): JSX.Element {
                 }
               </tbody>
             </Table>
-            <Paginate pages={data.pages} page={data.page} isAdmin={true} />
+            <Paginate pages={data.pages} page={data.page} isAdmin={true} keyword=""/>
           </>
         )
       }

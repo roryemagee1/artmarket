@@ -17,6 +17,7 @@ import { addToCart } from '@src/slices/cartSlice';
 import Rating from '@src/components/Rating'
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
+import Meta from '@src/components/Meta'
 
 import type { RootState } from '@src/store'
 import { IReviewKeys } from '@src/types/interfaces'
@@ -56,6 +57,7 @@ export default function ProductPage(): JSX.Element {
 
   return (
     <>
+      <Meta title={res?.data?.name} description={res?.data?.description}/>
       <Link className="btn btn-light my-3" to="/">
           Back
       </Link>
