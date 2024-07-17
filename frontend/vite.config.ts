@@ -26,13 +26,12 @@ export default defineConfig({
 // In the event that the process.env information must be available on the frontend, use the following solution found here:
 // https://dev.to/boostup/uncaught-referenceerror-process-is-not-defined-12kg
 
-// https://vitejs.dev/config/
 // export default defineConfig(({ mode }) => {
-//   const env = loadEnv(mode, process.cwd(), '');
-//   return { 
-//     define: {
-//       'process.env': env,
-//     },
+//   // const env = loadEnv(mode, process.cwd(), "");
+//   return {
+//     // define: {
+//     //   "process.env.PAYPAL_CLIENT_ID" : JSON.stringify(env.PAYPAL_CLIENT_ID)
+//     // },
 //     plugins: [react()],
 //     server: {
 //       proxy: {
@@ -40,7 +39,8 @@ export default defineConfig({
 //           target: "http://localhost:3000",
 //           changeOrigin: true,
 //           secure: false,
-//         }
+//         },
+//         "/uploads": 'http://localhost:3000',
 //       }
 //     },
 //     resolve: {
@@ -48,5 +48,5 @@ export default defineConfig({
 //         "@src": "/src",
 //       }
 //     }
-//   }
+//   }   
 // })

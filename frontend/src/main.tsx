@@ -67,7 +67,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HelmetProvider>
       <Provider store={store}>
-        <PayPalScriptProvider deferLoading={true} options={{ clientId: "test"}}>
+        <PayPalScriptProvider deferLoading={true} options={{clientId: "test"}}>
           <RouterProvider router={router} />
         </PayPalScriptProvider>
       </Provider>

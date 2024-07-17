@@ -67,7 +67,7 @@ export default function OrderPage() {
     return actions.order.capture()
       .then(async function(details) {
         try {
-          await payOrder({ id, details });
+          await payOrder({ id: id, data: details }).unwrap();
           refetch();
           toast.success("Payment successful!");
         } catch(err) {

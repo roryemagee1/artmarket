@@ -25,17 +25,12 @@ export default function UserListPage(): JSX.Element {
 
   async function handleDelete(user: IUserKeys) {
     if (window.confirm(`Are you sure you want to delete ${user.name}?`)) {
-      console.log(user);
-      const userToDelete = {...user, id: user._id};
-      console.log("d",userToDelete);
       let message = "";
       try {
-        console.log("user: ", user._id);
         const res = await deleteUser({ data: user, id: user._id });
         if (res?.error) {
           const dataObj = res?.error as { data: { message: string, stack: string }}
           message = dataObj.data.message as string;
-          // console.log(dataObj.data.stack);
           toast.error(message);
         } else {
           toast.success(`${user.name} deleted!`);
