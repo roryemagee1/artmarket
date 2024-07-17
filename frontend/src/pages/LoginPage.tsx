@@ -41,7 +41,7 @@ export default function LoginPage(): JSX.Element {
     event.preventDefault();
     let message: string = "";
     try {
-      const res = await login({ email, password }).unwrap();
+      const res = await login({ email, password });
       if (res?.error) {
         const dataObj = res?.error as { data: { message: string, stack: string }}
         message = dataObj.data.message as string;
