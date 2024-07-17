@@ -1,5 +1,5 @@
 import { JSX } from 'react'
-import { LinkContainer } from 'react-router-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
 
 import Table from 'react-bootstrap/Table'
@@ -14,6 +14,8 @@ import { IOrderKeys } from '@src/types/interfaces'
 
 export default function OrderListPage(): JSX.Element {
   const { data: orders, isLoading, error } = useGetOrdersQuery(null);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -63,11 +65,9 @@ export default function OrderListPage(): JSX.Element {
                         }
                       </td>
                       <td>
-                        <LinkContainer to={`/order/${order._id}`}>
-                          <Button className="btn-sm" variant="light">
-                            Details
-                          </Button>
-                        </LinkContainer>
+                        <Button onClick={() => navigate(`/order/${order._id}`)} className="btn-sm" variant="light">
+                          Details
+                        </Button>
                       </td>
                     </tr>
                   ))

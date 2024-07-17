@@ -1,6 +1,5 @@
 import { JSX } from 'react'
-import { useParams } from 'react-router-dom'
-import { LinkContainer } from 'react-router-bootstrap'
+import { useParams, useNavigate } from 'react-router-dom'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
@@ -30,26 +29,50 @@ export default function ProductListPage(): JSX.Element {
 
   const [ deleteProduct, { isLoading: deleteProductLoading }] = useDeleteProductMutation();
 
+  const navigate = useNavigate();
+
   async function handleDelete(product: IProductKeys) {
     if (window.confirm(`Are you sure you want to delete ${product.name}?`)) {
+      let message: string = ""
       try {
-        await deleteProduct(product);
+        const res = await deleteProduct(product);
+        if (res?.error) {
+          const dataObj = res?.error as { data: { message: string, stack: string }}
+          message = dataObj.data.message as string;
+          toast.error(message);
+        } else {
+          toast.success(`${product.name} deleted!`);
+        }
         refetch();
-        toast.success(`${product.name} deleted!`);
       } catch (err) {
-        toast.error("Delete Error!"/* || err?.data?.message || err?.message */);
+        if (err instanceof Error && "data" in err) {
+          const output = err?.data as { message: string }
+          message = output.message;
+        }
+        toast.error(message);
       }
     }
   }
 
   async function handleCreateProduct() {
     if (window.confirm("Are you sure you want to create a new product?")) {
+      let message = "";
       try {
-        await createProduct(null);
+        const res = await createProduct(null);
+        if (res?.error) {
+          const dataObj = res?.error as { data: { message: string, stack: string }}
+          message = dataObj.data.message as string;
+          toast.error(message);
+        } else {
+          toast.success(`New product created!`);
+        }
         refetch();
-        toast.success("Product created!");
       } catch (err) {
-        toast.error("Product Error!"/* || err?.data?.message || err?.message */);
+        if (err instanceof Error && "data" in err) {
+          const output = err?.data as { message: string }
+          message = output.message;
+        }
+        toast.error(message);
       }
     }
   }
@@ -97,11 +120,9 @@ export default function ProductListPage(): JSX.Element {
                       <td>{product.category}</td>
                       <td>{product.brand}</td>
                       <td>
-                        <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                          <Button variant="light" className="btn-sm mx-2">
-                            <FaEdit />
-                          </Button>
-                        </LinkContainer>
+                        <Button onClick={() => navigate(`/admin/product/${product._id}/edit`)} variant="light" className="btn-sm mx-2">
+                          <FaEdit />
+                        </Button>
                         <Button 
                           variant="danger" 
                           className="btn-sm"

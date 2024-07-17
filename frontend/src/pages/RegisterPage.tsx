@@ -41,15 +41,21 @@ export default function RegisterPage(): JSX.Element {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+    let message = "";
     if (password !== confirmPassword) {
       return toast.error("Passwords do not match.");
     } else {
       try {
         const res = await register({ name, email, password }).unwrap();
-        dispatch(setCredentials({ ...res }));
+        dispatch(setCredentials({ data: res }));
         navigate(redirect);
       } catch (err) {
-        toast.error("Invalid Email or Password." /*err?.data.message) || err?.error*/);
+        if (err instanceof Error && "data" in err) {
+          const output = err?.data as { message: string }
+          message = output.message;
+        }
+        toast.error(message);
+        toast.error("Invalid Email or Password.");
       }
     }
   }

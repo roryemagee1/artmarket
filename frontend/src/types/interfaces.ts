@@ -1,5 +1,3 @@
-// import { ReactNode } from 'react';
-
 export interface IProduct {
   product: {
       _id: string;

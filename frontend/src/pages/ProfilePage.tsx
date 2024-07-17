@@ -1,5 +1,5 @@
 import { JSX, FormEvent, useState, useEffect } from 'react'
-import { LinkContainer } from 'react-router-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaTimes } from 'react-icons/fa'
 import { toast } from 'react-toastify'
@@ -27,6 +27,7 @@ export default function ProfilePage(): JSX.Element {
   const [ confirmPassword, setConfirmPassword ] = useState<string>("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
@@ -36,29 +37,35 @@ export default function ProfilePage(): JSX.Element {
 
   useEffect(() => {
     if (userInfo) {
-      setName(userInfo.name);
-      setEmail(userInfo.email);
+      setName(userInfo.data.name);
+      setEmail(userInfo.data.email);
     }
-  }, [userInfo, userInfo.name, userInfo.email])
+  }, [userInfo, userInfo.data.name, userInfo.data.email])
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+    let message = ""
     if (password !== confirmPassword) {
       return toast.error("Passwords do not match.");
     } else {
       try {
-        const res = await updateProfile({ _id: userInfo._id, name, email, password }).unwrap();
-        dispatch(setCredentials({ ...res }));
+        const res = await updateProfile({ _id: userInfo.data._id, name, email, password }).unwrap();
+        console.log(res);
+        dispatch(setCredentials({ data: res }));
         toast.success("Profile updated successfully.");
       } catch (err) {
-        toast.error("Invalid profile update." /*|| err?.data.message) || err?.error*/);
+        if (err instanceof Error && "data" in err) {
+          const output = err?.data as { message: string }
+          message = output.message;
+        }
+        toast.error(message);
       }
     }
   }
   
   return (
     <Row>
-      <Col md={3}>
+      <Col md={4}>
         <h2>User Profile</h2>
         <Form onSubmit={event => handleSubmit(event)}>
           <Form.Group controlId="name" className="my-2">
@@ -83,10 +90,10 @@ export default function ProfilePage(): JSX.Element {
             >
             </Form.Control>
           </Form.Group>
-          <Form.Group controlId="password" className="my-2">
-            <Form.Label>Password</Form.Label>
+          <Form.Group controlId="newPassword" className="my-2">
+            <Form.Label>New Password</Form.Label>
             <Form.Control
-              name="password"
+              name="newPassword"
               type="password"
               placeholder="Enter password"
               value={password}
@@ -117,7 +124,7 @@ export default function ProfilePage(): JSX.Element {
           { updateProfileError && <Message evalBool={false} variant="danger">An Error has occurred.</Message> }
         </Form>
       </Col>
-      <Col md={9}>
+      <Col md={8}>
         <h2>My Orders</h2>
         { myOrdersLoading ? 
           <Loader /> : 
@@ -159,11 +166,9 @@ export default function ProfilePage(): JSX.Element {
                         }
                       </td>
                       <td>
-                        <LinkContainer to={`/order/${order._id}`}>
-                          <Button className="btn-sm" variant="light">
-                            Details
-                          </Button>
-                        </LinkContainer>
+                        <Button onClick={() => navigate(`/order/${order._id}`)} className="btn-sm" variant="light">
+                          Details
+                        </Button>
                       </td>
                     </tr>
                     )

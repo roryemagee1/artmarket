@@ -43,12 +43,23 @@ export default function UserEditPage(): JSX.Element {
       email,
       isAdmin,
     }
+    let message = "";
     try {
-      await updateUser(updatedUser).unwrap();
-      toast.success("User updated successfully!");
+      const res = await updateUser(updatedUser);
+      if (res?.error) {
+        const dataObj = res?.error as { data: { message: string, stack: string }}
+        message = dataObj.data.message as string;
+        toast.error(message);
+      } else {
+        toast.success("User updated successfully!");
+      }
       navigate("/admin/userlist");
     } catch(err) {
-      toast.error("User update failed."/* || err?.data?.message || err?.error*/);
+      if (err instanceof Error && "data" in err) {
+        const output = err?.data as { message: string }
+        message = output.message;
+      }
+      toast.error(message);
     }
   }
 

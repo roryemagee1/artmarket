@@ -47,10 +47,10 @@ export default function HomePage(): JSX.Element {
           cartItems.length === 0 ? (
             <>
               <Message evalBool={false} variant="info">
-                Your cart is empty.
+                <>Your cart is empty. <Link to="/">Return to home</Link>.</>
               </Message>
             </>
-          ): (
+          ) : (
             <ListGroup variant="flush">
               { cartItems.map( (item: IItemKeys) => (
                 <ListGroup.Item key={item._id}>
@@ -109,7 +109,6 @@ export default function HomePage(): JSX.Element {
           </Card>
         </Col>
       </Row>
-      { !cartItems.length && <Link className="btn btn-light my-3" to="/">Go Home</Link>}
     </>
   )
 }

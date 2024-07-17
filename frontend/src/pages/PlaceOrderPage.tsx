@@ -76,37 +76,16 @@ export default function PlaceOrder(): JSX.Element {
               </p>
             </ListGroup.Item>
             <ListGroup.Item>
-              <h2>Order Items</h2>
               {
-                cart.cartItems.length === 0 ? (
-                  <Message evalBool={false} variant="">Your cart is empty.</Message>
-                ) : (
-                  <ListGroup variant="flush">
-                    { cart.cartItems.map((item: IItemKeys, i: number) => (
-                      <ListGroup.Item key={i}>
-                        <Row>
-                          <Col md={1}>
-                            <Image 
-                              src={item.image} 
-                              alt={item.name} 
-                              fluid 
-                              rounded/>
-                          </Col>
-                          <Col>
-                            <Link to={`/products/${item._id}`}>
-                              {item.name}
-                            </Link>
-                          </Col>
-                          <Col md={4}>
-                            { item.qty } x ${ item.price } = ${ item.qty * item.price }
-                          </Col>
-                        </Row>
-                      </ListGroup.Item>
-                    ))}
-                  </ListGroup>
+                cart.cartItems.length === 0 && (
+                  <>
+                    <h2>Order Items</h2>
+                    <Message evalBool={false} variant="">Your cart is empty.</Message>
+                  </>
                 )
               }
             </ListGroup.Item>
+            
           </ListGroup>
         </Col>
         <Col md={4}>
@@ -154,7 +133,7 @@ export default function PlaceOrder(): JSX.Element {
               </ListGroup.Item>
 
               <ListGroup.Item>
-                { error && <Message evalBool={false} variant="danger">{`${error}`}</Message>}
+                { error && <Message evalBool={true} variant="danger">{`${error}`}</Message>}
               </ListGroup.Item>
 
               <ListGroup.Item>
@@ -171,6 +150,40 @@ export default function PlaceOrder(): JSX.Element {
             </ListGroup>
           </Card>
         </Col>
+
+        <Col md={12}>
+          {
+            cart.cartItems.length !== 0 && (
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  <h2>Order Items</h2>
+                  { cart.cartItems.map((item: IItemKeys, i: number) => (
+                    <ListGroup.Item key={i}>
+                      <Row>
+                        <Col md={4}>
+                          <Image 
+                            src={item.image} 
+                            alt={item.name} 
+                            fluid 
+                            rounded/>
+                        </Col>
+                        <Col md={4} style={{display: "flex", alignItems: "center"}}>
+                          <Link to={`/products/${item._id}`}>
+                            {item.name}
+                          </Link>
+                        </Col>
+                        <Col md={4} style={{display: "flex", alignItems: "center"}}>
+                          { item.qty } x ${ item.price } = ${ item.qty * item.price }
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup.Item>
+              </ListGroup>
+            )
+          }
+        </Col>
+
       </Row>
     </>
   )
