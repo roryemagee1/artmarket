@@ -47,7 +47,7 @@ export default function RegisterPage(): JSX.Element {
     } else {
       try {
         const res = await register({ name, email, password }).unwrap();
-        dispatch(setCredentials({ ...res }));
+        dispatch(setCredentials({ data: res }));
         navigate(redirect);
       } catch (err) {
         if (err instanceof Error && "data" in err) {
