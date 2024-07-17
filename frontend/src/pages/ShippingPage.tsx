@@ -16,6 +16,7 @@ import type { RootState } from '@src/store'
 export default function ShippingPage(): JSX.Element {
   const cart = useSelector((state: RootState) => state.cart);
   const { shippingAddress } = cart;
+  console.log(cart);
 
   const [ address, setAddress ] = useState<string>(shippingAddress?.address || "");
   const [ city, setCity ] = useState<string>(shippingAddress?.city || "");

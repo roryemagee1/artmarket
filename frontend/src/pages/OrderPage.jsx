@@ -205,7 +205,7 @@ export default function OrderPage() {
               { deliverLoading && <Loader /> }
 
               { 
-                userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                userInfo && userInfo.data.isAdmin && order.isPaid && !order.isDelivered && (
                   <ListGroup.Item>
                     <Button
                       type="button"

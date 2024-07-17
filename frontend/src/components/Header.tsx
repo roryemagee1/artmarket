@@ -73,8 +73,8 @@ export default function Header(): JSX.Element {
                 }
               </Nav.Link>
               {
-                userInfo && userInfo.isAdmin ? (
-                  <NavDropdown title={userInfo.name} id="username" style={{marginLeft: "10px", marginRight: "55px"}}>
+                userInfo && userInfo.data.isAdmin ? (
+                  <NavDropdown title={userInfo.data.name} id="username" style={{marginLeft: "10px", marginRight: "55px"}}>
                     <NavDropdown.Item as={Link} to="/admin/productlist">Products</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="/admin/userlist">Users</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="/admin/orderlist">Orders</NavDropdown.Item>
@@ -83,7 +83,7 @@ export default function Header(): JSX.Element {
                   </NavDropdown>
                 ) :
                 userInfo ? (
-                  <NavDropdown title={userInfo.name} id="username">
+                  <NavDropdown title={userInfo.data.name} id="username">
                     <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
                     <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
                   </NavDropdown>

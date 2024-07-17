@@ -1,5 +1,5 @@
 import { JSX } from 'react'
-import { LinkContainer } from 'react-router-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import { FaCheck, FaTimes, FaEdit, FaTrash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
@@ -22,6 +22,8 @@ export default function UserListPage(): JSX.Element {
   const { data: users, isLoading, error, refetch } = useGetUsersQuery(null);
 
   const [ deleteUser, { isLoading: deleteUserLoading }] = useDeleteUserMutation();
+
+  const navigate = useNavigate();
 
   async function handleDelete(user: IUserKeys) {
     if (window.confirm(`Are you sure you want to delete ${user.name}?`)) {
@@ -78,11 +80,9 @@ export default function UserListPage(): JSX.Element {
                         <FaTimes style={{color: "red"}} />}
                       </td>
                       <td>
-                        <LinkContainer to={`/admin/user/${user._id}/edit`}>
-                          <Button variant="light" className="btn-sm mx-2">
-                            <FaEdit />
-                          </Button>
-                        </LinkContainer>
+                        <Button onClick={() => navigate(`/admin/user/${user._id}/edit`)} variant="light" className="btn-sm mx-2">
+                          <FaEdit />
+                        </Button>
                         <Button 
                           variant="danger" 
                           className="btn-sm"
