@@ -76,11 +76,11 @@ export default function OrderPage() {
       })
   }
 
-  async function onApproveTest() {
-    await payOrder({ id, details: { payer: {} } });
-      refetch();
-      toast.success("Payment successful!");
-  }
+  // async function onApproveTest() {
+  //   await payOrder({ id, details: { payer: {} } });
+  //     refetch();
+  //     toast.success("Payment successful!");
+  // }
 
   function onError(err) {
     toast.error(err.message);
@@ -118,8 +118,25 @@ export default function OrderPage() {
     <>
       <h1>Order ID: {order._id}</h1>  
       <Row>
-        <Col md={8}>
+        <Col md={7}>
           <ListGroup variant="flush">
+            <ListGroup.Item>
+              <h2>Payment Method</h2>
+              <p>
+                <strong>Method: </strong> {order.paymentMethod}
+              </p>
+              { 
+                order.isPaid ? (
+                  <Message variant="success">
+                    {`Paid on ${order.paidAt}`}
+                  </Message>
+                ) : (
+                  <Message variant="danger">
+                    Not Paid
+                  </Message>
+                ) 
+              }
+            </ListGroup.Item>
             <ListGroup.Item>
               <h2>Shipping</h2>
               <p>
@@ -143,33 +160,16 @@ export default function OrderPage() {
                 ) 
               }
             </ListGroup.Item>
-            <ListGroup.Item>
-              <h2>Payment Method</h2>
-              <p>
-                <strong>Method: </strong> {order.paymentMethod}
-              </p>
-              { 
-                order.isPaid ? (
-                  <Message variant="success">
-                    {`Paid on ${order.paidAt}`}
-                  </Message>
-                ) : (
-                  <Message variant="danger">
-                    Not Paid
-                  </Message>
-                ) 
-              }
-            </ListGroup.Item>
-            <ListGroup.Item>
+            {/* <ListGroup.Item>
               <h2>Order Items</h2>
               { 
                 order.orderItems.map((item, i) => (
                     <ListGroup.Item key={i}>
                       <Row>
-                        <Col md={1}>
+                        <Col md={4}>
                           <Image src={item.image} alt={item.name} fluid rounded />
                         </Col>
-                        <Col>
+                        <Col md={4}>
                           <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>
@@ -182,10 +182,10 @@ export default function OrderPage() {
                   )
                 )
               }
-            </ListGroup.Item>
+            </ListGroup.Item> */}
           </ListGroup>
         </Col>
-        <Col md={4}>
+        <Col md={5}>
           <Card>
             <ListGroup>
               <ListGroup.Item>
@@ -193,19 +193,19 @@ export default function OrderPage() {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Items</Col>
+                  <Col><strong>Items</strong></Col>
                   <Col>${order.itemsPrice}</Col>
                 </Row>
                 <Row>
-                  <Col>Shipping</Col>
+                  <Col><strong>Shipping</strong></Col>
                   <Col>${order.shippingPrice}</Col>
                 </Row>
                 <Row>
-                  <Col>Tax</Col>
+                  <Col><strong>Tax</strong></Col>
                   <Col>${order.taxPrice}</Col>
                 </Row>
                 <Row>
-                  <Col>Total Price</Col>
+                  <Col><strong>Total Price</strong></Col>
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
@@ -217,11 +217,11 @@ export default function OrderPage() {
                   
                   { isPending ? <Loader /> : (
                     <div>
-                      <Button 
+                      {/* <Button 
                         onClick={onApproveTest} 
                         style={{marginBottom: "10px"}}
                       >Test Pay Order
-                      </Button>
+                      </Button> */}
                       <div>
                         <PayPalButtons 
                           createOrder={createOrder}
@@ -253,6 +253,35 @@ export default function OrderPage() {
             </ListGroup>
           </Card>
         </Col>
+
+        <Col md={12}>
+          <ListGroup variant="flush">
+          <ListGroup.Item>
+              <h2>Order Items</h2>
+              { 
+                order.orderItems.map((item, i) => (
+                    <ListGroup.Item key={i}>
+                      <Row>
+                        <Col md={4}>
+                          <Image src={item.image} alt={item.name} fluid rounded />
+                        </Col>
+                        <Col md={4} style={{display: "flex", alignItems: "center"}}>
+                          <Link to={`/product/${item.product}`}>
+                            <strong>{item.name}</strong>
+                          </Link>
+                        </Col>
+                        <Col md={4} style={{display: "flex", alignItems: "center"}}>
+                         <strong>{item.qty} x ${item.price} = {item.qty * item.price}</strong>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  )
+                )
+              }
+            </ListGroup.Item>
+          </ListGroup>
+        </Col>
+
       </Row>
     </>
   )
