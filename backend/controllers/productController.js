@@ -113,9 +113,6 @@ const updateProduct = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
-  res.status(404);
-  throw new Error("Product Delet error test...");
-
   if (product) {
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json({
