@@ -76,12 +76,6 @@ export default function OrderPage() {
       })
   }
 
-  // async function onApproveTest() {
-  //   await payOrder({ id, details: { payer: {} } });
-  //     refetch();
-  //     toast.success("Payment successful!");
-  // }
-
   function onError(err) {
     toast.error(err.message);
   }
@@ -160,29 +154,6 @@ export default function OrderPage() {
                 ) 
               }
             </ListGroup.Item>
-            {/* <ListGroup.Item>
-              <h2>Order Items</h2>
-              { 
-                order.orderItems.map((item, i) => (
-                    <ListGroup.Item key={i}>
-                      <Row>
-                        <Col md={4}>
-                          <Image src={item.image} alt={item.name} fluid rounded />
-                        </Col>
-                        <Col md={4}>
-                          <Link to={`/product/${item.product}`}>
-                            {item.name}
-                          </Link>
-                        </Col>
-                        <Col md={4}>
-                          {item.qty} x ${item.price} = {item.qty * item.price}
-                        </Col>
-                      </Row>
-                    </ListGroup.Item>
-                  )
-                )
-              }
-            </ListGroup.Item> */}
           </ListGroup>
         </Col>
         <Col md={5}>
@@ -217,11 +188,6 @@ export default function OrderPage() {
                   
                   { isPending ? <Loader /> : (
                     <div>
-                      {/* <Button 
-                        onClick={onApproveTest} 
-                        style={{marginBottom: "10px"}}
-                      >Test Pay Order
-                      </Button> */}
                       <div>
                         <PayPalButtons 
                           createOrder={createOrder}
@@ -256,7 +222,7 @@ export default function OrderPage() {
 
         <Col md={12}>
           <ListGroup variant="flush">
-          <ListGroup.Item>
+            <ListGroup.Item>
               <h2>Order Items</h2>
               { 
                 order.orderItems.map((item, i) => (
