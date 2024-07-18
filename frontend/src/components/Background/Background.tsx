@@ -3,9 +3,14 @@ import './Background.css'
 
 interface IBackground {
   variant: string;
+  whiteBackground: boolean;
 }
-export default function Background({ variant="museum"}: IBackground): JSX.Element {
+export default function Background({ variant="museum", whiteBackground=false}: IBackground): JSX.Element {
+  
   return (
-    <div className={variant}></div>
+    <>
+      <div className={variant}></div>
+      { whiteBackground && <div className="white-background"></div>}
+    </>
   )
 }

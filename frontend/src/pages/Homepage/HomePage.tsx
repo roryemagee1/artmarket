@@ -25,8 +25,8 @@ export default function HomePage(): JSX.Element {
 
   return (
     <>
-      <Background variant="museum" />
       <Meta title="Welcome to Artmarket!" />
+      <Background variant="museum" whiteBackground={false} />
       { !keyword && <ProductCarousel /> }
       { 
         isLoading ? 

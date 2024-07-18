@@ -13,7 +13,7 @@ import './index.css'
 
 import App from '@src/App.tsx'
 import HomePage from '@src/pages/Homepage/HomePage'
-import ProductPage from '@src/pages/ProductPage'
+import ProductPage from '@src/pages/ProductPage/ProductPage'
 import CartPage from '@src/pages/CartPage'
 import LoginPage from '@src/pages/LoginPage'
 import RegisterPage from '@src/pages/RegisterPage'
