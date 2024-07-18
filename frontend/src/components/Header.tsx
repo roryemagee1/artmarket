@@ -55,8 +55,10 @@ export default function Header(): JSX.Element {
       <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
         <Container>
           <Navbar.Brand as={Link} to="/">
-            <img src={logo} height="70vw" alt="Audasite LLC Logo"/>
-            ArtMarket
+            <div style={{display: "flex", alignItems: "center"}}>
+              <img src={logo} height="70vw" alt="Audasite LLC Logo"/>
+              <h1>ArtMarket</h1>
+            </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
