@@ -27,11 +27,11 @@ export default defineConfig({
 // https://dev.to/boostup/uncaught-referenceerror-process-is-not-defined-12kg
 
 // export default defineConfig(({ mode }) => {
-//   // const env = loadEnv(mode, process.cwd(), "");
+//   const env = loadEnv(mode, process.cwd(), "");
 //   return {
-//     // define: {
-//     //   "process.env.PAYPAL_CLIENT_ID" : JSON.stringify(env.PAYPAL_CLIENT_ID)
-//     // },
+//     define: {
+//       "process.env.NODE_ENV" : JSON.stringify(env.NODE_ENV)
+//     },
 //     plugins: [react()],
 //     server: {
 //       proxy: {
