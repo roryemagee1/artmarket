@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
@@ -63,7 +63,19 @@ const router = createBrowserRouter(
   )
 )
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+// ReactDOM.createRoot(document.getElementById('root')!).render(
+//   <React.StrictMode>
+//     <HelmetProvider>
+//       <Provider store={store}>
+//         <PayPalScriptProvider deferLoading={true} options={{clientId: "test"}}>
+//           <RouterProvider router={router} />
+//         </PayPalScriptProvider>
+//       </Provider>
+//     </HelmetProvider>
+//   </React.StrictMode>,
+// )
+
+ReactDOM.render(
   <React.StrictMode>
     <HelmetProvider>
       <Provider store={store}>
@@ -73,4 +85,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       </Provider>
     </HelmetProvider>
   </React.StrictMode>,
+  document.getElementById('root')!
 )
