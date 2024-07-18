@@ -5,4 +5,4 @@ declare module "*.png" {
   export = value;
 }
 
-declare module "react-dom";
+declare module "react-dom/client";
