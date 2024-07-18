@@ -12,7 +12,7 @@ import '@src/assets/styles/index.css'
 // import './index.css'
 
 import App from '@src/App.tsx'
-import HomePage from '@src/pages/HomePage'
+import HomePage from '@src/pages/Homepage/HomePage'
 import ProductPage from '@src/pages/ProductPage'
 import CartPage from '@src/pages/CartPage'
 import LoginPage from '@src/pages/LoginPage'

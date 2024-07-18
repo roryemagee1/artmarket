@@ -1,0 +1,21 @@
+.test-class {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+}
+
+.home-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-image: url('@src/assets/artExhibit.jpeg');
+  background-repeat: no-repeat;
+  background-size: 150vh;
+  background-size: cover;
+  background-position: 56% 50%;
+}
