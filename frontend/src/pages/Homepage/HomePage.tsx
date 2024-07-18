@@ -39,7 +39,6 @@ export default function HomePage(): JSX.Element {
             data.products.map((product: IProductKeys): JSX.Element => (
                 <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                   <Product product={product} />
-                  <div className="test-class"></div>
                 </Col>  
               )  
             )
