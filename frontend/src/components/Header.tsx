@@ -48,7 +48,7 @@ export default function Header(): JSX.Element {
       }
       toast.error(message || "Failed to logout!");
     }
-  }
+  };
 
   return (
     <header>
