@@ -1,0 +1,12 @@
+footer {
+  padding: 1.5rem 3rem;
+
+  background-color: #222529;
+  /* color: #9b9d9e */
+}
+
+footer > p {
+  text-align: center;
+  color: white;
+}
+

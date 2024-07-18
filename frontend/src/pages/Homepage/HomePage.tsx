@@ -26,7 +26,6 @@ export default function HomePage(): JSX.Element {
     <div className="home-page"></div>
       <Meta title="Welcome to Artmarket!" />
       { !keyword && <ProductCarousel /> }
-      <h1>Latest Products</h1>
       { 
         isLoading ? 
           <Loader /> : 

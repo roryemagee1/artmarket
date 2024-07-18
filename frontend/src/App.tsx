@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // import './App.css';
 
 import Header from '@src/components/Header/Header'
-import Footer from '@src/components/Footer'
+import Footer from '@src/components/Footer/Footer'
 
 function App(): JSX.Element {
   return (
