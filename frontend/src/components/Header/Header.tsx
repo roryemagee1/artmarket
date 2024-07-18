@@ -52,54 +52,57 @@ export default function Header(): JSX.Element {
   }
 
   return (
-    <header>
-      <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
-        <Container>
-          <Navbar.Brand as={Link} to="/">
-            <div className="brand-box" style={{display: "flex", alignItems: "center"}}>
-              <img src={logo} height="70vw" alt="Audasite LLC Logo"/>
-              <h1>ArtMarket</h1>
-            </div>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              <SearchBox />
-              <Nav.Link as={Link} to="/cart">
-                <FaShoppingCart /> Cart
+    <>
+      <header>
+        <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
+          <Container>
+            <Navbar.Brand as={Link} to="/">
+              <div className="brand-box" style={{display: "flex", alignItems: "center"}}>
+                <img src={logo} height="70vw" alt="Audasite LLC Logo"/>
+                <h1>ArtMarket</h1>
+              </div>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="ms-auto">
+                <SearchBox />
+                <Nav.Link as={Link} to="/cart">
+                  <FaShoppingCart /> Cart
+                  {
+                    (cartItems.length > 0) && (
+                      <Badge pill bg="success" style={{marginLeft: "5px"}}>
+                        {cartItems?.reduce((acc: number, curr: { qty: number }) => acc + curr.qty, 0)}
+                      </Badge>
+                    )
+                  }
+                </Nav.Link>
                 {
-                  (cartItems.length > 0) && (
-                    <Badge pill bg="success" style={{marginLeft: "5px"}}>
-                      {cartItems?.reduce((acc: number, curr: { qty: number }) => acc + curr.qty, 0)}
-                    </Badge>
+                  userInfo && userInfo.data.isAdmin ? (
+                    <NavDropdown title={userInfo.data.name} id="username" style={{marginLeft: "10px", marginRight: "55px"}}>
+                      <NavDropdown.Item as={Link} to="/admin/productlist">Products</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/admin/userlist">Users</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/admin/orderlist">Orders</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
+                      <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                    </NavDropdown>
+                  ) :
+                  userInfo ? (
+                    <NavDropdown title={userInfo.data.name} id="username">
+                      <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
+                      <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                    </NavDropdown>
+                  ) : (
+                    <Nav.Link as={Link} to="/login">
+                      <FaUser /> Sign In
+                    </Nav.Link>
                   )
                 }
-              </Nav.Link>
-              {
-                userInfo && userInfo.data.isAdmin ? (
-                  <NavDropdown title={userInfo.data.name} id="username" style={{marginLeft: "10px", marginRight: "55px"}}>
-                    <NavDropdown.Item as={Link} to="/admin/productlist">Products</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/admin/userlist">Users</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/admin/orderlist">Orders</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
-                    <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
-                  </NavDropdown>
-                ) :
-                userInfo ? (
-                  <NavDropdown title={userInfo.data.name} id="username">
-                    <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
-                    <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
-                  </NavDropdown>
-                ) : (
-                  <Nav.Link as={Link} to="/login">
-                    <FaUser /> Sign In
-                  </Nav.Link>
-                )
-              }
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </header>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+      </header>
+      <div className="header-spacer"></div>
+    </>
   )
 }
