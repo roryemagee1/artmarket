@@ -74,16 +74,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </HelmetProvider>
   </React.StrictMode>,
 )
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <HelmetProvider>
-//       <Provider store={store}>
-//         <PayPalScriptProvider deferLoading={true} options={{clientId: "test"}}>
-//           <RouterProvider router={router} />
-//         </PayPalScriptProvider>
-//       </Provider>
-//     </HelmetProvider>
-//   </React.StrictMode>,
-//   document.getElementById('root')!
-// )
