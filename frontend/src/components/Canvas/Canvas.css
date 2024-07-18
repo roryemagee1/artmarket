@@ -1,0 +1,26 @@
+.canvas {
+  /* position: fixed;
+  top: 0;
+  left: 0; */
+  /* position: relative; */
+  z-index: 1;
+
+  height: 400px;
+  width: 310px;
+  width: 100%;
+
+  background-image: url('@src/assets/easel.png');
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-size: 100% 100%;
+  background-position: center;
+
+  padding: 15% 23% 20% 20%;
+
+}
+
+@media (width <= 768px) {
+  .canvas {
+    padding: 5% 23% 20% 20%;
+  }
+}

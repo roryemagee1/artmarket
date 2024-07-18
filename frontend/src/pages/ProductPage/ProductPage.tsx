@@ -21,6 +21,7 @@ import Message from '@src/components/Message'
 import Meta from '@src/components/Meta'
 
 import Background from '@src/components/Background/Background'
+import Canvas from '@src/components/Canvas/Canvas'
 
 import type { RootState } from '@src/store'
 import { IReviewKeys } from '@src/types/interfaces'
@@ -84,7 +85,9 @@ export default function ProductPage(): JSX.Element {
         <Row>
 
           <Col md={5}>
-            <Image src={data?.image} alt={data?.name} fluid />
+            <Canvas height="" width="">
+              <Image src={data?.image} alt={data?.name} fluid />
+            </Canvas>
           </Col>
 
           <Col md={4}>
@@ -156,8 +159,7 @@ export default function ProductPage(): JSX.Element {
                     type="button"
                     disabled={data?.countInStock === 0}
                     onClick={handleAddToCart}
-                  >
-                    Add to Cart
+                  >Add to Cart
                   </Button>
                 </ListGroup.Item>
               </ListGroup>
