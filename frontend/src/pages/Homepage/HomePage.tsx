@@ -14,6 +14,8 @@ import Paginate from '@src/components/Paginate'
 import ProductCarousel from '@src/components/ProductCarousel'
 import Meta from '@src/components/Meta'
 
+import Background from '@src/components/Background/Background'
+
 import { IProductKeys } from '@src/types/interfaces'
 
 export default function HomePage(): JSX.Element {
@@ -23,7 +25,7 @@ export default function HomePage(): JSX.Element {
 
   return (
     <>
-    <div className="home-page"></div>
+      <Background variant="museum" />
       <Meta title="Welcome to Artmarket!" />
       { !keyword && <ProductCarousel /> }
       { 

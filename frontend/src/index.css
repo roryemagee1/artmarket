@@ -12,6 +12,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  overscroll-behavior: none;
+}
+
 /*
 a {
   font-weight: 500;

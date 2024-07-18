@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { FaShoppingCart, FaUser} from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
-import "./Header.css"
+import './Header.css'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
