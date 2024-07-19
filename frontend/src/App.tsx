@@ -12,7 +12,7 @@ function App(): JSX.Element {
   return (
     <>
       <Header />
-      <main className="py-3">
+      <main className="app">
         <Container>
           <Outlet />
         </Container>

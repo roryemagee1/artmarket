@@ -155,6 +155,7 @@ export default function PlaceOrder(): JSX.Element {
         </Col>
 
         <Col md={12}>
+          <hr />
           {
             cart.cartItems.length !== 0 && (
               <ListGroup variant="flush">

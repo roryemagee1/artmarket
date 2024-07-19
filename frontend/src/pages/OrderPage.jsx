@@ -227,6 +227,7 @@ export default function OrderPage() {
               </Col>
 
               <Col md={12}>
+                <hr />
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <h2>Order Items</h2>
