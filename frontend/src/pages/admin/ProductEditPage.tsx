@@ -159,9 +159,8 @@ export default function ProductEditPage(): JSX.Element {
                     <Form.Control
                       name="image"
                       type="text"
-                      placeholder="Enter image url"
+                      placeholder="Image url"
                       value={image}
-                      // onChange={(event) => setImage(event.target.value)}
                       disabled
                     >
                     </Form.Control>
