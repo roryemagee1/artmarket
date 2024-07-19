@@ -116,7 +116,7 @@ export default function OrderPage() {
           <Message variant="danger">{error?.data?.message || error?.error}</Message>
         ) : (
           <>
-            <h1>Order ID: {order._id}</h1>  
+            <h2>Order ID: {order._id}</h2>  
             <Row>
               <Col md={7}>
                 <ListGroup variant="flush">

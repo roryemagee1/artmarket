@@ -40,7 +40,9 @@ export default function ProductEditPage(): JSX.Element {
     if (product) {
       setName(product.name);
       setPrice(product.price);
-      setImage(product.image);
+      const regex = /\/.*?\//g;
+      const imageString = product.image.replaceAll(regex, "");
+      setImage(imageString);
       setBrand(product.brand);
       setCategory(product.category);
       setCountInStock(product.countInStock);
@@ -95,7 +97,9 @@ export default function ProductEditPage(): JSX.Element {
         toast.error(message);
       } else {
         toast.success(res.message);
-        setImage(res.image);
+        const regex = /\/.*?\//g;
+        const imageString = res.image.replaceAll(regex, "");
+        setImage(imageString);
       }
     } catch(err) {
       if (err instanceof Error && "data" in err) {
@@ -157,7 +161,8 @@ export default function ProductEditPage(): JSX.Element {
                       type="text"
                       placeholder="Enter image url"
                       value={image}
-                      onChange={(event) => setImage(event.target.value)}
+                      // onChange={(event) => setImage(event.target.value)}
+                      disabled
                     >
                     </Form.Control>
                     <Form.Control
