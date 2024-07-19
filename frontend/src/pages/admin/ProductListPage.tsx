@@ -18,6 +18,8 @@ import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 import Paginate from '@src/components/Paginate'
 
+import Background from '@src/components/Background/Background'
+
 import { IProductKeys } from '@src/types/interfaces'
 
 export default function ProductListPage(): JSX.Element {
@@ -79,6 +81,7 @@ export default function ProductListPage(): JSX.Element {
 
   return (
     <>
+      <Background variant="museum" whiteBackground={true} />
       <Row className="align-items-center">
         <Col>
           <h1>Products</h1>

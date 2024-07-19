@@ -15,6 +15,8 @@ import { addToCart, removeFromCart } from '@src/slices/cartSlice';
 
 import Message from '@src/components/Message'
 
+import Background from '@src/components/Background/Background'
+
 import type { RootState } from '@src/store'
 import { IItemKeys } from '@src/types/interfaces'
 
@@ -40,6 +42,7 @@ export default function HomePage(): JSX.Element {
 
   return (
     <>
+      <Background variant="museum" whiteBackground={true} />
       <Row>
         <Col md={8}>
         <h1 style={{marginBottom: "20px"}}>Shopping Cart</h1>

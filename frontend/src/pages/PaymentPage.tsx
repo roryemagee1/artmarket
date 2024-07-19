@@ -11,6 +11,8 @@ import { savePaymentMethod } from '@src/slices/cartSlice';
 import FormContainer from '@src/components/FormContainer'
 import CheckoutSteps from '@src/components/CheckoutSteps'
 
+import Background from '@src/components/Background/Background'
+
 import type { RootState } from '@src/store'
 
 export default function PaymentPage(): JSX.Element {
@@ -35,39 +37,42 @@ export default function PaymentPage(): JSX.Element {
   }
   
   return (
-    <FormContainer>
-      <>
-        <CheckoutSteps 
-          step1={true}
-          step2={true}
-          step3={true}
-          step4={false}
-        />
-        <h1>Payment Method</h1>
-        <Form onSubmit={event => handleSubmit(event)}>
-          <Form.Group>
-            <Form.Label as="legend">Select Method</Form.Label>
-            <Col>
-              <Form.Check
-                type="radio"
-                className="my-2"
-                label="PayPal or Credit Card"
-                id="PayPaly"
-                name="paymentMethod"
-                value={paymentMethod}
-                checked
-                onChange={event => setPaymentMethod(event.target.value)}
-              >
-              </Form.Check>
-              <Button 
-                type="submit" 
-                variant="primary"
-              >Continue
-              </Button>
-            </Col>
-          </Form.Group>
-        </Form>
-      </>
-    </FormContainer>
+    <>
+      <Background variant="museum" whiteBackground={true} />
+      <FormContainer>
+        <>
+          <CheckoutSteps 
+            step1={true}
+            step2={true}
+            step3={true}
+            step4={false}
+          />
+          <h1>Payment Method</h1>
+          <Form onSubmit={event => handleSubmit(event)}>
+            <Form.Group>
+              <Form.Label as="legend">Select Method</Form.Label>
+              <Col>
+                <Form.Check
+                  type="radio"
+                  className="my-2"
+                  label="PayPal or Credit Card"
+                  id="PayPaly"
+                  name="paymentMethod"
+                  value={paymentMethod}
+                  checked
+                  onChange={event => setPaymentMethod(event.target.value)}
+                >
+                </Form.Check>
+                <Button 
+                  type="submit" 
+                  variant="primary"
+                >Continue
+                </Button>
+              </Col>
+            </Form.Group>
+          </Form>
+        </>
+      </FormContainer>
+    </>
   )
 }

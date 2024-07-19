@@ -14,6 +14,8 @@ import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 import FormContainer from '@src/components/FormContainer'
 
+import Background from '@src/components/Background/Background'
+
 export default function UserEditPage(): JSX.Element {
   const { id } = useParams();
 
@@ -65,6 +67,7 @@ export default function UserEditPage(): JSX.Element {
 
   return (
     <>
+      <Background variant="museum" whiteBackground={true} />
       <Link to='/admin/userlist' className="btn btn-light my-3">
         Go Back
       </Link>

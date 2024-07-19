@@ -17,6 +17,8 @@ import CheckoutSteps from '@src/components/CheckoutSteps'
 import Message from '@src/components/Message'
 import Loader from '@src/components/Loader'
 
+import Background from '@src/components/Background/Background'
+
 import type { RootState } from '@src/store'
 import { IItemKeys } from '@src/types/interfaces'
 
@@ -55,6 +57,7 @@ export default function PlaceOrder(): JSX.Element {
   
   return (
     <>
+      <Background variant="museum" whiteBackground={true} />
       <CheckoutSteps step1={true} step2={true} step3={true} step4={true} />
       <Row>
         <Col md={8}>

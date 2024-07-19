@@ -10,6 +10,8 @@ import { useGetOrdersQuery } from '@src/slices/ordersApiSlice'
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 
+import Background from '@src/components/Background/Background'
+
 import { IOrderKeys } from '@src/types/interfaces'
 
 export default function OrderListPage(): JSX.Element {
@@ -19,6 +21,7 @@ export default function OrderListPage(): JSX.Element {
 
   return (
     <>
+      <Background variant="museum" whiteBackground={true} />
       <h1>Orders</h1>
       {
         isLoading ? 

@@ -15,6 +15,8 @@ import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 import FormContainer from '@src/components/FormContainer'
 
+import Background from '@src/components/Background/Background'
+
 export default function ProductEditPage(): JSX.Element {
   const { id } = useParams();
 
@@ -30,7 +32,7 @@ export default function ProductEditPage(): JSX.Element {
 
   const [ updateProduct, { isLoading: updateLoading } ] = useUpdateProductMutation();
 
-  const [ uploadProductImage, /*{ isLoading: uploadImageLoading }*/ ] = useUploadProductImageMutation();
+  const [ uploadProductImage ] = useUploadProductImageMutation();
 
   const navigate = useNavigate();
 
@@ -106,6 +108,7 @@ export default function ProductEditPage(): JSX.Element {
   
   return (
     <>
+      <Background variant="museum" whiteBackground={true} />
       <Link to='/admin/productlist' className="btn btn-light my-3">
         Go Back
       </Link>

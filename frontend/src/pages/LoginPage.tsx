@@ -14,6 +14,8 @@ import { setCredentials } from '@src/slices/authSlice';
 import Loader from '@src/components/Loader'
 import FormContainer from '@src/components/FormContainer'
 
+import Background from '@src/components/Background/Background'
+
 import type { RootState } from '@src/store'
 
 export default function LoginPage(): JSX.Element {
@@ -61,6 +63,7 @@ export default function LoginPage(): JSX.Element {
 
   return (
     <>
+      <Background variant="museum" whiteBackground={false} />
       <FormContainer>
         <>
           <h1>Create Account</h1>

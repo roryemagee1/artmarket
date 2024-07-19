@@ -16,6 +16,8 @@ import {
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 
+import Background from '@src/components/Background/Background'
+
 import { IUserKeys } from '@src/types/interfaces'
 
 export default function UserListPage(): JSX.Element {
@@ -46,6 +48,7 @@ export default function UserListPage(): JSX.Element {
 
   return (
     <>
+      <Background variant="museum" whiteBackground={true} />
       <Row className="align-items-center">
         <Col>
           <h1>Users</h1>

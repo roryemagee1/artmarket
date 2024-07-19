@@ -71,8 +71,8 @@ export default function ProductPage(): JSX.Element {
 
   return (
     <>
-      <Meta title={data?.name} description={data?.description}/>
-      <Background variant="museum" whiteBackground={true}/>
+      <Meta title={data?.name} description={data?.description} />
+      <Background variant="museum" whiteBackground={true} />
       <Link className="btn btn-light my-3" to="/">
           Back
       </Link>
