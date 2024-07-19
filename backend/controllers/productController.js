@@ -1,5 +1,8 @@
-import asyncHandler from '../middleware/asyncHandler.js';
-import Product from '../models/productModel.js';
+import asyncHandler from '../middleware/asyncHandler.js'
+import Product from '../models/productModel.js'
+import express from 'express'
+import path from 'path'
+import fs from 'fs'
 
 // @desc   Fetch all products
 // @routes GET /api/products
@@ -114,6 +117,14 @@ const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
   if (product) {
+    const __dirname = path.resolve();
+    const removalPath = path.join(__dirname, product.image)
+    try {
+      fs.unlinkSync(removalPath);
+      console.log("File removed successfully: ", removalPath);
+    } catch (err) {
+      console.error(err);
+    }
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json({
       message: "Product deleted!",
