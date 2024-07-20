@@ -3,51 +3,52 @@ import { useParams } from 'react-router-dom'
 import './HomePage.css'
 
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+// import Col from 'react-bootstrap/Col'
 
 import { useGetProductsQuery } from '../../slices/productsApiSlice';
 
-import Product from '@src/components/Product'
-import Loader from '@src/components/Loader'
-import Message from '@src/components/Message'
+// import Product from '@src/components/Product'
+// import Loader from '@src/components/Loader'
+// import Message from '@src/components/Message'
 // import Paginate from '@src/components/Paginate'
 import ProductCarousel from '@src/components/ProductCarousel'
 import Meta from '@src/components/Meta'
 
 import Background from '@src/components/Background/Background'
+import Feed from '@src/components/Feed/Feed'
 
-import { IProductKeys } from '@src/types/interfaces'
+// import { IProductKeys } from '@src/types/interfaces'
 
-interface IFeed {
-  pageNumber: string;
-}
-function Feed({ pageNumber }: IFeed): JSX.Element {
-  const { keyword } = useParams(); 
-  console.log(pageNumber);
-  const { data: feedData, isLoading, error} = useGetProductsQuery({ keyword, pageNumber });
-  console.log(feedData);
+// interface IFeed {
+//   pageNumber: string;
+// }
+// function Feed({ pageNumber }: IFeed): JSX.Element {
+//   const { keyword } = useParams(); 
+//   console.log(pageNumber);
+//   const { data: feedData, isLoading, error} = useGetProductsQuery({ keyword, pageNumber });
+//   console.log(feedData);
 
-  return (
-    <>
-      { 
-        isLoading ? 
-          <Loader /> : 
-          error ? 
-          <Message evalBool={true} variant="danger">{`${error}`}</Message> : null 
-      }
-      {
-        feedData?.products && (
-          feedData.products.map((product: IProductKeys): JSX.Element => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <Product product={product} />
-              </Col>  
-            )  
-          )
-        )
-      }
-    </>
-  )
-}
+//   return (
+//     <>
+//       { 
+//         isLoading ? 
+//           <Loader /> : 
+//           error ? 
+//           <Message evalBool={true} variant="danger">{`${error}`}</Message> : null 
+//       }
+//       {
+//         feedData?.products && (
+//           feedData.products.map((product: IProductKeys): JSX.Element => (
+//               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+//                 <Product product={product} />
+//               </Col>  
+//             )  
+//           )
+//         )
+//       }
+//     </>
+//   )
+// }
 
 export default function HomePage(): JSX.Element {
   const { keyword, pageNumber } = useParams(); 
