@@ -21,7 +21,52 @@
 } */
 
 .masonry-container {
-  column-count: 4;
+  width: 100%;
+  column-count: 8;
   gap: 8px;
   /* column-gap: 16px; */
  }
+
+ @media (max-width: 2000px) {
+  .masonry-container {
+    column-count: 7;
+  }
+}
+
+ @media (max-width: 1700px) {
+  .masonry-container {
+    column-count: 6;
+  }
+}
+
+ @media (max-width: 1400px) {
+  .masonry-container {
+    column-count: 5;
+  }
+}
+
+@media (max-width: 1200px) {
+  .masonry-container {
+    column-count: 4;
+  }
+}
+
+@media (max-width: 992px) {
+  .masonry-container {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .masonry-container {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 576px) {
+  .masonry-container {
+    column-count: 1;
+  }
+}
+
+ 

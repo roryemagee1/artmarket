@@ -2,7 +2,7 @@ import { JSX, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import './HomePage.css'
 
-import Row from 'react-bootstrap/Row'
+// import Row from 'react-bootstrap/Row'
 
 import { useGetProductsQuery } from '../../slices/productsApiSlice';
 

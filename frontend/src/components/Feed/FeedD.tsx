@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 
 import { useGetProductsQuery } from '../../slices/productsApiSlice';
 
-import Product from '@src/components/Product'
+import Product from '@src/components/Product/Product'
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message'
 
