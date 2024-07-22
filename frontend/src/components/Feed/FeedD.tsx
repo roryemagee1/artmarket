@@ -1,6 +1,6 @@
 import { JSX } from 'react'
 import { useParams } from 'react-router-dom'
-import './Feed.css'
+// import './Feed.css'
 
 import Col from 'react-bootstrap/Col'
 
@@ -30,9 +30,9 @@ export default function Feed({ pageNumber }: IFeed): JSX.Element {
       {
         feedData?.products && (
           feedData.products.map((product: IProductKeys): JSX.Element => (
-              <div className="masontry-item" key={product._id} sm={12} md={6} lg={4} xl={3}>
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                 <Product product={product} />
-              </div>  
+              </Col>  
             )  
           )
         )

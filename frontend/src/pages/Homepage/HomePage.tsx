@@ -41,11 +41,16 @@ export default function HomePage(): JSX.Element {
       <Meta title="Welcome to Artmarket!" />
       <Background variant="museum" whiteBackground={false} />
       { !keyword && <ProductCarousel /> }
-      <Row>
+      <section className="masonry-container">
       {
         feed.map((element) => { return element })
       }
-      </Row>
+      </section>
+      {/* <Row>
+      {
+        feed.map((element) => { return element })
+      }
+      </Row> */}
     </>
   )
 }

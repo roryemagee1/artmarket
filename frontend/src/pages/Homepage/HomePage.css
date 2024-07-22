@@ -19,3 +19,9 @@
   background-size: cover;
   background-position: 56% 50%;
 } */
+
+.masonry-container {
+  column-count: 4;
+  gap: 8px;
+  /* column-gap: 16px; */
+ }
