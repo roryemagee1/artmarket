@@ -21,8 +21,10 @@
 } */
 
 .masonry-container {
+  padding: 0 0 1rem 0;
+  
   width: 100%;
-  column-count: 8;
+  column-count: 1;
   gap: 8px;
   /* column-gap: 16px; */
  }

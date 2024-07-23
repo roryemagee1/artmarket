@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import Container from 'react-bootstrap/Container'
+// import Container from 'react-bootstrap/Container'
 import { Outlet } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,9 +13,9 @@ function App(): JSX.Element {
     <>
       <Header />
       <main className="app">
-        <Container>
+        {/* <Container> */}
           <Outlet />
-        </Container>
+        {/* </Container> */}
       </main>
       <Footer />
       <ToastContainer />
