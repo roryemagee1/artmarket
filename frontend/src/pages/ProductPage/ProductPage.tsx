@@ -196,7 +196,7 @@ export default function ProductPage(): JSX.Element {
                           as="select"
                           onChange={(event) => setRating(Number(event.target.value))}
                         >
-                          <option value="">Select...</option>
+                          <option value="" disabled>Select...</option>
                           <option value="1">1 - Bad</option>
                           <option value="2">2 - Poor</option>
                           <option value="3">3 - Fair</option>
