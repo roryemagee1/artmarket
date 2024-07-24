@@ -31,7 +31,10 @@ export default function Feed({ pageNumber }: IFeed): JSX.Element {
         feedData?.products && (
           feedData.products.map((product: IProductKeys): JSX.Element => (
               <div key={product._id}>
-                <Product product={product} />
+                <Product 
+                  key={product._id} 
+                  product={product}
+                />
               </div>  
             )  
           )
