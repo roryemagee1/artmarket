@@ -1,23 +1,15 @@
 import { JSX } from 'react';
-import { Spinner } from 'react-bootstrap'
+import ReactLoading from 'react-loading';
 
 interface ILoader {
   size?: string;
   display?: string;
 }
 
-export default function Loader({ size="100px", display="block" }: ILoader): JSX.Element {
+export default function Loader({ size="50px", display="flex" }: ILoader): JSX.Element {
   return (
-    <Spinner
-      animation="border"
-      role="status"
-      style={{
-        width: size,
-        height: size,
-        margin: "auto",
-        display: display,
-      }}
-    >
-    </Spinner>
+    <div style={{ display: display, justifyContent: "center", alignItems: "center", width: "88vw" }}>
+      <ReactLoading type="spin" color='black' width={size} /> 
+    </div>
   )
 }

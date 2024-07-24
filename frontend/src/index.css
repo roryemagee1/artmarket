@@ -10,6 +10,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Colors */
+  --button-blue: #007bff;
+  --banner-dark: #222529;
+  --background-white: rgba(255, 255, 255, 90%);
+  --card-color: white;
+  --card-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 body {

@@ -27,7 +27,7 @@
   border-radius: 5px;
   padding: 5px;
 
-  background-color: white;
+  background-color: var(--card-color);
 }
 
 .shopping-cart > ol > li > span {
@@ -71,7 +71,7 @@
 }
 
 .trash-button, .checkout-button {
-  background-color: #007bff;
+  background-color: var(--button-blue);
   border: 5px;
   border-radius: 5px;
   padding: 5px 10px;

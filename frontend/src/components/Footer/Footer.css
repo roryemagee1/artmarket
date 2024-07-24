@@ -1,7 +1,7 @@
 footer {
   padding: 1.5rem 3rem;
 
-  background-color: #222529;
+  background-color: var(--banner-dark);
   /* color: #9b9d9e */
 }
 

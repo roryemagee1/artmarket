@@ -25,10 +25,10 @@
 
   background-size: 90vw;
 
-  background-color: rgba(255, 255, 255, 90%);
+  background-color: var(--background-white);
   background-position: 50% 50%;
 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--card-box-shadow);
   border-radius: 2px;
 
 }
