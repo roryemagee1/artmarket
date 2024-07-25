@@ -72,6 +72,7 @@ export default function LoginPage(): JSX.Element {
               placeholder="Enter email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
+              required
             >
             </input>
           </div>
@@ -84,6 +85,7 @@ export default function LoginPage(): JSX.Element {
               placeholder="Enter password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
+              required
             >
             </input>
           </div>
@@ -101,7 +103,7 @@ export default function LoginPage(): JSX.Element {
             New Customer? <Link to={ redirect ? `/register?redirect=${redirect}` : `/register`}>Register</Link>
           </p>
         </div>
-        { isLoading && <Loader />}
+        { isLoading && <Loader width="100%"/>}
       </section>
     </>
   )

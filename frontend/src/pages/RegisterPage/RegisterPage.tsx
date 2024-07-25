@@ -73,6 +73,7 @@ export default function RegisterPage(): JSX.Element {
               placeholder="Enter name"
               value={name}
               onChange={(event) => setName(event.target.value)}
+              required
             >
             </input>
           </div>
@@ -85,6 +86,7 @@ export default function RegisterPage(): JSX.Element {
               placeholder="Enter email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
+              required
             >
             </input>
           </div>
@@ -97,6 +99,7 @@ export default function RegisterPage(): JSX.Element {
               placeholder="Enter password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
+              required
             >
             </input>
           </div>
@@ -109,6 +112,7 @@ export default function RegisterPage(): JSX.Element {
               placeholder="Confirm password"
               value={confirmPassword}
               onChange={(event) => setConfirmPassword(event.target.value)}
+              required
             >
             </input>
           </div>
@@ -125,7 +129,7 @@ export default function RegisterPage(): JSX.Element {
             Already a Customer? <Link to={ redirect ? `/login?redirect=${redirect}` : `/login`}>Login</Link>
           </p>
         </div>
-        { isLoading && <Loader />}
+        { isLoading && <Loader width="100%" />}
       </section>
     </>
   )
