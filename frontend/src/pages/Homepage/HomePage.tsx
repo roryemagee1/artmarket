@@ -46,11 +46,6 @@ export default function HomePage(): JSX.Element {
         feed.map((element) => { return element })
       }
       </section>
-      {/* <Row>
-      {
-        feed.map((element) => { return element })
-      }
-      </Row> */}
     </>
   )
 }

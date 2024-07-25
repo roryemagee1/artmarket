@@ -21,6 +21,7 @@ export default function Feed({ pageNumber }: IFeed): JSX.Element {
 
   return (
     <>
+
       { 
         isLoading ? 
           <Loader /> : 

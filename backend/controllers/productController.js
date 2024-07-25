@@ -8,6 +8,7 @@ import fs from 'fs'
 // @routes GET /api/products
 // @access Public
 const getProducts = asyncHandler(async (req, res) => {
+  
   const pageSize = 24;
   const page = Number(req.query.pageNumber) || 1;
 
