@@ -78,6 +78,14 @@
   border-radius: 5px;
 }
 
+.add-item-button {
+  background-color: var(--button-blue);
+  border: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 10px 0;
+}
+
 .review-section {
   background-color: white;
   border: solid lightgrey 1px;
@@ -120,18 +128,6 @@
   flex-direction: column;
 }
 
-/* @media (width > 1200px) {
-  .review-styling {
-    padding: 20px 30vw;
-  }
-}
-
-@media (width < 768px) {
-  .review-styling {
-    padding: 20px 10vw;
-  }
-} */
-
 .write-review-styling > form {
   display: flex;
   flex-direction: column;
@@ -173,7 +169,6 @@
   padding: 5px 10px;
   margin: 10px 0;
   width: 100px;
-  font-weight: 550;
 }
 
 .back-button {

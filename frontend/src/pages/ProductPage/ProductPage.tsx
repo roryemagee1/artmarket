@@ -4,14 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import './ProductPage.css'
 
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-// import Image from 'react-bootstrap/Image'
-import ListGroup from 'react-bootstrap/ListGroup'
-import Card from 'react-bootstrap/Card'
-import Button  from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
-
 import { useGetProductsDetailsQuery, useCreateReviewMutation } from '@src/slices/productsApiSlice';
 import { addToCart } from '@src/slices/cartSlice';
 
@@ -89,7 +81,6 @@ export default function ProductPage(): JSX.Element {
             error ? 
               <Message evalBool={false} variant="danger">{`${error}`}</Message> :
         <>
-          {/* <Row> */}
           <section className="product-container">
 
             <div>
@@ -116,70 +107,55 @@ export default function ProductPage(): JSX.Element {
 
             <section className="add-item-box">
               <div>
-                {/* <ListGroup variant="flush"> */}
+                <div className="add-item-box-entry">
+                    <p>Price:</p>
+                    <p>
+                      <strong>${data?.price}</strong>
+                    </p>
+                </div>
+                <hr />
+                <div className="add-item-box-entry">
+                    <p>Status:</p>
+                    <p>
+                      <strong>{data?.countInStock > 0 ? "In Stock" : "Out of Stock"}</strong>
+                    </p>
+                </div>
+                <hr />
+                { 
+                data?.countInStock > 0 && (
                   <div className="add-item-box-entry">
-                    {/* <Row> */}
-                      <p>Price:</p>
-                      <p>
-                        <strong>${data?.price}</strong>
-                      </p>
-                    {/* </Row> */}
+                    <label htmlFor={reviewId + "-quantity"}>Quantity:</label>
+                    <select
+                      name="select"
+                      id={reviewId + "-quantity"}
+                      value={quantity}
+                      onChange={(event) => setQuantity(Number(event.target.value))}
+                    >
+                      {[...Array(data?.countInStock).keys()].map((key) => (
+                        <option key={key + 1 } value={key + 1}>{key + 1}</option>
+                      ))}
+                    </select>
                   </div>
-                  <hr />
-                  <div className="add-item-box-entry">
-                    {/* <Row> */}
-                      <p>Status:</p>
-                      <p>
-                        <strong>{data?.countInStock > 0 ? "In Stock" : "Out of Stock"}</strong>
-                      </p>
-                    {/* </Row> */}
-                  </div>
-                  <hr />
-                  { 
-                  data?.countInStock > 0 && (
-                    <div className="add-item-box-entry">
-                      {/* <Row> */}
-                        <label htmlFor={reviewId + "-quantity"}>Quantity:</label>
-                        {/* <p> */}
-                          <select
-                            name="select"
-                            id={reviewId + "-quantity"}
-                            value={quantity}
-                            onChange={(event) => setQuantity(Number(event.target.value))}
-                          >
-                            {[...Array(data?.countInStock).keys()].map((key) => (
-                              <option key={key + 1 } value={key + 1}>{key + 1}</option>
-                            ))}
-                          </select>
-                        {/* </p> */}
-                      {/* </Row> */}
-                    </div>
-                    )
-                  }
-                  <hr />
-                  <div className="add-item-box-entry">
-                    <Button
-                      className="btn-block"
-                      type="button"
-                      disabled={data?.countInStock === 0}
-                      onClick={handleAddToCart}
-                    >Add to Cart
-                    </Button>
-                  </div>
-                {/* </ListGroup> */}
+                  )
+                }
+                <hr />
+                <div className="add-item-box-entry">
+                  <button
+                    className="add-item-button"
+                    type="button"
+                    disabled={data?.countInStock === 0}
+                    onClick={handleAddToCart}
+                  >Add to Cart
+                  </button>
+                </div>
               </div>
             </section>
 
           </section>
-          {/* </Row> */}
-
-          {/* <Row className="review"> */}
           <section className="review-section">
-            {/* <Col md={6}> */}
             <section className="reviews">
               <h2>Reviews</h2>
               {data.reviews.length === 0 && <Message evalBool={false} variant="info">No Reviews</Message>}
-              {/* <ListGroup variant="flush"> */}
               <div>
                 {
                   data.reviews.map((review: IReviewKeys) => (
@@ -191,7 +167,6 @@ export default function ProductPage(): JSX.Element {
                     </div>
                   ))
                 }
-                {/* <ListGroup.Item> */}
                 <section className="write-review-styling">
                   <h2>Write a Customer Review</h2>
                   {productReviewLoading && <Loader />}
@@ -239,13 +214,9 @@ export default function ProductPage(): JSX.Element {
                     ) 
                   }
                 </section>
-                {/* </ListGroup.Item> */}
               </div>
-              {/* </ListGroup> */}
             </section>
-            {/* </Col> */}
           </section>
-          {/* </Row> */}
         </>
         }
       </section>
