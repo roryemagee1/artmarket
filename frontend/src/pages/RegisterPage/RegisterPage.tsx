@@ -1,4 +1,4 @@
-import { JSX, FormEvent, useState, useEffect } from 'react'
+import { JSX, FormEvent, useState, useEffect, useId } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
@@ -24,6 +24,7 @@ export default function RegisterPage(): JSX.Element {
   const [ email, setEmail ] = useState<string>("");
   const [ password, setPassword ] = useState<string>("");
   const [ confirmPassword, setConfirmPassword ] = useState<string>("");
+  const id = useId();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -67,71 +68,74 @@ export default function RegisterPage(): JSX.Element {
     <>
       <Background variant="museum" whiteBackground={false} />
       <section className="register-styling">
-        <FormContainer>
-          <>
+        {/* <FormContainer>
+          <> */}
             <h1>Sign In</h1>
-            <Form>
-              <Form.Group controlId="name" className="my-3">
-                <Form.Label>Name</Form.Label>
-                <Form.Control
+            <form>
+              <div>
+                <label htmlFor={id + "-name"}>Name</label>
+                <input
                   name="name"
+                  id={id + "-name"}
                   type="textbox"
                   placeholder="Enter name"
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                 >
-                </Form.Control>
-              </Form.Group>
-              <Form.Group controlId="email" className="my-3">
-                <Form.Label>Email Address</Form.Label>
-                <Form.Control
+                </input>
+              </div>
+              <div>
+                <label htmlFor={id + "-email"}>Email Address</label>
+                <input
                   name="email"
+                  id={id + "-email"}
                   type="email"
                   placeholder="Enter email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                 >
-                </Form.Control>
-              </Form.Group>
-              <Form.Group controlId="password" className="my-3">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
+                </input>
+              </div>
+              <div>
+                <label htmlFor={id + "-password"}>Password</label>
+                <input
                   name="password"
+                  id={id + "-password"}
                   type="password"
                   placeholder="Enter password"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                 >
-                </Form.Control>
-              </Form.Group>
-              <Form.Group controlId="confirmPassword" className="my-3">
-                <Form.Label>Confirm Password</Form.Label>
-                <Form.Control
+                </input>
+              </div>
+              <div>
+                <label htmlFor={id + "-confirm-password"}>Confirm Password</label>
+                <input
                   name="confirmPassword"
+                  id={id + "-confirm-password"}
                   type="password"
                   placeholder="Confirm password"
                   value={confirmPassword}
                   onChange={(event) => setConfirmPassword(event.target.value)}
                 >
-                </Form.Control>
-              </Form.Group>
-              <Button 
+                </input>
+              </div>
+              <button 
                 type="submit" 
-                variant="primary" 
-                className="mt-2"
+                className="register-button"
                 onClick={(event) => handleSubmit(event)}
                 disabled={ isLoading }
               >Sign In
-              </Button>
-            </Form>
-            <Row>
-              <Col>
+              </button>
+            </form>
+            <div>
+              <p>
                 Already a Customer? <Link to={ redirect ? `/login?redirect=${redirect}` : `/login`}>Login</Link>
-              </Col>
-            </Row>
+              </p>
+            </div>
             { isLoading && <Loader />}
-          </>
-        </FormContainer>
+          {/* </>
+        </FormContainer> */}
       </section>
     </>
   )

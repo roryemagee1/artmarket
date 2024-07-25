@@ -7,4 +7,53 @@
   border-radius: 2px;
 
   background-color: var(--background-white);
+
+  display: flex;
+  flex-direction: column;
+  padding: 20px 25vw;
+}
+
+@media (width > 1200px) {
+  .register-styling {
+    padding: 20px 30vw;
+  }
+}
+
+@media (width < 768px) {
+  .register-styling {
+    padding: 20px 10vw;
+  }
+}
+
+.register-styling > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-styling > form > div {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  margin: 10px 0 0 0;
+}
+
+.register-styling > form > div > input {
+  background-color: white;
+  color: black;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 10px;
+  height: 40px;
+  min-width: 200px;
+}
+
+.register-button {
+  background-color: var(--button-blue);
+  border: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 10px 0;
+  width: 100px;
 }
