@@ -148,11 +148,6 @@ const createProductReview = asyncHandler(async (req, res) => {
       review.user.toString() === req.user._id.toString()
     ));
 
-    if (alreadyReviewed) {
-      res.status(400);
-      throw new Error("Product already reviewed by user.");
-    }
-
     const review = {
       name: req.user.name,
       rating: Number(rating),
@@ -160,16 +155,29 @@ const createProductReview = asyncHandler(async (req, res) => {
       user: req.user._id,
     }
 
-    product.reviews.push(review);
+    if (alreadyReviewed) {
+      const updatedReviews = product.reviews.filter((review) => (
+        review.user.toString() !== req.user._id.toString()
+      ));
+      product.reviews = updatedReviews;
+      product.reviews.push(review);
+      product.rating = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length;
+      await product.save();
+      res.status(201).json({
+        message: "Review updated!",
+      })
+    } else {
+      product.reviews.push(review);
 
-    product.numReviews = product.reviews.length;
+      product.numReviews = product.reviews.length;
 
-    product.rating = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length;
+      product.rating = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length;
 
-    await product.save();
-    res.status(201).json({
-      message: "Review added!",
-    });
+      await product.save();
+      res.status(201).json({
+        message: "Review added!",
+      });
+    }
   } else {
     res.status(404);
     throw new Error("Review submission failed.");
