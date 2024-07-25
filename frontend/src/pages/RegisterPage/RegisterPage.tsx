@@ -4,16 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import './RegisterPage.css'
 
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-
 import { useRegisterMutation } from '@src/slices/usersApiSlice';
 import { setCredentials } from '@src/slices/authSlice';
 
 import Loader from '@src/components/Loader'
-import FormContainer from '@src/components/FormContainer'
 
 import Background from '@src/components/Background/Background'
 
@@ -68,74 +62,70 @@ export default function RegisterPage(): JSX.Element {
     <>
       <Background variant="museum" whiteBackground={false} />
       <section className="register-styling">
-        {/* <FormContainer>
-          <> */}
-            <h1>Sign In</h1>
-            <form>
-              <div>
-                <label htmlFor={id + "-name"}>Name</label>
-                <input
-                  name="name"
-                  id={id + "-name"}
-                  type="textbox"
-                  placeholder="Enter name"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
-                >
-                </input>
-              </div>
-              <div>
-                <label htmlFor={id + "-email"}>Email Address</label>
-                <input
-                  name="email"
-                  id={id + "-email"}
-                  type="email"
-                  placeholder="Enter email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                >
-                </input>
-              </div>
-              <div>
-                <label htmlFor={id + "-password"}>Password</label>
-                <input
-                  name="password"
-                  id={id + "-password"}
-                  type="password"
-                  placeholder="Enter password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                >
-                </input>
-              </div>
-              <div>
-                <label htmlFor={id + "-confirm-password"}>Confirm Password</label>
-                <input
-                  name="confirmPassword"
-                  id={id + "-confirm-password"}
-                  type="password"
-                  placeholder="Confirm password"
-                  value={confirmPassword}
-                  onChange={(event) => setConfirmPassword(event.target.value)}
-                >
-                </input>
-              </div>
-              <button 
-                type="submit" 
-                className="register-button"
-                onClick={(event) => handleSubmit(event)}
-                disabled={ isLoading }
-              >Sign In
-              </button>
-            </form>
-            <div>
-              <p>
-                Already a Customer? <Link to={ redirect ? `/login?redirect=${redirect}` : `/login`}>Login</Link>
-              </p>
-            </div>
-            { isLoading && <Loader />}
-          {/* </>
-        </FormContainer> */}
+        <h1>Sign In</h1>
+        <form>
+          <div>
+            <label htmlFor={id + "-name"}>Name</label>
+            <input
+              name="name"
+              id={id + "-name"}
+              type="textbox"
+              placeholder="Enter name"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+            >
+            </input>
+          </div>
+          <div>
+            <label htmlFor={id + "-email"}>Email Address</label>
+            <input
+              name="email"
+              id={id + "-email"}
+              type="email"
+              placeholder="Enter email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            >
+            </input>
+          </div>
+          <div>
+            <label htmlFor={id + "-password"}>Password</label>
+            <input
+              name="password"
+              id={id + "-password"}
+              type="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            >
+            </input>
+          </div>
+          <div>
+            <label htmlFor={id + "-confirm-password"}>Confirm Password</label>
+            <input
+              name="confirmPassword"
+              id={id + "-confirm-password"}
+              type="password"
+              placeholder="Confirm password"
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
+            >
+            </input>
+          </div>
+          <button 
+            type="submit" 
+            className="register-button"
+            onClick={(event) => handleSubmit(event)}
+            disabled={ isLoading }
+          >Sign In
+          </button>
+        </form>
+        <div>
+          <p>
+            Already a Customer? <Link to={ redirect ? `/login?redirect=${redirect}` : `/login`}>Login</Link>
+          </p>
+        </div>
+        { isLoading && <Loader />}
       </section>
     </>
   )
