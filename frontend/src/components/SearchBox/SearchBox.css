@@ -1,0 +1,31 @@
+.search-styling {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search-styling > input {
+  background-color: white;
+  color: black;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 10px;
+  height: 40px;
+  min-width: 200px;
+  width: 100%
+}
+
+.search-styling > a {
+  margin: 0 10px;
+}
+
+.search-button {
+  background-color: var(--banner-dark);
+  color: #28A745;
+  border: 2px solid #28A745;
+  border-radius: 5px;
+  padding: 6px 10px;
+  margin: 0 10px;
+  width: 100px;
+}

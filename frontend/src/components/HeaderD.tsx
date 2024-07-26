@@ -15,7 +15,7 @@ import { useLogoutMutation } from '@src/slices/usersApiSlice';
 import { removeCredentials } from '@src/slices/authSlice';
 import { resetCart } from '@src/slices/cartSlice';
 
-import SearchBox from '@src/components/SearchBox'
+import SearchBox from '@src/components/SearchBox/SearchBox'
 
 import type { RootState } from '@src/store'
 
