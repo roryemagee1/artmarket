@@ -5,8 +5,9 @@
   /* position: relative; */
   z-index: 1;
 
-  height: 400px;
-  width: 310px;
+  /* height: 400px;
+  width: 310px; */
+  height: 100%;
   width: 100%;
 
   background-image: url('@src/assets/easel.png');
@@ -15,12 +16,12 @@
   background-size: 100% 100%;
   background-position: center;
 
-  padding: 15% 23% 20% 20%;
+  padding: 15% 23% 30% 20%;
 
 }
 
 @media (width <= 768px) {
   .canvas {
-    padding: 5% 23% 20% 20%;
+    padding: 5% 23% 30% 20%;
   }
 }

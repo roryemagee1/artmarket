@@ -83,74 +83,75 @@ export default function ProductPage(): JSX.Element {
         <>
           <section className="product-container">
 
-            <div>
+            <div className="canvas-box">
               <Canvas height="" width="">
                 <img className="canvas-image" src={data?.image} alt={data?.name} />
               </Canvas>
             </div>
 
-            <section className="info-box">
-              <div>
-                <h3>{data?.name}</h3>
-                <hr />
-                <Rating rating={data?.rating} text={`${data?.numReviews} reviews`}/>
-                <hr />
-                <p>
-                  <strong>Price:</strong> ${data?.price}
-                </p>
-                <hr />
-                <p>
-                  <strong>Description: </strong>{data?.description}
-                </p>
-              </div>
-            </section>
+            <div className="details-area">
+              <section className="info-box">
+                <div>
+                  <h3>{data?.name}</h3>
+                  <hr />
+                  <Rating rating={data?.rating} text={`${data?.numReviews} reviews`}/>
+                  <hr />
+                  <p>
+                    <strong>Price:</strong> ${data?.price}
+                  </p>
+                  <hr />
+                  <p>
+                    <strong>Description: </strong>{data?.description}
+                  </p>
+                </div>
+              </section>
 
-            <section className="add-item-box">
-              <div>
-                <div className="add-item-box-entry">
-                    <p>Price:</p>
-                    <p>
-                      <strong>${data?.price}</strong>
-                    </p>
-                </div>
-                <hr />
-                <div className="add-item-box-entry">
-                    <p>Status:</p>
-                    <p>
-                      <strong>{data?.countInStock > 0 ? "In Stock" : "Out of Stock"}</strong>
-                    </p>
-                </div>
-                <hr />
-                { 
-                data?.countInStock > 0 && (
+              <section className="add-item-box">
+                <div>
                   <div className="add-item-box-entry">
-                    <label htmlFor={reviewId + "-quantity"}>Quantity:</label>
-                    <select
-                      name="select"
-                      id={reviewId + "-quantity"}
-                      value={quantity}
-                      onChange={(event) => setQuantity(Number(event.target.value))}
-                    >
-                      {[...Array(data?.countInStock).keys()].map((key) => (
-                        <option key={key + 1 } value={key + 1}>{key + 1}</option>
-                      ))}
-                    </select>
+                      <p>Price:</p>
+                      <p>
+                        <strong>${data?.price}</strong>
+                      </p>
                   </div>
-                  )
-                }
-                <hr />
-                <div className="add-item-box-entry">
-                  <button
-                    className="add-item-button"
-                    type="button"
-                    disabled={data?.countInStock === 0}
-                    onClick={handleAddToCart}
-                  >Add to Cart
-                  </button>
+                  <hr />
+                  <div className="add-item-box-entry">
+                      <p>Status:</p>
+                      <p>
+                        <strong>{data?.countInStock > 0 ? "In Stock" : "Out of Stock"}</strong>
+                      </p>
+                  </div>
+                  <hr />
+                  { 
+                  data?.countInStock > 0 && (
+                    <div className="add-item-box-entry">
+                      <label htmlFor={reviewId + "-quantity"}>Quantity:</label>
+                      <select
+                        name="select"
+                        id={reviewId + "-quantity"}
+                        value={quantity}
+                        onChange={(event) => setQuantity(Number(event.target.value))}
+                      >
+                        {[...Array(data?.countInStock).keys()].map((key) => (
+                          <option key={key + 1 } value={key + 1}>{key + 1}</option>
+                        ))}
+                      </select>
+                    </div>
+                    )
+                  }
+                  <hr />
+                  <div className="add-item-box-entry">
+                    <button
+                      className="add-item-button"
+                      type="button"
+                      disabled={data?.countInStock === 0}
+                      onClick={handleAddToCart}
+                    >Add to Cart
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </section>
-
+              </section>
+            </div>
           </section>
           <section className="review-section">
             <section className="reviews">
