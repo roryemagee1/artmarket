@@ -1,6 +1,8 @@
 import { JSX } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import { FaShoppingCart, FaUser} from 'react-icons/fa'
+import { useNavigate, Link, NavLink } from 'react-router-dom'
+import { FaShoppingCart, FaUser } from 'react-icons/fa'
+import { GoTriangleDown, GoTriangleUp } from 'react-icons/go'
+import { IoMenu } from "react-icons/io5";
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import './Header.css'
@@ -17,6 +19,7 @@ import { removeCredentials } from '@src/slices/authSlice';
 import { resetCart } from '@src/slices/cartSlice';
 
 import SearchBox from '@src/components/SearchBox/SearchBox'
+import Drawer from '@src/components/Drawer/Drawer'
 
 import type { RootState } from '@src/store'
 
@@ -54,6 +57,67 @@ export default function Header(): JSX.Element {
   return (
     <>
       <header>
+        {/* <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect> */}
+          <section className="nav-container">
+            <Link className="no-decoration" to="/">
+              <div className="brand-box" style={{display: "flex", alignItems: "center"}}>
+                <img src={logo} height="70vw" alt="Audasite LLC Logo"/>
+                <h1>ArtMarket</h1>
+              </div>
+            </Link>
+            {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
+            {/* <Navbar.Collapse id="basic-navbar-nav"> */}
+              <nav className="header-nav">
+                <SearchBox />
+                <Link className="no-decoration cart-icon-container" to="/cart">
+                  <FaShoppingCart className="cart-icon"/> Cart
+                  {
+                    (cartItems.length > 0) && (
+                      <div>
+                        <p>
+                          {cartItems?.reduce((acc: number, curr: { qty: number }) => acc + curr.qty, 0)}
+                        </p>
+                      </div>
+                    )
+                  }
+                </Link>
+                <Drawer cartItems={cartItems} userInfo={userInfo} handleLogout={handleLogout} />
+                {/* {
+                  userInfo && userInfo.data.isAdmin ? (
+                    <NavDropdown title={userInfo.data.name} id="username" style={{marginLeft: "10px", marginRight: "55px"}}>
+                      <NavDropdown.Item as={Link} to="/admin/productlist">Products</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/admin/userlist">Users</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/admin/orderlist">Orders</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
+                      <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                    </NavDropdown>
+                  ) :
+                  userInfo ? (
+                    <Link className="no-decoration" to="/profile">
+                      <div className="menu-dropdown">
+                      <p className="nav-text">
+                        { userInfo.data.name } <GoTriangleDown />
+                      </p>
+                      <IoMenu className="nav-menu" />
+                      </div>
+                    <NavDropdown title={userInfo.data.name} id="username">
+                      <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
+                      <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                  </NavDropdown>
+                    </Link>
+                  ) : (
+                    <Link className="no-decoration" to="/login">
+                      <FaUser /> Sign In
+                    </Link>
+                  )
+                } */}
+              </nav>
+            {/* </Navbar.Collapse> */}
+          </section>
+        {/* </Navbar> */}
+      </header>
+      <Drawer userInfo={userInfo} cartItems={cartItems} handleLogout={handleLogout} />
+      <header className="temporary">
         <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
           <Container>
             <Navbar.Brand as={Link} to="/">
