@@ -47,7 +47,7 @@
 .aside-menu {
   position: absolute;
   top: 8vh;
-  left: 85vw;
+  left: 84vw;
   z-index: 102;
 
   background-color: white;
@@ -77,8 +77,10 @@
   display: none;
 }
 
-.drawer-menu {
-  display: none;
+@media (min-width: 767px) {
+  .drawer-menu {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
