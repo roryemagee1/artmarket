@@ -1,3 +1,11 @@
+.header-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
 .header-nav-wide {
   display: flex;
   flex-direction: row;
@@ -12,23 +20,28 @@
   }
 }
 
-.brand-box {
+.cart-icon-container {
   display: flex;
   align-items: center;
-  justify-content: end;
 }
 
-.brand-box > h1 {
-  font-family: "Pacifico", cursive;
-  font-weight: 400;
-  font-style: normal;
-  
-  margin: 0;
+.cart-icon-container > div {
+  width: 25px;
+  background-color: #28A745;
+  border-radius: 20px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.brand-box > img {
-  height: 5rem;
-  margin: -5px 8px;
+.cart-icon-container > div > p {
+  margin: 0 5px;
+  text-align: center;
+}
+
+.cart-icon {
+  margin: 0 5px;
 }
 
 .aside-menu {
@@ -61,6 +74,10 @@
 }
 
 .header-nav-narrow {
+  display: none;
+}
+
+.drawer-menu {
   display: none;
 }
 

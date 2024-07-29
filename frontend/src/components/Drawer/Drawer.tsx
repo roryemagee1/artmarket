@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { FaShoppingCart, FaUser } from 'react-icons/fa'
 import { GoTriangleDown, GoTriangleUp } from 'react-icons/go'
 import { FiMenu } from "react-icons/fi";
-// import { useSelector, useDispatch } from 'react-redux'
-// import { toast } from 'react-toastify'
 import './Drawer.css'
 
 import SearchBox from '@src/components/SearchBox/SearchBox'
