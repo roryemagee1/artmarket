@@ -26,7 +26,6 @@
 .brand-box {
   display: flex;
   align-items: center;
-  /* justify-content: end; */
 }
 
 .brand-box > h1 {

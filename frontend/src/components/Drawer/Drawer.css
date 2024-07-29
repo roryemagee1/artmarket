@@ -1,16 +1,4 @@
-.nav-container {
-  display: flex;
-  align-items: space-between;
-  justify-content: center;
-  align-items: center;
-  padding: 0 7vw;
-  width: 100vw;
-  height: 5.65rem;
-
-  background-color: var(--banner-dark);
-}
-
-.header-nav {
+.header-nav-wide {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,8 +6,10 @@
   width: 100%;
 }
 
-.no-decoration {
-  text-decoration: none;
+@media (max-width: 768px) {
+  .header-nav-wide {
+    display: none;
+  }
 }
 
 .brand-box {
@@ -41,51 +31,9 @@
   margin: -5px 8px;
 }
 
-.menu-dropdown {
-  margin: 0 8px 0 16px;
-}
-
-header {
-  position: fixed;
-  z-index: 101;
-  
-  width: 100%;
-}
-
-.header-spacer {
-  width: 100%;
-  height: 5.65rem;
-}
-
-/* .nav-menu {
-  width: 50px;
-  height: 50px;
-} */
-
-.nav-text {
-  margin: 0;
-  width: 100px;
-}
-
-/* @media (min-width: 769px) {
-  .nav-menu {
-    display: none;
-  }
-} */
-
-@media (max-width: 768px) {
-  .nav-text {
-    display: none;
-  }
-}
-
-.temporary {
-  top: 10vh;
-}
-
 .aside-menu {
   position: absolute;
-  top: 20vh;
+  top: 8vh;
   left: 85vw;
   z-index: 102;
 
@@ -105,4 +53,45 @@ header {
 .hover-grey:hover {
   background-color: whitesmoke;
   border-radius: 5px;
+}
+
+.login-text {
+  width: 100px;
+  margin: 0 5px;
+}
+
+.header-nav-narrow {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header-nav-narrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .drawer-menu {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    z-index: 102;
+    width: 100vw;
+    background-color: var(--banner-dark);
+  }
+  
+  .drawer-menu > div { 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  .menu-button {
+    width: 50px;
+    height: 50px;
+  }
 }

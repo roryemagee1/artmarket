@@ -60,15 +60,15 @@ export default function Header(): JSX.Element {
         {/* <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect> */}
           <section className="nav-container">
             <Link className="no-decoration" to="/">
-              <div className="brand-box" style={{display: "flex", alignItems: "center"}}>
-                <img src={logo} height="70vw" alt="Audasite LLC Logo"/>
+              <div className="brand-box">
+                <img src={logo} alt="Audasite LLC Logo"/>
                 <h1>ArtMarket</h1>
               </div>
             </Link>
             {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
             {/* <Navbar.Collapse id="basic-navbar-nav"> */}
-              <nav className="header-nav">
-                <SearchBox />
+              {/* <nav className="header-nav"> */}
+                {/* <SearchBox />
                 <Link className="no-decoration cart-icon-container" to="/cart">
                   <FaShoppingCart className="cart-icon"/> Cart
                   {
@@ -80,7 +80,7 @@ export default function Header(): JSX.Element {
                       </div>
                     )
                   }
-                </Link>
+                </Link> */}
                 <Drawer cartItems={cartItems} userInfo={userInfo} handleLogout={handleLogout} />
                 {/* {
                   userInfo && userInfo.data.isAdmin ? (
@@ -111,13 +111,12 @@ export default function Header(): JSX.Element {
                     </Link>
                   )
                 } */}
-              </nav>
+              {/* </nav> */}
             {/* </Navbar.Collapse> */}
           </section>
         {/* </Navbar> */}
       </header>
-      <Drawer userInfo={userInfo} cartItems={cartItems} handleLogout={handleLogout} />
-      <header className="temporary">
+      {/* <header className="temporary">
         <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
           <Container>
             <Navbar.Brand as={Link} to="/">
@@ -165,7 +164,7 @@ export default function Header(): JSX.Element {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-      </header>
+      </header> */}
       <div className="header-spacer"></div>
     </>
   )
