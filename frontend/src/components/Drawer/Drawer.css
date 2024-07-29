@@ -14,6 +14,10 @@
   width: 100%;
 }
 
+.header-nav-wide > button {
+  width: 150px;
+}
+
 @media (max-width: 768px) {
   .header-nav-wide {
     display: none;
@@ -23,6 +27,7 @@
 .cart-icon-container {
   display: flex;
   align-items: center;
+  padding: 0 10px;
 }
 
 .cart-icon-container > div {
@@ -47,11 +52,11 @@
 .aside-menu {
   position: absolute;
   top: 8vh;
-  left: 84vw;
+  left: calc(100vw - 160px);
   z-index: 102;
 
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 0.5px solid lightgrey;
 }
 
@@ -60,11 +65,16 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 15px;
+  margin: 10px;
+}
+
+.hover-gainsboro:hover {
+  background-color: gainsboro;
+  border-radius: 5px;
 }
 
 .hover-grey:hover {
-  background-color: whitesmoke;
+  background-color: grey;
   border-radius: 5px;
 }
 
@@ -104,7 +114,7 @@
   .drawer-menu > div { 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: center;
     padding: 15px;
   }
@@ -112,5 +122,9 @@
   .menu-button {
     width: 50px;
     height: 50px;
+  }
+
+  .drawer-menu > div {
+    margin: 0 35px 0 0;
   }
 }

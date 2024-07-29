@@ -45,32 +45,35 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
         ) : (
           <>
           <button className="text-button" onClick={() => setIsMenuOpen((prevState) => !prevState)}>
+            {userInfo.data.name}
             { 
               isMenuOpen ? 
               <GoTriangleUp /> :
               <GoTriangleDown />
             }
           </button>
-            {isMenuOpen && <aside className="aside-menu">
-              {
-                userInfo && userInfo.data.isAdmin ? (
-                  <div onClick={() => setIsMenuOpen((prevState) => !prevState)}>
-                    <Link className="no-decoration text-dark hover-grey anchor-margin" to="/admin/productlist">Products</Link>
-                    <Link className="no-decoration text-dark hover-grey anchor-margin" to="/admin/userlist">Users</Link>
-                    <Link className="no-decoration text-dark hover-grey anchor-margin" to="/admin/orderlist">Orders</Link>
-                    <Link className="no-decoration text-dark hover-grey anchor-margin" to="/profile">Profile</Link>
-                    <button className="text-button text-dark hover-grey" onClick={handleLogout}>Logout</button>
-                  </div>
-                ) :
-                userInfo && (
-                  <div onClick={() => setIsMenuOpen((prevState) => !prevState)}>
-                    <Link className="no-decoration text-dark hover-grey anchor-margin" to="/profile">Profile</Link>
-                    <button className="text-button text-dark hover-grey" onClick={handleLogout}>Logout</button>
-                  </div>
-                  
-                )
-              }
-            </aside> }
+            {
+              isMenuOpen && <aside className="aside-menu">
+                {
+                  userInfo && userInfo.data.isAdmin ? (
+                    <div onClick={() => setIsMenuOpen((prevState) => !prevState)}>
+                      <Link className="no-decoration text-dark hover-gainsboro anchor-margin" to="/admin/productlist">Products</Link>
+                      <Link className="no-decoration text-dark hover-gainsboro anchor-margin" to="/admin/userlist">Users</Link>
+                      <Link className="no-decoration text-dark hover-gainsboro anchor-margin" to="/admin/orderlist">Orders</Link>
+                      <Link className="no-decoration text-dark hover-gainsboro anchor-margin" to="/profile">Profile</Link>
+                      <button className="text-button text-dark hover-gainsboro" onClick={handleLogout}>Logout</button>
+                    </div>
+                  ) :
+                  userInfo && (
+                    <div onClick={() => setIsMenuOpen((prevState) => !prevState)}>
+                      <Link className="no-decoration text-dark hover-gainsboro anchor-margin" to="/profile">Profile</Link>
+                      <button className="text-button text-dark hover-gainsboro" onClick={handleLogout}>Logout</button>
+                    </div>
+                    
+                  )
+                }
+              </aside>
+            }
           </>
         )}
       </nav>
@@ -90,8 +93,8 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
             <aside className="drawer-menu">
               <SearchBox />
               <div onClick={() => setIsMenuOpen((prevState) => !prevState)}>
-              <Link className="no-decoration cart-icon-container" to="/cart">
-                <FaShoppingCart className="cart-icon"/> Cart
+              <Link className="no-decoration hover-grey cart-icon-container" to="/cart">
+                <FaShoppingCart className="cart-icon" /> Cart
                 {
                   (cartItems.length > 0) && (
                     <div>
@@ -105,17 +108,17 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
               {
                 userInfo && userInfo.data.isAdmin ? (
                   <>
-                    <Link className="no-decoration text-light anchor-margin" to="/admin/productlist">Products</Link>
-                    <Link className="no-decoration text-light anchor-margin" to="/admin/userlist">Users</Link>
-                    <Link className="no-decoration text-light anchor-margin" to="/admin/orderlist">Orders</Link>
-                    <Link className="no-decoration text-light anchor-margin" to="/profile">Profile</Link>
-                    <button className="text-button text-light" onClick={handleLogout}>Logout</button>
+                    <Link className="no-decoration text-light hover-grey anchor-margin" to="/admin/productlist">Products</Link>
+                    <Link className="no-decoration text-light hover-grey anchor-margin" to="/admin/userlist">Users</Link>
+                    <Link className="no-decoration text-light hover-grey anchor-margin" to="/admin/orderlist">Orders</Link>
+                    <Link className="no-decoration text-light hover-grey anchor-margin" to="/profile">Profile</Link>
+                    <button className="text-button text-light hover-grey" onClick={handleLogout}>Logout</button>
                   </>
                 ) :
                 userInfo && (
                   <>
-                    <Link className="no-decoration text-dark hover-grey anchor-margin" to="/profile">Profile</Link>
-                    <button className="text-button text-dark hover-grey" onClick={handleLogout}>Logout</button>
+                    <Link className="no-decoration text-light hover-grey anchor-margin" to="/profile">Profile</Link>
+                    <button className="text-button text-light hover-grey" onClick={handleLogout}>Logout</button>
                   </>
                 )
               }
