@@ -4,9 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import './ShippingPage.css'
 
-// import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
-
 import { saveShippingAddress } from '@src/slices/cartSlice'
 
 import FormContainer from '@src/components/FormContainer/FormContainer'
