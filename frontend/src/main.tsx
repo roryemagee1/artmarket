@@ -37,8 +37,8 @@ const router = createBrowserRouter(
       <Route index element={ <HomePage /> } />
       <Route path="/search" element={ <HomePage /> } />
       <Route path="/search/:keyword" element={ <HomePage /> } />
-      <Route path="/page/:pageNumber" element={ <HomePage /> } />
-      <Route path="/search/:keyword/page/:pageNumber" element={ <HomePage /> } />
+      {/* <Route path="/page/:pageNumber" element={ <HomePage /> } /> */}
+      {/* <Route path="/search/:keyword/page/:pageNumber" element={ <HomePage /> } /> */}
       <Route path="/product/:id" element={ <ProductPage /> } />
       <Route path="/cart" element={ <CartPage /> } />
       <Route path="/login" element={ <LoginPage /> } />
