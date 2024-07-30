@@ -13,7 +13,7 @@ import Card from 'react-bootstrap/Card'
 import { useCreateOrderMutation } from '@src/slices/ordersApiSlice'
 import { clearCartItems } from '@src/slices/cartSlice'
 
-import CheckoutSteps from '@src/components/CheckoutSteps'
+import CheckoutSteps from '@src/components/CheckoutSteps/CheckoutSteps'
 import Message from '@src/components/Message'
 import Loader from '@src/components/Loader'
 

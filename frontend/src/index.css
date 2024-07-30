@@ -47,6 +47,10 @@ body {
   overscroll-behavior: none;
 }
 
+p {
+  margin: 0;
+}
+
 /*
 a {
   font-weight: 500;

@@ -12,7 +12,7 @@ import { useRegisterMutation } from '@src/slices/usersApiSlice';
 import { setCredentials } from '@src/slices/authSlice';
 
 import Loader from '@src/components/Loader'
-import FormContainer from '@src/components/FormContainer'
+import FormContainer from '@src/components/FormContainer/FormContainer'
 
 import Background from '@src/components/Background/Background'
 

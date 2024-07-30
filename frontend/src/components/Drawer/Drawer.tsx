@@ -26,7 +26,7 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
       {/* This class appears at widths greater than 768px: */}
       <nav className="header-nav-wide">
         <SearchBox />
-        <Link className="no-decoration cart-icon-container" to="/cart" onClick={() => handleResetWindow()}>
+        <Link className="no-decoration cart-icon-container text-light" to="/cart" onClick={() => handleResetWindow()}>
           <FaShoppingCart className="cart-icon"/> Cart
           {
             (cartItems.length > 0) && (

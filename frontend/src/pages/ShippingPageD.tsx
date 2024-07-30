@@ -8,8 +8,8 @@ import Button from 'react-bootstrap/Button'
 
 import { saveShippingAddress } from '@src/slices/cartSlice'
 
-import FormContainer from '@src/components/FormContainer'
-import CheckoutSteps from '@src/components/CheckoutSteps'
+import FormContainer from '@src/components/FormContainer/FormContainer'
+import CheckoutSteps from '@src/components/CheckoutSteps/CheckoutSteps'
 
 import Background from '@src/components/Background/Background'
 

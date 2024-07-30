@@ -1,0 +1,81 @@
+.payment-form-styling {
+  padding: 20px 10px;
+  margin: 1rem 0 0 0;
+
+  /* box-shadow: var(--card-box-shadow); */
+  border-radius: 2px;
+
+  /* background-color: var(--background-white); */
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20vw;
+}
+
+@media (width > 1200px) {
+  .payment-method-styling {
+    padding: 20px 25vw;
+  }
+}
+
+@media (width < 768px) {
+  .payment-form-styling {
+    padding: 20px 5vw;
+  }
+}
+
+.payment-form-styling > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-form-styling > form > fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0 0 0;
+}
+
+.payment-form-styling > form > fieldset > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 10px;
+}
+
+.payment-form-styling > form > fieldset > legend {
+  margin: 0 10px;
+}
+
+.payment-form-styling > form > fieldset > div > input {
+  /* appearance: none; */
+
+  color: white;
+  background: white;
+  background-color: white;
+  accent-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 50px;
+}
+
+.payment-form-styling > form > fieldset > div > input:checked {
+  color: black;
+  background: black;
+  background-color: blue;
+  accent-color: blue;
+  border: 1px solid lightgrey;
+  border-radius: 50px;
+}
+
+.payment-form-button {
+  background-color: var(--button-blue);
+  border: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 10px;
+  width: 100px;
+}
