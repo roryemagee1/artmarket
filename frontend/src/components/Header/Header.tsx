@@ -51,7 +51,7 @@ export default function Header(): JSX.Element {
     <>
       <header>
         <section className="nav-container">
-          <Link className="no-decoration text-light" to="/" onClick={() => handleResetWindow()}>
+          <Link className="no-decoration text-white" to="/" onClick={() => handleResetWindow()}>
             <div className="brand-box">
               <img src={logo} alt="Audasite LLC Logo"/>
               <h1>ArtMarket</h1>

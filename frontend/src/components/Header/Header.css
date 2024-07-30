@@ -10,10 +10,6 @@
   background-color: var(--banner-dark);
 }
 
-.no-decoration {
-  text-decoration: none;
-}
-
 .brand-box {
   display: flex;
   align-items: center;

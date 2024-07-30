@@ -26,7 +26,7 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
       {/* This class appears at widths greater than 768px: */}
       <nav className="header-nav-wide">
         <SearchBox />
-        <Link className="no-decoration cart-icon-container text-light" to="/cart" onClick={() => handleResetWindow()}>
+        <Link className="no-decoration cart-icon-container text-grey" to="/cart" onClick={() => handleResetWindow()}>
           <FaShoppingCart className="cart-icon"/> Cart
           {
             (cartItems.length > 0) && (
@@ -40,13 +40,13 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
         </Link>
         { !userInfo ? (
           <div className="login-text">
-            <Link className="no-decoration text-light" to="/login">
-              <FaUser /> Sign In
+            <Link className="no-decoration text-grey" to="/login">
+              <FaUser/> Sign In
             </Link>
           </div>
         ) : (
           <>
-          <button className="text-button" onClick={() => setIsMenuOpen((prevState) => !prevState)}>
+          <button className="text-button text-grey" onClick={() => setIsMenuOpen((prevState) => !prevState)}>
             {userInfo.data.name}
             { 
               isMenuOpen ? 
@@ -132,7 +132,7 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
               <SearchBox />
               <div onClick={() => setIsMenuOpen((prevState) => !prevState)}>
               <Link 
-                className="no-decoration hover-grey cart-icon-container" 
+                className="no-decoration text-white hover-grey cart-icon-container" 
                 to="/cart" 
                 onClick={() => handleResetWindow()}
               ><FaShoppingCart className="cart-icon" /> Cart
@@ -150,31 +150,31 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
                 userInfo && userInfo.data.isAdmin ? (
                   <>
                     <Link 
-                      className="no-decoration text-light hover-grey anchor-margin" 
+                      className="no-decoration text-white hover-grey anchor-margin" 
                       to="/admin/productlist" 
                       onClick={() => handleResetWindow()}
                     >Products
                     </Link>
                     <Link 
-                      className="no-decoration text-light hover-grey anchor-margin" 
+                      className="no-decoration text-white hover-grey anchor-margin" 
                       to="/admin/userlist" 
                       onClick={() => handleResetWindow()}
                     >Users
                     </Link>
                     <Link 
-                      className="no-decoration text-light hover-grey anchor-margin" 
+                      className="no-decoration text-white hover-grey anchor-margin" 
                       to="/admin/orderlist" 
                       onClick={() => handleResetWindow()}
                     >Orders
                     </Link>
                     <Link 
-                      className="no-decoration text-light hover-grey anchor-margin" 
+                      className="no-decoration text-white hover-grey anchor-margin" 
                       to="/profile" 
                       onClick={() => handleResetWindow()}
                     >Profile
                     </Link>
                     <button 
-                      className="text-button text-light hover-grey" 
+                      className="text-button text-white hover-grey" 
                       onClick={handleLogout}
                     >Logout
                     </button>
@@ -183,13 +183,13 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
                 userInfo && (
                   <>
                     <Link 
-                      className="no-decoration text-light hover-grey anchor-margin" 
+                      className="no-decoration text-white hover-grey anchor-margin" 
                       to="/profile" 
                       onClick={() => handleResetWindow()}
                     >Profile
                     </Link>
                     <button 
-                      className="text-button text-light hover-grey" 
+                      className="text-button text-white hover-grey" 
                       onClick={handleLogout}
                     >Logout
                     </button>
