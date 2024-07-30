@@ -12,6 +12,8 @@ import { resetCart } from '@src/slices/cartSlice';
 
 import Drawer from '@src/components/Drawer/Drawer'
 
+import { handleResetWindow } from '@src/utils/miscUtils'
+
 import type { RootState } from '@src/store'
 
 export default function Header(): JSX.Element {
@@ -49,7 +51,7 @@ export default function Header(): JSX.Element {
     <>
       <header>
         <section className="nav-container">
-          <Link className="no-decoration" to="/">
+          <Link className="no-decoration" to="/" onClick={() => handleResetWindow()}>
             <div className="brand-box">
               <img src={logo} alt="Audasite LLC Logo"/>
               <h1>ArtMarket</h1>
