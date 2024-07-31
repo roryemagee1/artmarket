@@ -1,5 +1,6 @@
 import { JSX } from 'react'
 import { Link } from 'react-router-dom'
+import { GoTriangleRight } from 'react-icons/go'
 import './CheckoutSteps.css'
 
 interface ICheckoutSteps {
@@ -21,7 +22,7 @@ export default function CheckoutSteps({ step1=false, step2=false, step3=false, s
           )
         }
       </div>
-      <p> &#62; </p>
+      <GoTriangleRight />
       <div>
         {
           step2 ? (
@@ -31,7 +32,7 @@ export default function CheckoutSteps({ step1=false, step2=false, step3=false, s
           )
         }
       </div>
-      <p> &#62; </p>
+      <GoTriangleRight />
       <div>
         {
           step3 ? (
@@ -41,7 +42,7 @@ export default function CheckoutSteps({ step1=false, step2=false, step3=false, s
           )
         }
       </div>
-      <p> &#62; </p>
+      <GoTriangleRight />
       <div>
         {
           step4 ? (
