@@ -21,7 +21,7 @@ export default function HomePage(): JSX.Element {
   useEffect(() => {
     function handleScroll() {
       if (window.innerHeight + document.documentElement.scrollTop + 1 < document.documentElement.offsetHeight) {
-        // console.log(window.innerHeight + document.documentElement.scrollTop, " vs. ", document.documentElement.offsetHeight);
+        // console.log(window.innerHeight + document.documentElement.scrollTop, " vs. ", document.documentElement.offsetHeight); // This line is for debugging the masonry layout.
       } else {
         pageCount < data?.pages ? 
           setFeed(prevState => (

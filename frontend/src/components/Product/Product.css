@@ -1,5 +1,6 @@
 .masonry-item {
   display: inline-block;
+  /* display: block; Looks funky */
   width: 100%;
 
   background-color: white;

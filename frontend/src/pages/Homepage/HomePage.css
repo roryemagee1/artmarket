@@ -26,7 +26,6 @@
   width: 100%;
   column-count: 1;
   gap: 8px;
-  /* column-gap: 16px; */
  }
 
  @media (max-width: 2000px) {
