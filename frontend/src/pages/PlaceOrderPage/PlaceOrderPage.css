@@ -17,7 +17,7 @@
 .order-information {
   width: 59vw;
 
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
 }
 
 .order-information > ol > li {
@@ -42,7 +42,7 @@
 .order-summary {
   width: 29vw;
 
-  padding: 0 1rem;
+  padding: 0 0 0 1rem;
 }
 
 .order-summary-button {
