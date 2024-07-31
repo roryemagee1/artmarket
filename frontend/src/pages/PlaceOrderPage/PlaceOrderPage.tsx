@@ -4,13 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import './PlaceOrderPage.css'
 
-// import Button from 'react-bootstrap/Button'
-// import Row from 'react-bootstrap/Row'
-// import Col from 'react-bootstrap/Col'
-// import ListGroup from 'react-bootstrap/ListGroup'
-// import Image from 'react-bootstrap/Image'
-// import Card from 'react-bootstrap/Card'
-
 import { useCreateOrderMutation } from '@src/slices/ordersApiSlice'
 import { clearCartItems } from '@src/slices/cartSlice'
 
