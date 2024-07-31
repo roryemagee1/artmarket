@@ -1,0 +1,139 @@
+.place-order-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-steps-spacing {
+  padding: 0 0 0 20px;
+}
+
+.order-area {
+  display: flex;
+  flex-direction: row;
+}
+
+.order-information {
+  width: 59vw;
+
+  padding: 1rem;
+}
+
+.order-information > ol > li {
+  border: solid lightgrey 1px;
+  border-radius: 5px;
+  padding: 20px;
+
+  background-color: var(--card-color);
+}
+
+.order-information > ol > li > span {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.order-information > ol > li > span > p {
+  width: 70px;
+  text-align: center;
+}
+
+.order-summary {
+  width: 29vw;
+
+  padding: 0 1rem;
+}
+
+.order-summary-button {
+  background-color: var(--button-blue);
+  border: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.order-summary-box {
+  background-color: white;
+  border: solid lightgrey 1px;
+  border-radius: 5px;
+
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .place-order-container {
+    display: block;
+  }
+
+  .order-area {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .order-information {
+    width: 100%;
+  }
+
+  .order-summary {
+    width: 100%;
+    min-height: 0;
+  }
+}
+
+.order-summary-box > span {
+  background-color: white;
+
+  padding: 0 1rem;
+  min-width: 20vw;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-items {
+  display: flex;
+  flex-direction: column;
+
+  background-color: white;
+  border: solid lightgrey 1px;
+  border-radius: 5px;
+
+  padding: 20px 10px;
+  margin: 1rem 0 0 0;
+  border-radius: 2px;
+}
+
+
+.order-items > ol > li {
+  border: solid lightgrey 1px;
+  border-radius: 5px;
+  padding: 5px;
+
+  background-color: var(--card-color);
+}
+
+.order-items > ol > li > span {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 5rem;
+}
+
+.order-items > ol > li > span > p {
+  width: 200px;
+  text-align: center;
+}
+
+.order-item-image > img {
+  width: 10vw;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.order-item-text {
+  width: 250px;
+}

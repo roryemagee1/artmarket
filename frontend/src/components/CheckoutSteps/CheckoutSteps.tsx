@@ -15,12 +15,13 @@ export default function CheckoutSteps({ step1=false, step2=false, step3=false, s
       <div>
         {
           step1 ? (
-            <Link className="checkout-link-active" to="/login">Sign In</Link>
+            <Link className="checkout-link-active" to="/login">Shop</Link>
           ) : (
             <p className="checkout-link-inactive">Sign In</p>
           )
         }
       </div>
+      <p> &#62; </p>
       <div>
         {
           step2 ? (
@@ -30,6 +31,7 @@ export default function CheckoutSteps({ step1=false, step2=false, step3=false, s
           )
         }
       </div>
+      <p> &#62; </p>
       <div>
         {
           step3 ? (
@@ -39,6 +41,7 @@ export default function CheckoutSteps({ step1=false, step2=false, step3=false, s
           )
         }
       </div>
+      <p> &#62; </p>
       <div>
         {
           step4 ? (

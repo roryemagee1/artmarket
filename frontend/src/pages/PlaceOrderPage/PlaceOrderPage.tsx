@@ -2,13 +2,14 @@ import { JSX, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
+import './PlaceOrderPage.css'
 
-import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import ListGroup from 'react-bootstrap/ListGroup'
-import Image from 'react-bootstrap/Image'
-import Card from 'react-bootstrap/Card'
+// import Button from 'react-bootstrap/Button'
+// import Row from 'react-bootstrap/Row'
+// import Col from 'react-bootstrap/Col'
+// import ListGroup from 'react-bootstrap/ListGroup'
+// import Image from 'react-bootstrap/Image'
+// import Card from 'react-bootstrap/Card'
 
 import { useCreateOrderMutation } from '@src/slices/ordersApiSlice'
 import { clearCartItems } from '@src/slices/cartSlice'
@@ -58,137 +59,122 @@ export default function PlaceOrder(): JSX.Element {
   return (
     <>
       <Background variant="museum" whiteBackground={true} />
-      <CheckoutSteps step1={true} step2={true} step3={true} step4={true} />
-      <Row>
-        <Col md={8}>
-          <ListGroup variant='flush'>
-            <ListGroup.Item>
-              <h2>Shipping</h2>
-              <p>
-                <strong>Address:</strong>
-              {` ${cart.shippingAddress.address},
-               ${cart.shippingAddress.city} ${cart.shippingAddress.postalCode},
-               ${cart.shippingAddress.country}`}
-              </p>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <h2>Payment Method</h2>
-              <p>
-                <strong>Method:</strong>
-                {cart.paymentMethod}
-              </p>
-            </ListGroup.Item>
-            <ListGroup.Item>
+      <section className="place-order-container">
+        <div className="checkout-steps-spacing">
+          <CheckoutSteps step1={true} step2={true} step3={true} step4={true} />
+        </div>
+        <div className="order-area">
+          <section className="order-information">
+            <ol>
+              <li>
+                <h2>Shipping Address</h2>
+                <p>
+                  <strong>Street:   </strong> {cart.shippingAddress.address}
+                </p>
+                <p>
+                  <strong>City:     </strong> {cart.shippingAddress.city}
+                </p>
+                <p>
+                  <strong>Zip Code: </strong> {cart.shippingAddress.postalCode}
+                </p>
+                <p>
+                  <strong>Country: </strong> {cart.shippingAddress.country}
+                </p>
+                
+              </li>
+              <li>
+                <h2>Payment Method</h2>
+                <p>
+                  <strong>Method: </strong>
+                  {cart.paymentMethod === "paypal" ? "PayPal" : "Other"}
+                </p>
+              </li>
               {
                 cart.cartItems.length === 0 && (
-                  <>
+                  <li>
                     <h2>Order Items</h2>
                     <Message evalBool={false} variant="">Your cart is empty.</Message>
-                  </>
+                  </li>
                 )
               }
-            </ListGroup.Item>
-            
-          </ListGroup>
-        </Col>
-        <Col md={4}>
-          <Card>
-            <ListGroup variant="flush">
+            </ol>
+          </section>
 
-              <ListGroup.Item>
-                <h2>Order Summary</h2>
-              </ListGroup.Item>
+          <section className="order-summary">
+            <div className="order-summary-box">
+              <h2>Order Summary</h2>
+              <hr />
+              <span>
+                <p><strong>Items:</strong></p>
+                <p>
+                  ${ cart.itemsPrice }
+                </p>
+              </span>
+              <hr />
+              <span>
+                <p><strong>Shipping:</strong></p>
+                <p>
+                  ${ cart.shippingPrice }
+                </p>
+              </span>
+              <hr />
+              <span>
+                <p><strong>Tax:</strong></p>
+                <p>
+                  ${ cart.taxPrice }
+                </p>
+              </span>
+              <hr />
+              <span>
+                <p><strong>Total:</strong></p>
+                <p>
+                  ${ cart.totalPrice }
+                </p>
+              </span>
+              <hr />
+              { error && <Message evalBool={true} variant="danger">{`${error}`}</Message>}
+              <button
+                className="order-summary-button"
+                disabled={cart.cartItems.length === 0}
+                onClick={() => handlePlaceOrder()}
+              >Place Order
+              </button>
+                {isLoading && <Loader />}
+            </div>
+          </section>
+        </div>
 
-              <ListGroup.Item>
-                <Row>
-                  <Col>Items:</Col>
-                  <Col>
-                    ${ cart.itemsPrice }
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Row>
-                  <Col>Shipping:</Col>
-                  <Col>
-                    ${ cart.shippingPrice }
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Row>
-                  <Col>Tax:</Col>
-                  <Col>
-                    ${ cart.taxPrice }
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Row>
-                  <Col>Total:</Col>
-                  <Col>
-                    ${ cart.totalPrice }
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                { error && <Message evalBool={true} variant="danger">{`${error}`}</Message>}
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Button
-                  type="button"
-                  className="btn-block"
-                  disabled={cart.cartItems.length === 0}
-                  onClick={() => handlePlaceOrder()}
-                  >Place Order
-                  </Button>
-                  {isLoading && <Loader />}
-              </ListGroup.Item>
-
-            </ListGroup>
-          </Card>
-        </Col>
-
-        <Col md={12}>
-          <hr />
+        <section className="order-items">
           {
             cart.cartItems.length !== 0 && (
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <h2>Order Items</h2>
-                  { cart.cartItems.map((item: IItemKeys, i: number) => (
-                    <ListGroup.Item key={i}>
-                      <Row>
-                        <Col md={4}>
-                          <Image 
-                            src={item.image} 
-                            alt={item.name} 
-                            fluid 
-                            rounded/>
-                        </Col>
-                        <Col md={4} style={{display: "flex", alignItems: "center"}}>
-                          <Link to={`/products/${item._id}`}>
-                            {item.name}
-                          </Link>
-                        </Col>
-                        <Col md={4} style={{display: "flex", alignItems: "center"}}>
-                          { item.qty } x ${ item.price } = ${ item.qty * item.price }
-                        </Col>
-                      </Row>
-                    </ListGroup.Item>
-                  ))}
-                </ListGroup.Item>
-              </ListGroup>
+              <ol>
+                <h2>Order Items</h2>
+                { cart.cartItems.map((item: IItemKeys, i: number) => (
+                  <li key={i}>
+                    <span>
+                      <div className="order-item-image">
+                        <img 
+                          src={item.image} 
+                          alt={item.name} 
+                        />
+                      </div>
+                      <div>
+                        <Link to={`/products/${item._id}`}>
+                          {item.name}
+                        </Link>
+                      </div>
+                      <p>
+                        { item.qty } x ${ item.price } = ${ item.qty * item.price }
+                      </p>
+                    </span>
+                  </li>
+                ))}
+              </ol>
             )
           }
-        </Col>
+        </section>
 
-      </Row>
+      </section>
     </>
   )
 }

@@ -97,10 +97,6 @@ export default function ProductPage(): JSX.Element {
                   <Rating rating={data?.rating} text={`${data?.numReviews} reviews`}/>
                   <hr />
                   <p>
-                    <strong>Price:</strong> ${data?.price}
-                  </p>
-                  <hr />
-                  <p>
                     <strong>Description: </strong>{data?.description}
                   </p>
                 </div>
@@ -109,14 +105,14 @@ export default function ProductPage(): JSX.Element {
               <section className="add-item-box">
                 <div>
                   <div className="add-item-box-entry">
-                      <p>Price:</p>
+                      <p><strong>Price:</strong></p>
                       <p>
                         <strong>${data?.price}</strong>
                       </p>
                   </div>
                   <hr />
                   <div className="add-item-box-entry">
-                      <p>Status:</p>
+                      <p><strong>Status:</strong></p>
                       <p>
                         <strong>{data?.countInStock > 0 ? "In Stock" : "Out of Stock"}</strong>
                       </p>
@@ -125,7 +121,7 @@ export default function ProductPage(): JSX.Element {
                   { 
                   data?.countInStock > 0 && (
                     <div className="add-item-box-entry">
-                      <label htmlFor={reviewId + "-quantity"}>Quantity:</label>
+                      <label htmlFor={reviewId + "-quantity"}><strong>Quantity:</strong></label>
                       <select
                         name="select"
                         id={reviewId + "-quantity"}

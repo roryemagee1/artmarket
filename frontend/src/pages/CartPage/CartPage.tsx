@@ -97,23 +97,26 @@ export default function HomePage(): JSX.Element {
         {/* <Col md={4}> */}
           <div className="checkout-box">
             <div>
-              <div>
-                <h2>
-                  Subtotal ({ cartItems?.reduce((acc: number, curr: IItemKeys) => acc + curr.qty, 0)}) Items
-                </h2>
-                ${cartItems?.reduce((acc: number, curr: IItemKeys) => acc + curr.qty * curr.price, 0).toFixed(2)}
-              </div>
-              < hr />
-              <div>
-                <button 
-                  type="button" 
-                  className="checkout-button" 
-                  disabled={ cartItems.length === 0}
-                  onClick={() => handleCheckout()}
-                >
-                  Proceed to Checkout
-                </button>
-              </div>
+              <h2>
+                Subtotal ({ cartItems?.reduce((acc: number, curr: IItemKeys) => acc + curr.qty, 0)}) Items
+              </h2>
+              <span>
+                <p><strong>Amount: </strong></p>
+                <p>
+                  ${cartItems?.reduce((acc: number, curr: IItemKeys) => acc + curr.qty * curr.price, 0).toFixed(2)}
+                </p>
+              </span>
+            </div>
+            < hr />
+            <div>
+              <button 
+                type="button" 
+                className="checkout-button" 
+                disabled={ cartItems.length === 0}
+                onClick={() => handleCheckout()}
+              >
+                Proceed to Checkout
+              </button>
             </div>
           </div>
         {/* </Col> */}

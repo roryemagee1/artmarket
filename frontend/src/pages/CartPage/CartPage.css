@@ -73,6 +73,15 @@
   padding: 1rem;
 }
 
+.checkout-box > div > span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-box > div > span > p {
+  padding: 0 15px;
+}
+
 @media (max-width: 768px) {
   .checkout-container {
     display: block;

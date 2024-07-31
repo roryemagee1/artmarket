@@ -42,9 +42,9 @@ export default function HomePage(): JSX.Element {
       <Background variant="museum" whiteBackground={false} />
       { !keyword && <ProductCarousel /> }
       <section className="masonry-container">
-      {
-        feed.map((element) => { return element })
-      }
+        {
+          feed.map((element) => { return element })
+        }
       </section>
     </>
   )
