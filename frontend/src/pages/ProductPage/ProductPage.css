@@ -58,7 +58,7 @@
   .details-area {
     flex-direction: column;
     max-width: none;
-    margin: 0;
+    margin: 10px 0 0 0;
   }
 
   .info-box {

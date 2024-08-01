@@ -60,22 +60,6 @@ export default function PlaceOrder(): JSX.Element {
           <section className="order-information">
             <ol>
               <li>
-                <h2>Shipping Address</h2>
-                <p>
-                  <strong>Street:   </strong> {cart.shippingAddress.address}
-                </p>
-                <p>
-                  <strong>City:     </strong> {cart.shippingAddress.city}
-                </p>
-                <p>
-                  <strong>Zip Code: </strong> {cart.shippingAddress.postalCode}
-                </p>
-                <p>
-                  <strong>Country: </strong> {cart.shippingAddress.country}
-                </p>
-                
-              </li>
-              <li>
                 <h2>Payment Method</h2>
                 <p>
                   <strong>Method: </strong>
@@ -90,6 +74,21 @@ export default function PlaceOrder(): JSX.Element {
                   </li>
                 )
               }
+              <li>
+                <h2>Shipping Address</h2>
+                <p>
+                  <strong>Street:   </strong> {cart.shippingAddress.address}
+                </p>
+                <p>
+                  <strong>City:     </strong> {cart.shippingAddress.city}
+                </p>
+                <p>
+                  <strong>Zip Code: </strong> {cart.shippingAddress.postalCode}
+                </p>
+                <p>
+                  <strong>Country: </strong> {cart.shippingAddress.country}
+                </p>
+              </li>
             </ol>
           </section>
 
@@ -157,7 +156,7 @@ export default function PlaceOrder(): JSX.Element {
                         </Link>
                       </div>
                       <p>
-                        { item.qty } x ${ item.price } = ${ item.qty * item.price }
+                        <strong>{ item.qty } x ${ item.price } = ${ item.qty * item.price }</strong>
                       </p>
                     </span>
                   </li>

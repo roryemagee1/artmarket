@@ -3,13 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { PayPalButtons, usePayPalScriptReducer} from '@paypal/react-paypal-js'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-
-import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import ListGroup from 'react-bootstrap/ListGroup'
-import Image from 'react-bootstrap/Image'
-import Card from 'react-bootstrap/Card'
+import './OrderPage.css'
 
 import { 
   useGetOrderByIdQuery, 
@@ -115,15 +109,16 @@ export default function OrderPage() {
         ) : error ? (
           <Message variant="danger">{error?.data?.message || error?.error}</Message>
         ) : (
-          <>
+          <section className="order-container">
             <h2>Order ID: {order._id}</h2>  
-            <Row>
-              <Col md={7}>
-                <ListGroup variant="flush">
-                  <ListGroup.Item>
+            <div className="order-area">
+              <section className="order-information">
+                <ol>
+                  <li>
                     <h2>Payment Method</h2>
                     <p>
-                      <strong>Method: </strong> {order.paymentMethod}
+                      <strong>Method: </strong>
+                      {order.paymentMethod === "paypal" ? "PayPal" : "Other"}
                     </p>
                     { 
                       order.isPaid ? (
@@ -136,8 +131,8 @@ export default function OrderPage() {
                         </Message>
                       ) 
                     }
-                  </ListGroup.Item>
-                  <ListGroup.Item>
+                  </li>
+                  <li>
                     <h2>Shipping</h2>
                     <p>
                       <strong>Name: </strong> {order.user.name}
@@ -159,52 +154,46 @@ export default function OrderPage() {
                         </Message>
                       ) 
                     }
-                  </ListGroup.Item>
-                </ListGroup>
-              </Col>
-              <Col md={5}>
-                <Card>
-                  <ListGroup>
-                    <ListGroup.Item>
+                  </li>
+                </ol>
+              </section>
+              <section className="order-summary">
+                <div className="order-summary-box">
                       <h2>Order Summary</h2>
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      <Row>
-                        <Col><strong>Items</strong></Col>
-                        <Col>${order.itemsPrice}</Col>
-                      </Row>
-                      <Row>
-                        <Col><strong>Shipping</strong></Col>
-                        <Col>${order.shippingPrice}</Col>
-                      </Row>
-                      <Row>
-                        <Col><strong>Tax</strong></Col>
-                        <Col>${order.taxPrice}</Col>
-                      </Row>
-                      <Row>
-                        <Col><strong>Total Price</strong></Col>
-                        <Col>${order.totalPrice}</Col>
-                      </Row>
-                    </ListGroup.Item>
-                    
+                      <span>
+                        <p><strong>Items</strong></p>
+                        <p>${order.itemsPrice}</p>
+                      </span>
+                      <span>
+                        <p><strong>Shipping</strong></p>
+                        <p>${order.shippingPrice}</p>
+                      </span>
+                      <span>
+                        <p><strong>Tax</strong></p>
+                        <p>${order.taxPrice}</p>
+                      </span>
+                      <span>
+                        <p><strong>Total Price</strong></p>
+                        <p>${order.totalPrice}</p>
+                      </span>
                     { 
                       !order.isPaid && (
-                        <ListGroup.Item>
+                        <>
                           { payLoading && <Loader /> }
                         
-                        { isPending ? <Loader /> : (
-                          <div>
+                          { isPending ? <Loader /> : (
                             <div>
-                              <PayPalButtons 
-                                createOrder={createOrder}
-                                onApprove={onApprove}
-                                onError={onError}
-                              />
+                              <div>
+                                <PayPalButtons 
+                                  createOrder={createOrder}
+                                  onApprove={onApprove}
+                                  onError={onError}
+                                />
+                              </div>
                             </div>
-                          </div>
-                          )
-                        }
-                        </ListGroup.Item>
+                            )
+                          }
+                        </>
                       )
                     }
 
@@ -212,50 +201,47 @@ export default function OrderPage() {
 
                     { 
                       userInfo && userInfo.data.isAdmin && order.isPaid && !order.isDelivered && (
-                        <ListGroup.Item>
-                          <Button
-                            type="button"
-                            className="btn btn-block"
-                            onClick={handleDeliverOrder}
-                          >Mark as Delivered.
-                          </Button>
-                        </ListGroup.Item>
+                        <button
+                          className="order-summary-button"
+                          onClick={handleDeliverOrder}
+                        >Mark as Delivered
+                        </button>
                       )
                     }
-                  </ListGroup>
-                </Card>
-              </Col>
+                  
+                </div>
+              </section>
+            </div>
 
-              <Col md={12}>
-                <hr />
-                <ListGroup variant="flush">
-                  <ListGroup.Item>
-                    <h2>Order Items</h2>
-                    { 
-                      order.orderItems.map((item, i) => (
-                          <ListGroup.Item key={i}>
-                            <Row>
-                              <Col md={4}>
-                                <Image src={item.image} alt={item.name} fluid rounded />
-                              </Col>
-                              <Col md={4} style={{display: "flex", alignItems: "center"}}>
-                                <Link to={`/product/${item.product}`}>
-                                  <strong>{item.name}</strong>
-                                </Link>
-                              </Col>
-                              <Col md={4} style={{display: "flex", alignItems: "center"}}>
+              <section className="order-items">
+                <ol>
+                  <h2>Order Items</h2>
+                  { 
+                    order.orderItems.map((item, i) => (
+                        <li key={i}>
+                          <span>
+                            <div className="order-item-image">
+                            <img 
+                              src={item.image} 
+                              alt={item.name} 
+                            />
+                            </div>
+                            <div>
+                              <Link to={`/product/${item.product}`}>
+                                <strong>{item.name}</strong>
+                              </Link>
+                            </div>
+                            <p>
                               <strong>{item.qty} x ${item.price} = {item.qty * item.price}</strong>
-                              </Col>
-                            </Row>
-                          </ListGroup.Item>
-                        )
+                            </p>
+                          </span>
+                        </li> 
                       )
-                    }
-                  </ListGroup.Item>
-                </ListGroup>
-              </Col>
-            </Row>
-          </>
+                    )
+                  }
+                </ol>
+              </section>
+          </section>
         )
       }
     </>

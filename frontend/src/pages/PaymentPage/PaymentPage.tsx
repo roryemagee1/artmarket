@@ -85,7 +85,7 @@ export default function PaymentPage(): JSX.Element {
                   <Message 
                     variant="danger" 
                     evalBool={false}
-                  >Other Payment methods are currently unavailable.
+                  >Other payment methods are currently unavailable.
                   </Message>
                 )
               }

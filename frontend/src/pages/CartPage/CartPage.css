@@ -75,7 +75,7 @@
 
 .checkout-box > div > span {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .checkout-box > div > span > p {
