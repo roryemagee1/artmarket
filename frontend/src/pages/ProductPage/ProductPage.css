@@ -35,37 +35,6 @@
   min-width: 25vw;
 }
 
-@media (min-width: 1200px) {
-  .details-area {
-    flex-direction: row;
-    max-width: none;
-  }
-
-  .info-box {
-    margin: 0 10px;
-  }
-}
-
-@media (max-width: 900px) {
-  .product-page-container {
-    display: block;
-  }
-
-  .product-container {
-    flex-direction: column;
-  }
-
-  .details-area {
-    flex-direction: column;
-    max-width: none;
-    margin: 10px 0 0 0;
-  }
-
-  .info-box {
-    margin: 0px;
-  }
-}
-
 .add-item-box > div {
   min-width: 20vw;
 }
@@ -209,4 +178,48 @@
   border-radius: 5px;
   padding: 5px 10px;
   margin: 10px 0;
+}
+
+@media (min-width: 1200px) {
+  .details-area {
+    flex-direction: row;
+    max-width: none;
+  }
+
+  .info-box {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .product-page-container {
+    display: block;
+  }
+
+  .product-container {
+    flex-direction: column;
+  }
+
+  .details-area {
+    flex-direction: column;
+    max-width: none;
+    margin: 10px 0 0 0;
+  }
+
+  .info-box {
+    margin: 0px;
+  }
+
+  .back-button {
+    width: 100%;
+    
+  }
+
+  .add-item-button {
+    width: 100%;
+  }
+
+  .write-review-button {
+    width: 100%;
+  }
 }

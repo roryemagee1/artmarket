@@ -37,7 +37,7 @@ export default function HomePage(): JSX.Element {
     <>
       <Background variant="museum" whiteBackground={true} />
       <h1>Shopping Cart</h1>
-      <section className="checkout-container">
+      <section className="cart-container">
         <section className="shopping-cart">
         { 
           cartItems.length === 0 ? (

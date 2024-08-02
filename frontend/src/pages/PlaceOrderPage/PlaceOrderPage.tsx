@@ -58,38 +58,36 @@ export default function PlaceOrder(): JSX.Element {
         </div>
         <div className="order-area">
           <section className="order-information">
-            <ol>
-              <li>
-                <h2>Payment Method</h2>
-                <p>
-                  <strong>Method: </strong>
-                  {cart.paymentMethod === "paypal" ? "PayPal" : "Other"}
-                </p>
-              </li>
-              {
-                cart.cartItems.length === 0 && (
-                  <li>
-                    <h2>Order Items</h2>
-                    <Message evalBool={false} variant="">Your cart is empty.</Message>
-                  </li>
-                )
-              }
-              <li>
-                <h2>Shipping Address</h2>
-                <p>
-                  <strong>Street:   </strong> {cart.shippingAddress.address}
-                </p>
-                <p>
-                  <strong>City:     </strong> {cart.shippingAddress.city}
-                </p>
-                <p>
-                  <strong>Zip Code: </strong> {cart.shippingAddress.postalCode}
-                </p>
-                <p>
-                  <strong>Country: </strong> {cart.shippingAddress.country}
-                </p>
-              </li>
-            </ol>
+            <div>
+              <h2>Payment Method</h2>
+              <p>
+                <strong>Method: </strong>
+                {cart.paymentMethod === "paypal" ? "PayPal" : "Other"}
+              </p>
+            </div>
+            {
+              cart.cartItems.length === 0 && (
+                <div>
+                  <h2>Order Items</h2>
+                  <Message evalBool={false} variant="">Your cart is empty.</Message>
+                </div>
+              )
+            }
+            <div>
+              <h2>Shipping Address</h2>
+              <p>
+                <strong>Street:   </strong> {cart.shippingAddress.address}
+              </p>
+              <p>
+                <strong>City:     </strong> {cart.shippingAddress.city}
+              </p>
+              <p>
+                <strong>Zip Code: </strong> {cart.shippingAddress.postalCode}
+              </p>
+              <p>
+                <strong>Country: </strong> {cart.shippingAddress.country}
+              </p>
+            </div>
           </section>
 
           <section className="order-summary">

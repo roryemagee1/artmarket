@@ -56,30 +56,6 @@
   padding: 1rem;
 }
 
-@media (max-width: 768px) {
-  .place-order-container {
-    display: block;
-  }
-
-  .order-area {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .order-information {
-    width: 100%;
-
-    padding: 0;
-  }
-
-  .order-summary {
-    width: 100%;
-    min-height: 0;
-
-    padding: 0;
-  }
-}
-
 .order-summary-box > span {
   background-color: white;
 
@@ -101,7 +77,7 @@
   border-radius: 5px;
 
   padding: 20px 10px;
-  margin: 1rem 0 0 0;
+  margin: 10px 0 0 0;
   border-radius: 2px;
 }
 
@@ -137,3 +113,39 @@
 .order-item-text {
   width: 250px;
 }
+
+@media (max-width: 768px) {
+  .place-order-container {
+    display: block;
+  }
+
+  .order-area {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .order-information {
+    width: 100%;
+    padding: 0;
+  }
+
+  .order-summary {
+    width: 100%;
+    min-height: 0;
+
+    margin: 20px 0 0 0;
+    padding: 0;
+  }
+
+  .order-summary-button {
+    width: 95%;
+    padding: 0;
+  }
+
+  .order-items > ol > li > span {
+    padding: 0;
+  }
+}
+
+
+

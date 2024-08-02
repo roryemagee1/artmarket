@@ -51,7 +51,7 @@ export default function OrderPage() {
       payPalDispatch({
         type: "resetOptions",
         value: {
-          "client-id": payPalData.clientId,
+          "client-id": payPalData?.clientId || "test",
           currency: "USD",
         }
       });
@@ -110,7 +110,7 @@ export default function OrderPage() {
           <Message variant="danger">{error?.data?.message || error?.error}</Message>
         ) : (
           <section className="order-container">
-            <h2>Order ID: {order._id}</h2>  
+            <h3>Order ID: {order._id}</h3>  
             <div className="order-area">
               <section className="order-information">
                 <ol>
@@ -159,88 +159,87 @@ export default function OrderPage() {
               </section>
               <section className="order-summary">
                 <div className="order-summary-box">
-                      <h2>Order Summary</h2>
-                      <span>
-                        <p><strong>Items</strong></p>
-                        <p>${order.itemsPrice}</p>
-                      </span>
-                      <span>
-                        <p><strong>Shipping</strong></p>
-                        <p>${order.shippingPrice}</p>
-                      </span>
-                      <span>
-                        <p><strong>Tax</strong></p>
-                        <p>${order.taxPrice}</p>
-                      </span>
-                      <span>
-                        <p><strong>Total Price</strong></p>
-                        <p>${order.totalPrice}</p>
-                      </span>
-                    { 
-                      !order.isPaid && (
-                        <>
-                          { payLoading && <Loader /> }
-                        
-                          { isPending ? <Loader /> : (
+                  <h2>Order Summary</h2>
+                  <span>
+                    <p><strong>Items:</strong></p>
+                    <p>${order.itemsPrice}</p>
+                  </span>
+                  <span>
+                    <p><strong>Shipping:</strong></p>
+                    <p>${order.shippingPrice}</p>
+                  </span>
+                  <span>
+                    <p><strong>Tax:</strong></p>
+                    <p>${order.taxPrice}</p>
+                  </span>
+                  <span>
+                    <p><strong>Total Price:</strong></p>
+                    <p>${order.totalPrice}</p>
+                  </span>
+                  { 
+                    !order.isPaid && (
+                      <>
+                        { payLoading && <Loader /> }
+                      
+                        { isPending ? <Loader /> : (
+                          <div>
                             <div>
-                              <div>
-                                <PayPalButtons 
-                                  createOrder={createOrder}
-                                  onApprove={onApprove}
-                                  onError={onError}
-                                />
-                              </div>
+                              <PayPalButtons 
+                                createOrder={createOrder}
+                                onApprove={onApprove}
+                                onError={onError}
+                              />
                             </div>
-                            )
-                          }
-                        </>
-                      )
-                    }
+                          </div>
+                          )
+                        }
+                      </>
+                    )
+                  }
 
-                    { deliverLoading && <Loader /> }
+                  { deliverLoading && <Loader /> }
 
-                    { 
-                      userInfo && userInfo.data.isAdmin && order.isPaid && !order.isDelivered && (
-                        <button
-                          className="order-summary-button"
-                          onClick={handleDeliverOrder}
-                        >Mark as Delivered
-                        </button>
-                      )
-                    }
+                  { 
+                    userInfo && userInfo.data.isAdmin && order.isPaid && !order.isDelivered && (
+                      <button
+                        className="order-summary-button"
+                        onClick={handleDeliverOrder}
+                      >Mark as Delivered
+                      </button>
+                    )
+                  }
                   
                 </div>
               </section>
             </div>
 
-              <section className="order-items">
-                <ol>
-                  <h2>Order Items</h2>
-                  { 
-                    order.orderItems.map((item, i) => (
-                        <li key={i}>
-                          <span>
-                            <div className="order-item-image">
-                            <img 
-                              src={item.image} 
-                              alt={item.name} 
-                            />
-                            </div>
-                            <div>
-                              <Link to={`/product/${item.product}`}>
-                                <strong>{item.name}</strong>
-                              </Link>
-                            </div>
-                            <p>
-                              <strong>{item.qty} x ${item.price} = {item.qty * item.price}</strong>
-                            </p>
-                          </span>
-                        </li> 
-                      )
-                    )
-                  }
-                </ol>
-              </section>
+            <section className="order-items">
+              <ol>
+                <h2>Order Items</h2>
+                { 
+                  order.orderItems.map((item, i) => (
+                    <li key={i}>
+                      <span>
+                        <div className="order-item-image">
+                        <img 
+                          src={item.image} 
+                          alt={item.name} 
+                        />
+                        </div>
+                        <div>
+                          <Link to={`/product/${item.product}`}>
+                            <strong>{item.name}</strong>
+                          </Link>
+                        </div>
+                        <p>
+                          <strong>{item.qty} x ${item.price} = {item.qty * item.price}</strong>
+                        </p>
+                      </span>
+                    </li> 
+                  ))
+                }
+              </ol>
+            </section>
           </section>
         )
       }
