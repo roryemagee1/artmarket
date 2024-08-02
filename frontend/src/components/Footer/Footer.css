@@ -1,9 +1,8 @@
 footer {
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 1rem;
   height: 10.1vh;
 
   background-color: var(--banner-dark);
-  /* color: #9b9d9e */
 }
 
 footer > p {

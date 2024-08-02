@@ -1,0 +1,105 @@
+.profile-container {
+  width: 100%;
+  
+  display: flex;
+}
+
+.profile-form-styling {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  width: 33vw;
+}
+
+
+.profile-form-styling > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-form-styling > form > div {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  margin: 10px 0 0 0;
+}
+
+.profile-form-styling > form > div > input {
+  background-color: white;
+  color: black;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 10px;
+  height: 40px;
+  min-width: 200px;
+}
+
+.profile-form-button {
+  background-color: var(--button-blue);
+  border: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 10px 0;
+  width: 100px;
+}
+
+.details-button {
+  background-color: darkgrey;
+  border: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 10px 0;
+}
+
+.orders-table {
+  width: 67vw;
+}
+
+table {
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+
+th {
+  background-color: white;
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
+
+@media (max-width: 930px) {
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-form-styling {
+    width: 67vw;
+  }
+
+  .orders-table {
+    width: 85vw;
+    display: flex;
+    flex-direction: column;
+
+    overflow: scroll;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-form-styling {
+    width: 85vw;
+  }
+
+  .profile-form-button {
+    width: 100%;
+  }
+}

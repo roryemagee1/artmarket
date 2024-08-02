@@ -1,15 +1,15 @@
-import { JSX, FormEvent, useState, useEffect } from 'react'
+import { JSX, FormEvent, useState, useEffect, useId } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaTimes } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import './ProfilePage.css'
 
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Form from 'react-bootstrap/Form'
-import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button'
+// import Row from 'react-bootstrap/Row'
+// import Col from 'react-bootstrap/Col'
+// import Form from 'react-bootstrap/Form'
+// import Table from 'react-bootstrap/Table'
+// import Button from 'react-bootstrap/Button'
 
 import { useUpdateProfileMutation } from '@src/slices/usersApiSlice'
 import { setCredentials } from '@src/slices/authSlice'
@@ -28,6 +28,7 @@ export default function ProfilePage(): JSX.Element {
   const [ email, setEmail ] = useState<string>("");
   const [ password, setPassword ] = useState<string>("");
   const [ confirmPassword, setConfirmPassword ] = useState<string>("");
+  const id = useId();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,73 +69,76 @@ export default function ProfilePage(): JSX.Element {
   return (
     <>
       <Background variant="museum" whiteBackground={true} />
-      <Row>
-        <Col md={4}>
+      <section className="profile-container">
+        <section className="profile-form-styling">
           <h2>User Profile</h2>
-          <Form onSubmit={event => handleSubmit(event)}>
-            <Form.Group controlId="name" className="my-2">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
+          <form onSubmit={event => handleSubmit(event)}>
+            <div>
+              <label htmlFor={id + "-name"}>Name</label>
+              <input
                 name="name"
+                id={id + "-name"}
                 type="textbox"
                 placeholder="Enter name"
                 value={name}
                 onChange={event => setName(event.target.value)}
               >
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="email" className="my-2">
-              <Form.Label>Email Address</Form.Label>
-              <Form.Control
+              </input>
+            </div>
+            <div>
+              <label htmlFor={id + "-email"}>Email Address</label>
+              <input
                 name="email"
+                id={id + "-email"}
                 type="email"
                 placeholder="Enter email"
                 value={email}
                 onChange={event => setEmail(event.target.value)}
               >
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="newPassword" className="my-2">
-              <Form.Label>New Password</Form.Label>
-              <Form.Control
+              </input>
+            </div>
+            <div>
+              <label htmlFor={id + "-new-password"}>New Password</label>
+              <input
                 name="newPassword"
+                id={id + "-new-password"}
                 type="password"
                 placeholder="Enter password"
                 value={password}
                 onChange={event => setPassword(event.target.value)}
               >
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="confirmPassword" className="my-2">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control
+              </input>
+            </div>
+            <div>
+              <label htmlFor={id + "-confirm-password"}>Confirm Password</label>
+              <input
                 name="confirmPassword"
+                id={id + "=confirm-password"}
                 type="password"
                 placeholder="Confirm password"
                 value={confirmPassword}
                 onChange={event => setConfirmPassword(event.target.value)}
               >
-              </Form.Control>
-            </Form.Group>
-            <Button 
+              </input>
+            </div>
+            <button 
               type="submit" 
-              variant="primary" 
-              className="my-2"
+              className="profile-form-button"
               onClick={(event) => handleSubmit(event)}
               disabled={ updateProfileLoading }
             >Update
-            </Button>
+            </button>
             { updateProfileLoading && <Loader /> }
             { updateProfileError && <Message evalBool={false} variant="danger">An Error has occurred.</Message> }
-          </Form>
-        </Col>
-        <Col md={8}>
+          </form>
+        </section>
+        <section className="orders-table">
           <h2>My Orders</h2>
           { myOrdersLoading ? 
             <Loader /> : 
             myOrdersError ?
             <Message evalBool={false} variant="danger">Error loading orders.</Message> : (
-              <Table striped hover responsive className="table-sm">
+              <table>
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -142,6 +146,7 @@ export default function ProfilePage(): JSX.Element {
                     <th>TOTAL</th>
                     <th>PAID</th>
                     <th>DELIVERED</th>
+                    <th>DETAILS</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -170,20 +175,20 @@ export default function ProfilePage(): JSX.Element {
                           }
                         </td>
                         <td>
-                          <Button onClick={() => navigate(`/order/${order._id}`)} className="btn-sm" variant="light">
+                          <button onClick={() => navigate(`/order/${order._id}`)} className="details-button">
                             Details
-                          </Button>
+                          </button>
                         </td>
                       </tr>
                       )
                     )
                   }
                 </tbody>
-              </Table>
+              </table>
             )
           }
-        </Col>
-      </Row>
+        </section>
+      </section>
     </>
   )
 }
