@@ -10,7 +10,7 @@
   height: 100%;
   width: 100%;
 
-  background-image: url('@src/assets/easel.png');
+  background-image: url('@src/assets/easel.webp');
   background-repeat: no-repeat;
   /* background-size: cover; */
   background-size: 100% 100%;

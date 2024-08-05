@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import './Header.css'
 
-import logo from '@src/assets/audasite.png'
+import logo from '@src/assets/audasite.webp'
 
 import { useLogoutMutation } from '@src/slices/usersApiSlice';
 import { removeCredentials } from '@src/slices/authSlice';
