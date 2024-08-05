@@ -103,6 +103,7 @@
 @media (max-width: 768px) {
   .cart-container {
     display: block;
+    width: 90%;
   }
 
   .shopping-cart {
@@ -116,7 +117,7 @@
   }
 
   .checkout-button {
-    width: 95%;
+    width: 100%;
   }
 
   .trash-button {
