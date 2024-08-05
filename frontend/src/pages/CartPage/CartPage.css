@@ -14,6 +14,7 @@
 
 .shopping-cart > ol {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -29,12 +30,11 @@
 
 .shopping-cart > ol > li > span {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
 .shopping-cart > ol > li > span > p {
-  /* width: 70px; */
   text-align: center;
 }
 
@@ -43,6 +43,10 @@
   width: 29vw;
 
   padding: 1rem;
+}
+
+.cart-text {
+  width: 30vw;
 }
 
 .cart-image > img {
@@ -57,7 +61,6 @@
   justify-content: flex-end;
 
   height: 20px;
-  width: 50px;
 }
 
 .select-quantity > select {
@@ -65,16 +68,12 @@
   color: black;
 
   height: 2rem;
-  width: 2.5rem;
+  width: 2rem;
 
   margin: 0;
 
   border-radius: 5px;
 
-}
-
-.cart-text {
-  min-width: 200px;
 }
 
 .trash-button, .checkout-button {
@@ -122,6 +121,14 @@
 
   .trash-button {
     margin: 0;
+  }
+
+  .shopping-cart > ol > li > span > div {
+    font-size: 0.75rem;
+  }
+
+  .shopping-cart > ol > li > span > div > select {
+    margin: 0 5px;
   }
 }
 
