@@ -36,6 +36,7 @@
 
 .shopping-cart > ol > li > span > p {
   text-align: center;
+  min-width: 70px;
 }
 
 .checkout {
@@ -78,6 +79,13 @@
 
 .trash-button, .checkout-button {
   background-color: var(--button-blue);
+  border: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.trash-button {
+  background-color: red;
   border: 5px;
   border-radius: 5px;
   padding: 5px 10px;
@@ -126,6 +134,11 @@
 
   .shopping-cart > ol > li > span > div {
     font-size: 0.75rem;
+  }
+
+  .shopping-cart > ol > li > span > p {
+    text-align: center;
+    min-width: 0;
   }
 
   .shopping-cart > ol > li > span > div > select {
