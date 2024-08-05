@@ -24,7 +24,7 @@ import OrderPage from '@src/pages/OrderPage/OrderPage'
 import ProfilePage from '@src/pages/ProfilePage/ProfilePage'
 import OrderListPage from '@src/pages/admin/OrderListPage/OrderListPage'
 import ProductListPage from '@src/pages/admin/ProductListPage/ProductListPage'
-import ProductEditPage from '@src/pages/admin/ProductEditPage'
+import ProductEditPage from '@src/pages/admin/ProductEditPage/ProductEditPage'
 import UserListPage from '@src/pages/admin/UserListPage/UserListPage'
 import UserEditPage from '@src/pages/admin/UserEditPage/UserEditPage'
 
