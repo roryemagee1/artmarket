@@ -51,6 +51,8 @@
   text-decoration: none;
 }
 
+
+
 body {
   overscroll-behavior: none;
 }
@@ -68,6 +70,37 @@ ol {
 h1 {
   margin: 0 10px 0 10px;
   font-size: 35px;
+}
+
+
+
+.details-button {
+  background-color: darkgrey;
+  border: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 10px 0;
+}
+
+.order-list-table {
+  width: 67vw;
+}
+
+table {
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+
+th {
+  background-color: white;
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: white;
 }
 
 /*

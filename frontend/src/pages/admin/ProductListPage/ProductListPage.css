@@ -1,0 +1,28 @@
+.product-list-container {
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+
+  overflow: scroll;
+}
+
+.product-list-title {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 10px 0;
+}
+
+.trash-button, .edit-button {
+  border: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.edit-button {
+  background-color: var(--button-blue);
+}
+
+.trash-button {
+  background-color: red;
+}
