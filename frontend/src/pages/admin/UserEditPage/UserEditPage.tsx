@@ -74,11 +74,11 @@ export default function UserEditPage(): JSX.Element {
         <section className="edit-user-styling">
           <h1>Edit User</h1>
           {
-            updateLoading && <Loader />
+            updateLoading && <Loader width="35vw"/>
           }
           {
             userLoading ? 
-            <Loader /> : 
+            <Loader width="35vw"/> : 
             userError ?
             <Message evalBool={false} variant="danger">{`${userError}`}</Message> : (
               <form>
