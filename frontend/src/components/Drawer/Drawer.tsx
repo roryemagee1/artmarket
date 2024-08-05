@@ -131,71 +131,73 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
             <aside className="drawer-menu">
               <SearchBox />
               <div onClick={() => setIsMenuOpen((prevState) => !prevState)}>
-              <Link 
-                className="no-decoration text-white hover-grey cart-icon-container" 
-                to="/cart" 
-                onClick={() => handleResetWindow()}
-              ><FaShoppingCart className="cart-icon" /> Cart
-                {
-                  (cartItems.length > 0) && (
-                    <div>
-                      <p>
-                        {cartTotal}
-                      </p>
-                    </div>
-                  )
-                }
-              </Link>
-              {
-                userInfo && userInfo.data.isAdmin ? (
-                  <>
-                    <Link 
-                      className="no-decoration text-white hover-grey anchor-margin" 
-                      to="/admin/productlist" 
-                      onClick={() => handleResetWindow()}
-                    >Products
-                    </Link>
-                    <Link 
-                      className="no-decoration text-white hover-grey anchor-margin" 
-                      to="/admin/userlist" 
-                      onClick={() => handleResetWindow()}
-                    >Users
-                    </Link>
-                    <Link 
-                      className="no-decoration text-white hover-grey anchor-margin" 
-                      to="/admin/orderlist" 
-                      onClick={() => handleResetWindow()}
-                    >Orders
-                    </Link>
-                    <Link 
-                      className="no-decoration text-white hover-grey anchor-margin" 
-                      to="/profile" 
-                      onClick={() => handleResetWindow()}
-                    >Profile
-                    </Link>
-                    <button 
-                      className="text-button text-white hover-grey" 
-                      onClick={handleLogout}
-                    >Logout
-                    </button>
-                  </>
-                ) :
-                userInfo && (
-                  <>
-                    <Link 
-                      className="no-decoration text-white hover-grey anchor-margin" 
-                      to="/profile" 
-                      onClick={() => handleResetWindow()}
-                    >Profile
-                    </Link>
-                    <button 
-                      className="text-button text-white hover-grey" 
-                      onClick={handleLogout}
-                    >Logout
-                    </button>
-                  </>
-                )
-              }
+                <div>
+                  <Link 
+                    className="no-decoration text-white hover-grey cart-icon-container" 
+                    to="/cart" 
+                    onClick={() => handleResetWindow()}
+                  ><FaShoppingCart className="cart-icon" /> Cart
+                    {
+                      (cartItems.length > 0) && (
+                        <div>
+                          <p>
+                            {cartTotal}
+                          </p>
+                        </div>
+                      )
+                    }
+                  </Link>
+                  {
+                    userInfo && userInfo.data.isAdmin ? (
+                      <>
+                        <Link 
+                          className="no-decoration text-white hover-grey anchor-margin" 
+                          to="/admin/productlist" 
+                          onClick={() => handleResetWindow()}
+                        >Products
+                        </Link>
+                        <Link 
+                          className="no-decoration text-white hover-grey anchor-margin" 
+                          to="/admin/userlist" 
+                          onClick={() => handleResetWindow()}
+                        >Users
+                        </Link>
+                        <Link 
+                          className="no-decoration text-white hover-grey anchor-margin" 
+                          to="/admin/orderlist" 
+                          onClick={() => handleResetWindow()}
+                        >Orders
+                        </Link>
+                        <Link 
+                          className="no-decoration text-white hover-grey anchor-margin" 
+                          to="/profile" 
+                          onClick={() => handleResetWindow()}
+                        >Profile
+                        </Link>
+                        <button 
+                          className="text-button text-white hover-grey" 
+                          onClick={handleLogout}
+                        >Logout
+                        </button>
+                      </>
+                    ) :
+                    userInfo && (
+                      <>
+                        <Link 
+                          className="no-decoration text-white hover-grey anchor-margin" 
+                          to="/profile" 
+                          onClick={() => handleResetWindow()}
+                        >Profile
+                        </Link>
+                        <button 
+                          className="text-button text-white hover-grey" 
+                          onClick={handleLogout}
+                        >Logout
+                        </button>
+                      </>
+                    )
+                  }
+                </div>
               </div>
             </aside> 
           </>

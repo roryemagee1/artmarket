@@ -86,9 +86,6 @@
 
 .trash-button {
   background-color: red;
-  border: 5px;
-  border-radius: 5px;
-  padding: 5px 10px;
 }
 
 .checkout-box {
@@ -125,7 +122,7 @@
   }
 
   .checkout-button {
-    width: 100%;
+    width: 95%;
   }
 
   .trash-button {
