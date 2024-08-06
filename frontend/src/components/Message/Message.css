@@ -1,0 +1,17 @@
+.alert {
+  width: 100%;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+
+.info {
+  background-color: var(--info-blue);
+}
+
+.success {
+  background-color: var(--success-green);
+}
+
+.danger {
+  background-color: var(--danger-red);
+}

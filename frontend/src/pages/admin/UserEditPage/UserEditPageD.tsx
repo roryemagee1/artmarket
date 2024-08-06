@@ -11,7 +11,7 @@ import {
 } from '@src/slices/usersApiSlice'
 
 import Loader from '@src/components/Loader'
-import Message from '@src/components/Message'
+import Message from '@src/components/Message/Message'
 import FormContainer from '@src/components/FormContainer/FormContainer'
 
 import Background from '@src/components/Background/Background'

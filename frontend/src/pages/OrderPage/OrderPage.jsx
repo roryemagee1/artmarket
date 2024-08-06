@@ -12,7 +12,7 @@ import {
   useDeliverOrderMutation, 
 } from '@src/slices/ordersApiSlice'
 
-import Message from '@src/components/Message'
+import Message from '@src/components/Message/Message'
 import Loader from '@src/components/Loader'
 
 import Background from '@src/components/Background/Background'

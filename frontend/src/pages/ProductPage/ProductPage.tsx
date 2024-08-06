@@ -9,7 +9,7 @@ import { addToCart } from '@src/slices/cartSlice';
 
 import Rating from '@src/components/Rating'
 import Loader from '@src/components/Loader'
-import Message from '@src/components/Message'
+import Message from '@src/components/Message/Message'
 import Meta from '@src/components/Meta'
 
 import Background from '@src/components/Background/Background'

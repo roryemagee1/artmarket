@@ -13,7 +13,7 @@ import Form from 'react-bootstrap/Form'
 
 import { addToCart, removeFromCart } from '@src/slices/cartSlice';
 
-import Message from '@src/components/Message'
+import Message from '@src/components/Message/Message'
 
 import Background from '@src/components/Background/Background'
 

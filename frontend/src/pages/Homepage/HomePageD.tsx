@@ -8,7 +8,7 @@ import { useGetProductsQuery } from '../slices/productsApiSlice';
 
 import Product from '@src/components/Product/Product'
 import Loader from '@src/components/Loader'
-import Message from '@src/components/Message'
+import Message from '@src/components/Message/Message'
 import Paginate from '@src/components/Paginate'
 import ProductCarousel from '@src/components/ProductCarousel'
 import Meta from '@src/components/Meta'

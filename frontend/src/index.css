@@ -14,6 +14,9 @@
   /* Colors */
   --button-blue: #007bff;
   --banner-dark: #222529;
+  --danger-red: #fa055b;
+  --info-blue: #d6f3fb;
+  --success-green: #03fc2c;
   --background-white: rgba(255, 255, 255, 90%);
   --card-color: white;
   --card-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);

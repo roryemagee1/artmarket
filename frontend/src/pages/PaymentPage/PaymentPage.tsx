@@ -8,7 +8,7 @@ import { savePaymentMethod } from '@src/slices/cartSlice';
 import FormContainer from '@src/components/FormContainer/FormContainer'
 import CheckoutSteps from '@src/components/CheckoutSteps/CheckoutSteps'
 
-import Message from '@src/components/Message'
+import Message from '@src/components/Message/Message'
 import Background from '@src/components/Background/Background'
 
 import type { RootState } from '@src/store'

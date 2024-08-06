@@ -11,7 +11,7 @@ import {
 } from '@src/slices/productsApiSlice'
 
 import Loader from '@src/components/Loader'
-import Message from '@src/components/Message'
+import Message from '@src/components/Message/Message'
 import Paginate from '@src/components/Paginate'
 
 import Background from '@src/components/Background/Background'

@@ -1,5 +1,5 @@
 import { JSX } from 'react'
-import { Alert } from 'react-bootstrap'
+import './Message.css'
 
 interface IMessage {
   variant: string;
@@ -25,8 +25,8 @@ export default function Message({ variant="info", children, evalBool=false }: IM
   }
 
   return (
-    <Alert variant={variant}>
+    <div className={`alert ${variant}`}>
       {evalBool ? output : children}
-    </Alert>
+    </div>
   )
 }

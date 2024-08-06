@@ -15,7 +15,7 @@ import { setCredentials } from '@src/slices/authSlice'
 import { useGetMyOrdersQuery } from '@src/slices/ordersApiSlice'
 
 import Loader from '@src/components/Loader'
-import Message from '@src/components/Message'
+import Message from '@src/components/Message/Message'
 
 import Background from '@src/components/Background/Background'
 

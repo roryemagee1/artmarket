@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel'
 import Image from 'react-bootstrap/Image'
 
-import Message from '@src/components/Message'
+import Message from '@src/components/Message/Message'
 
 import { useGetTopProductsQuery } from '@src/slices/productsApiSlice'
 
