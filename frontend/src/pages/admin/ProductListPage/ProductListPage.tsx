@@ -12,7 +12,7 @@ import {
 
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message/Message'
-import Paginate from '@src/components/Paginate'
+import Paginate from '@src/components/Paginate/Paginate'
 
 import Background from '@src/components/Background/Background'
 

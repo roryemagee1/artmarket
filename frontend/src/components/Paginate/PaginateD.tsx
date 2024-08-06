@@ -1,5 +1,6 @@
 import { JSX } from 'react'
 import { Link } from 'react-router-dom'
+import './Paginate.css'
 
 import Pagination from 'react-bootstrap/Pagination'
 
@@ -11,7 +12,7 @@ interface IPage {
 }
 
 export default function Paginate({ pages, page, isAdmin=false, keyword="" }: IPage): JSX.Element {
-  
+  console.log([...Array(pages).keys()]);
   return (
     <>
       {
