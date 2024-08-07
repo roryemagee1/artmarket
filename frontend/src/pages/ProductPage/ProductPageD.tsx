@@ -14,7 +14,7 @@ import Form from 'react-bootstrap/Form'
 import { useGetProductsDetailsQuery, useCreateReviewMutation } from '@src/slices/productsApiSlice';
 import { addToCart } from '@src/slices/cartSlice';
 
-import Rating from '@src/components/Rating'
+import Rating from '@src/components/Rating/Rating'
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message/Message'
 import Meta from '@src/components/Meta'

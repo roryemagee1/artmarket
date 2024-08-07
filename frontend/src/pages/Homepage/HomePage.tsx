@@ -2,11 +2,9 @@ import { JSX, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import './HomePage.css'
 
-// import Row from 'react-bootstrap/Row'
-
 import { useGetProductsQuery } from '../../slices/productsApiSlice';
 
-import ProductCarousel from '@src/components/ProductCarousel'
+import ProductCarousel from '@src/components/ProductCarousel/ProductCarousel'
 import Meta from '@src/components/Meta'
 
 import Background from '@src/components/Background/Background'

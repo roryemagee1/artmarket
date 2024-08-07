@@ -43,6 +43,7 @@
 .cart-icon-container > div > p {
   margin: 0 5px;
   text-align: center;
+  color: white;
 }
 
 .cart-icon {
@@ -104,7 +105,7 @@
 
   .drawer-menu {
     position: absolute;
-    top: 13vh;
+    top: 10vh;
     left: 0;
     z-index: 102;
     width: 100vw;

@@ -129,7 +129,7 @@ export default function PlaceOrder(): JSX.Element {
                 onClick={() => handlePlaceOrder()}
               >Place Order
               </button>
-                {isLoading && <Loader />}
+                {isLoading && <Loader width="30vw" />}
             </div>
           </section>
         </div>

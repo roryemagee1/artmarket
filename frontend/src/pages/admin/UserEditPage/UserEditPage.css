@@ -10,6 +10,10 @@
   margin: 10px 0;
 }
 
+.back-button {
+  margin: 20px 0 5px 0;
+}
+
 .edit-user-styling {
   padding: 20px 10px;
   margin: 1rem 0 0 0;
@@ -44,8 +48,16 @@
   border-radius: 5px;
   margin: 5px 0;
   padding: 10px;
-  height: 40px;
+  height: 30px;
   min-width: 200px;
+}
+
+.edit-user-styling > form > div > label {
+  color: black;
+}
+
+.edit-user-styling > form > div > div > label {
+  color: black;
 }
 
 @media (width > 1200px) {
@@ -59,7 +71,12 @@
     padding: 20px 10vw;
   }
 
-  .back-button, .update-button {
+  .update-button {
     width: 100%;
+  }
+
+  .back-button {
+    width: 90%;
+    margin: 10px 0 0 5%;
   }
 }

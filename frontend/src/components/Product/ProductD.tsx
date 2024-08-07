@@ -2,7 +2,7 @@ import { JSX } from 'react'
 import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 
-import Rating from '@src/components/Rating'
+import Rating from '@src/components/Rating/Rating'
 
 import { IProduct } from '@src/types/interfaces'
 

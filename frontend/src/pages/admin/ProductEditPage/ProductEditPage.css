@@ -45,8 +45,12 @@
   border-radius: 5px;
   margin: 5px 0;
   padding: 10px;
-  height: 50px;
+  height: 30px;
   min-width: 200px;
+}
+
+.edit-product-styling > form > div > label {
+  color: black;
 }
 
 .edit-product-styling > form > div > textarea {
@@ -72,6 +76,12 @@
   }
 
   .back-button, .update-button {
-    width: 100%;
+    width: 90%;
+    padding: 5%;
+  }
+
+  .product-edit-list-container > button {
+    width: 90%;
+    margin: 10px 5% 0 5%;
   }
 }

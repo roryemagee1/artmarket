@@ -11,15 +11,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 550;
+
   /* Colors */
   --button-blue: #007bff;
   --banner-dark: #222529;
-  --danger-red: #fa055b;
+  --danger-red: red;
   --info-blue: #d6f3fb;
   --success-green: #03fc2c;
   --background-white: rgba(255, 255, 255, 90%);
   --card-color: white;
   --card-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
 }
 
 .text-white {
@@ -43,7 +47,9 @@
   border: 0;
   padding: 0 10px;
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: 550;
+  font-size: 16px;
 }
 
 .anchor-margin {
@@ -62,6 +68,7 @@ body {
 
 p {
   margin: 0;
+  color: black;
 }
 
 ol {
@@ -73,9 +80,13 @@ ol {
 h1 {
   margin: 0 10px 0 10px;
   font-size: 35px;
+  color: black;
 }
 
-
+h2 {
+  color: black;
+  margin: 0;
+}
 
 .details-button {
   background-color: darkgrey;
@@ -92,6 +103,7 @@ h1 {
 table {
   border: 1px solid gainsboro;
   border-radius: 5px;
+  color: black;
 }
 
 th {
@@ -106,7 +118,9 @@ tr:nth-child(even) {
   background-color: white;
 }
 
-/*
+
+
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -122,14 +136,9 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
+/*
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -148,16 +157,4 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
+*/

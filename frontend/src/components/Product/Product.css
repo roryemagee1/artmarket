@@ -9,8 +9,16 @@
 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-
+  
   background-color: rgba(255, 255, 255, 95%);
+
+
+  box-sizing: border-box;
+ }
+
+ .masonry-item > h3 {
+  color: black;
+  margin: 0;
  }
 
  .masonry-image {

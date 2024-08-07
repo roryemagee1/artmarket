@@ -85,7 +85,7 @@ export default function ProductListPage(): JSX.Element {
         <div>
           { createProductLoading && <Loader size="20px" display="" /> }
           <button 
-            className="edit-button"
+            className="create-product-button"
             onClick={handleCreateProduct}
           ><FaEdit /> Create Product
           </button>

@@ -2,7 +2,7 @@ import { JSX } from 'react'
 import { Link } from 'react-router-dom'
 import './Product.css'
 
-import Rating from '@src/components/Rating'
+import Rating from '@src/components/Rating/Rating'
 
 import { handleResetWindow } from '@src/utils/miscUtils'
 

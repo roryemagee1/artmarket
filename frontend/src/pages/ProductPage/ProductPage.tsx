@@ -7,7 +7,7 @@ import './ProductPage.css'
 import { useGetProductsDetailsQuery, useCreateReviewMutation } from '@src/slices/productsApiSlice';
 import { addToCart } from '@src/slices/cartSlice';
 
-import Rating from '@src/components/Rating'
+import Rating from '@src/components/Rating/Rating'
 import Loader from '@src/components/Loader'
 import Message from '@src/components/Message/Message'
 import Meta from '@src/components/Meta'
@@ -69,12 +69,12 @@ export default function ProductPage(): JSX.Element {
     <>
       <Meta title={data?.name} description={data?.description} />
       <Background variant="museum" whiteBackground={true} />
-      <button 
-        className="back-button" 
-        onClick={() => navigate("/")}
-      >Back
-      </button>
       <section className="product-page-container">
+        <button 
+          className="back-button" 
+          onClick={() => navigate("/")}
+        >Back
+        </button>
         { 
           isLoading ? 
             <Loader /> : 
@@ -157,7 +157,7 @@ export default function ProductPage(): JSX.Element {
                 {
                   data.reviews.map((review: IReviewKeys) => (
                     <div className="review" key={review._id}>
-                      <strong>{review.name}</strong>
+                      <p><strong>{review.name}</strong></p>
                       <Rating rating={review.rating} text="" />
                       <p>{review.createdAt.substring(0, 10)}</p>
                       <p>{review.comment}</p>
@@ -177,7 +177,7 @@ export default function ProductPage(): JSX.Element {
                             id={reviewId + "-rating"}
                             onChange={(event) => setRating(Number(event.target.value))}
                           >
-                            <option value="" disabled>Select...</option>
+                            <option selected={true} value="" disabled>Select...</option>
                             <option value="1">1 - Bad</option>
                             <option value="2">2 - Poor</option>
                             <option value="3">3 - Fair</option>

@@ -1,7 +1,10 @@
 .alert {
-  width: 100%;
+  width: 95%;
   border: 1px solid gainsboro;
   border-radius: 5px;
+
+  padding: 10px 2%;
+  color: black;
 }
 
 .info {

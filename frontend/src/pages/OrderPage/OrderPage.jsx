@@ -101,7 +101,7 @@ export default function OrderPage() {
   }
 
   return (
-    <>
+    <section className="order-container">
       <Background variant="museum" whiteBackground={true} />
       {
         isOrderLoading ? (
@@ -109,53 +109,51 @@ export default function OrderPage() {
         ) : error ? (
           <Message variant="danger">{error?.data?.message || error?.error}</Message>
         ) : (
-          <section className="order-container">
+          <>
             <h3>Order ID: {order._id}</h3>  
             <div className="order-area">
               <section className="order-information">
-                <ol>
-                  <li>
-                    <h2>Payment Method</h2>
-                    <p>
-                      <strong>Method: </strong>
-                      {order.paymentMethod === "paypal" ? "PayPal" : "Other"}
-                    </p>
-                    { 
-                      order.isPaid ? (
-                        <Message variant="success">
-                          {`Paid on ${order.paidAt}`}
-                        </Message>
-                      ) : (
-                        <Message variant="danger">
-                          Not Paid
-                        </Message>
-                      ) 
-                    }
-                  </li>
-                  <li>
-                    <h2>Shipping</h2>
-                    <p>
-                      <strong>Name: </strong> {order.user.name}
-                    </p>
-                    <p>
-                      <strong>Email: </strong> {order.user.email}
-                    </p>
-                    <p>
-                      <strong>Address: </strong> {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.postalCode}, {order.shippingAddress.country}
-                    </p>
-                    { 
-                      order.isDelivered ? (
-                        <Message variant="success">
-                          {`Delivered on ${order.deliveredAt}`}
-                        </Message>
-                      ) : (
-                        <Message variant="danger">
-                          Not Delivered
-                        </Message>
-                      ) 
-                    }
-                  </li>
-                </ol>
+                <div>
+                  <h2>Payment Method</h2>
+                  <p>
+                    <strong>Method: </strong>
+                    {order.paymentMethod === "paypal" ? "PayPal" : "Other"}
+                  </p>
+                  { 
+                    order.isPaid ? (
+                      <Message variant="success">
+                        {`Paid on ${order.paidAt}`}
+                      </Message>
+                    ) : (
+                      <Message variant="danger">
+                        Not Paid
+                      </Message>
+                    ) 
+                  }
+                </div>
+                <div>
+                  <h2>Shipping</h2>
+                  <p>
+                    <strong>Name: </strong> {order.user.name}
+                  </p>
+                  <p>
+                    <strong>Email: </strong> {order.user.email}
+                  </p>
+                  <p>
+                    <strong>Address: </strong> {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.postalCode}, {order.shippingAddress.country}
+                  </p>
+                  { 
+                    order.isDelivered ? (
+                      <Message variant="success">
+                        {`Delivered on ${order.deliveredAt}`}
+                      </Message>
+                    ) : (
+                      <Message variant="danger">
+                        Not Delivered
+                      </Message>
+                    ) 
+                  }
+                </div>
               </section>
               <section className="order-summary">
                 <div className="order-summary-box">
@@ -179,9 +177,9 @@ export default function OrderPage() {
                   { 
                     !order.isPaid && (
                       <>
-                        { payLoading && <Loader /> }
-                      
-                        { isPending ? <Loader /> : (
+                        { payLoading && <Loader width="30vw" /> }
+                        
+                        { isPending ? <Loader width="30vw" /> : (
                           <div>
                             <div>
                               <PayPalButtons 
@@ -197,8 +195,8 @@ export default function OrderPage() {
                     )
                   }
 
-                  { deliverLoading && <Loader /> }
-
+                  { deliverLoading && <Loader  width="30vw" /> }
+                  
                   { 
                     userInfo && userInfo.data.isAdmin && order.isPaid && !order.isDelivered && (
                       <button
@@ -240,9 +238,9 @@ export default function OrderPage() {
                 }
               </ol>
             </section>
-          </section>
+          </>
         )
       }
-    </>
+    </section>
   )
 }

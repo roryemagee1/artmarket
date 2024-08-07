@@ -3,6 +3,13 @@
 
   display: flex;
   flex-direction: column;
+
+  padding: 10px 0;
+}
+
+.order-container > h3 {
+  color: black;
+  margin: 10px;
 }
 
 .order-area {
@@ -16,7 +23,7 @@
   padding: 0 1rem 0 0;
 }
 
-.order-information > ol > li {
+.order-information > div {
   border: solid lightgrey 1px;
   border-radius: 5px;
   padding: 20px;
@@ -24,13 +31,13 @@
   background-color: var(--card-color);
 }
 
-.order-information > ol > li > span {
+.order-information > div > span {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.order-information > ol > li > span > p {
+.order-information > div > span > p {
   width: 70px;
   text-align: center;
 }
@@ -46,6 +53,8 @@
   border: 5px;
   border-radius: 5px;
   padding: 5px 10px;
+
+  height: 40px;
 }
 
 .order-summary-box {
@@ -88,6 +97,8 @@
   padding: 5px;
 
   background-color: var(--card-color);
+
+  box-shadow: var(--card-box-shadow);
 }
 
 .order-items > ol > li > span {

@@ -6,8 +6,8 @@
 }
 
 .shopping-cart {
-  min-height: 70vh;
-  width: 59vw;
+  min-height: 70.7vh;
+  width: 50vw;
 
   padding: 1rem;
 }
@@ -26,6 +26,9 @@
   background-color: var(--card-color);
 
   width: 100%;
+
+  /* margin: 1rem 0 0 0; */
+  /* box-shadow: var(--card-box-shadow); */
 }
 
 .shopping-cart > ol > li > span {
@@ -40,8 +43,8 @@
 }
 
 .checkout {
-  min-height: 70vh;
-  width: 29vw;
+  min-height: 70.7vh;
+  width: 30vw;
 
   padding: 1rem;
 }
@@ -108,6 +111,7 @@
 @media (max-width: 768px) {
   .cart-container {
     display: block;
+    height: 75.7vh;
     width: 100%;
   }
 

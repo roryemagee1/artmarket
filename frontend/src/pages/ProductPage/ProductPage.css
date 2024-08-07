@@ -11,15 +11,18 @@
   height: 100%;
 
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 
 .canvas-box {
-  min-width: 40vw;
+  width: 50vw;
+  height: 50vw;
 }
 
 .canvas-image {
-  max-width: 100%;
+  max-width: 50%;
 }
 
 .details-area {
@@ -56,6 +59,10 @@
   margin: 8px 0;
 }
 
+.info-box > div > h3 {
+  color: black;
+}
+
 .add-item-box > div > hr {
   margin: 8px 0;
 }
@@ -67,6 +74,10 @@
 
 .add-item-box-entry > p, button, label, select {
   margin: 5px 10px;
+}
+
+.add-item-box-entry > label {
+  color: black;
 }
 
 .add-item-box-entry > select {
@@ -151,6 +162,9 @@
   padding: 10px;
   height: 120px;
   min-width: 200px;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 550;
 }
 
 .write-review-styling > form > div > select {
@@ -161,6 +175,10 @@
   margin: 5px 0;
   padding: 10px;
   min-width: 200px;
+}
+
+.write-review-styling > form > div > label {
+  color: black;
 }
 
 .write-review-button {
@@ -181,23 +199,41 @@
 }
 
 @media (min-width: 1200px) {
-  .details-area {
+  /* .details-area {
     flex-direction: row;
     max-width: none;
   }
 
   .info-box {
     margin: 0 10px;
+  } */
+
+
+  .canvas-box {
+    width: 50vw;
+    height: 70vh;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .product-page-container {
     display: block;
   }
 
   .product-container {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .product-page-container > button {
+    width: 90%;
+    margin: 10px 5%;
+  }
+
+  .canvas-box {
+    width: 90vw;
+    height: 90vw;
   }
 
   .details-area {
@@ -208,11 +244,6 @@
 
   .info-box {
     margin: 0px;
-  }
-
-  .back-button {
-    width: 100%;
-    
   }
 
   .add-item-button {

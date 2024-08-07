@@ -53,7 +53,7 @@ export default function Paginate({ pages, page, isAdmin=false, keyword="" }: IPa
     )
 
   const pageList = [...Array(pages).keys()].map((pageNum) => {
-    if (pageNum > page - 4 && pageNum < page + 4) {
+    if (pageNum > page - 5 && pageNum < page + 4) {
       return (
         <div key={pageNum + 1} className="page-tile">
           <NavLink 
@@ -89,7 +89,6 @@ export default function Paginate({ pages, page, isAdmin=false, keyword="" }: IPa
       </Link>
     </div>
   )
-
 
   return (
     <>
