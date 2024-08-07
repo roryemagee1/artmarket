@@ -12,10 +12,10 @@ import { useGetTopProductsQuery } from '@src/slices/productsApiSlice'
 
 import { IProductKeys } from '@src/types/interfaces'
 
-const AutoplaySlider = withAutoplay(AwesomeSlider)
+const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 export default function ProductCarousel(): JSX.Element {
-  const { data: products, error } = useGetTopProductsQuery(null);
+  const { data: products, error } = useGetTopProductsQuery({num: 4});
   
   return (
     <>

@@ -17,7 +17,7 @@ router.route('/')
   .get(getProducts)
   .post(protect, admin, createProduct);
 
-router.route('/top')
+router.route('/top/:num')
   .get(getTopProducts);
 
 router.route('/:id')
