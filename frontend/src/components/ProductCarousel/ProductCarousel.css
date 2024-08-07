@@ -17,7 +17,7 @@
 
 .carousel-caption > h2 {
   position: absolute;
-  top: calc(90% - 15px);
+  top: calc(90% - 35px);
   left: 0;
 
   background-color: white;
@@ -26,6 +26,12 @@
 
   border: 2px solid black;
   border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .carousel-caption > h2 {
+    font-size: 0.85rem;
+  }
 }
 
 .awssld {
@@ -44,6 +50,6 @@
   --organic-arrow-color: #6a6a6a;
   --organic-arrow-border-radius: 0;
   --control-bullet-color: white;
-  --control-bullet-active-color: grey;
+  --control-bullet-active-color: silver;
   --content-background-color: #2f2f2f; }
 
