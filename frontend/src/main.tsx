@@ -6,9 +6,6 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { HelmetProvider } from 'react-helmet-async'
 import store from './store';
 
-// import 'bootstrap/dist/css/bootstrap.min.css'
-// import '@src/assets/styles/bootstrap.custom.css'
-// import '@src/assets/styles/index.css'
 import './index.css'
 
 import App from '@src/App.tsx'
@@ -37,8 +34,6 @@ const router = createBrowserRouter(
       <Route index element={ <HomePage /> } />
       <Route path="/search" element={ <HomePage /> } />
       <Route path="/search/:keyword" element={ <HomePage /> } />
-      {/* <Route path="/page/:pageNumber" element={ <HomePage /> } /> */}
-      {/* <Route path="/search/:keyword/page/:pageNumber" element={ <HomePage /> } /> */}
       <Route path="/product/:id" element={ <ProductPage /> } />
       <Route path="/cart" element={ <CartPage /> } />
       <Route path="/login" element={ <LoginPage /> } />
