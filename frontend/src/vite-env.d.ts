@@ -21,3 +21,5 @@ declare module "*.webp" {
 }
 
 declare module "react-dom/client";
+
+declare module "react-awesome-slider/dist/autoplay"

@@ -1,10 +1,10 @@
 import { JSX } from 'react'
 import { Link } from 'react-router-dom'
-// import Carousel from 'react-multi-carousel'
-// import 'react-multi-carousel/lib/styles.css'
-
-// import Carousel from 'react-bootstrap/Carousel'
-// import Image from 'react-bootstrap/Image'
+import AwesomeSlider from 'react-awesome-slider'
+import withAutoplay from 'react-awesome-slider/dist/autoplay'
+import 'react-awesome-slider/dist/styles.css'
+import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+import './ProductCarousel.css'
 
 import Message from '@src/components/Message/Message'
 
@@ -12,77 +12,42 @@ import { useGetTopProductsQuery } from '@src/slices/productsApiSlice'
 
 import { IProductKeys } from '@src/types/interfaces'
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
-};
+const AutoplaySlider = withAutoplay(AwesomeSlider)
 
 export default function ProductCarousel(): JSX.Element {
   const { data: products, error } = useGetTopProductsQuery(null);
   
   return (
-    // <>
-    //   {
-    //     error ? <Message variant="danger" evalBool={false}>{`${error}`}</Message> :
-    //     (
-    //       <Carousel pause="hover" className="bg-primary mb-4">
-    //         {
-    //           products?.map((product: IProductKeys) => (
-    //             <Carousel.Item key={product._id}>
-    //               <Link to={`/product/${product._id}`}>
-    //                 <Image src={product.image} alt={product.name} fluid />
-    //                 <Carousel.Caption className="carousel-captions">
-    //                   <h2>
-    //                     {product.name} (${product.price})
-    //                   </h2>
-    //                 </Carousel.Caption>
-    //               </Link>
-    //             </Carousel.Item>
-    //           ))
-    //         }
-    //       </Carousel>
-    //     )
-    //   }
-    // </>
     <>
-      {/* {
+      {
         error ? 
         <Message variant="danger" evalBool={false}>{`${error}`}</Message> :
         ( 
-          <Carousel responsive={responsive}>
-            {
-              products?.map((product: IProductKeys) => (
-                <div key={product._id}>
-                  <Link to={`/product/${product._id}`}>
-                    <img src={product.image} alt={product.name} />
-                    <div className="carousel-captions">
+          <div className="carousel-container">
+            <AutoplaySlider
+              play={true}
+              cancelOnInteraction={true}
+              interval={8000}
+              animation="cubeAnimation"
+            >
+              {
+                products?.map((product: IProductKeys) => (
+                  <div key={product._id} className="carousel-card">
+                    <Link to={`/product/${product._id}`}>
+                    <div className="carousel-caption">
+                      <img className="carousel-image" src={product.image} alt={product.name} />
                       <h2>
                         {product.name} (${product.price})
                       </h2>
-                    </div>
-                  </Link>
-                </div>
-              ))
-            }
-          </Carousel>
+                      </div>
+                    </Link>
+                  </div>
+                ))
+              }
+            </AutoplaySlider>
+          </div>
         )
-      } */}
-      <h1>Test</h1>
+      }
     </>
   )
 }
