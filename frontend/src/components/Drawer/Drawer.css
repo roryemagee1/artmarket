@@ -18,12 +18,6 @@
   width: 150px;
 }
 
-@media (max-width: 768px) {
-  .header-nav-wide {
-    display: none;
-  }
-}
-
 .cart-icon-container {
   display: flex;
   align-items: center;
@@ -80,12 +74,23 @@
 }
 
 .login-text {
-  width: 100px;
+  min-width: 120px;
   margin: 0 5px;
 }
 
 .header-nav-narrow {
   display: none;
+}
+
+.text-button {
+  min-width: 120px;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .header-nav-wide {
+    display: none;
+  }
 }
 
 @media (min-width: 767px) {

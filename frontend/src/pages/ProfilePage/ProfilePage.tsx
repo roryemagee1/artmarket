@@ -128,14 +128,14 @@ export default function ProfilePage(): JSX.Element {
               disabled={ updateProfileLoading }
             >Update
             </button>
-            { updateProfileLoading && <Loader /> }
+            { updateProfileLoading && <Loader width="25vw" /> }
             { updateProfileError && <Message evalBool={false} variant="danger">An Error has occurred.</Message> }
           </form>
         </section>
         <section className="orders-table">
           <h2>My Orders</h2>
           { myOrdersLoading ? 
-            <Loader /> : 
+            <Loader width="60vw" /> : 
             myOrdersError ?
             <Message evalBool={false} variant="danger">Error loading orders.</Message> : (
               <table>

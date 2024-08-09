@@ -46,14 +46,14 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
           </div>
         ) : (
           <>
-          <button className="text-button text-grey" onClick={() => setIsMenuOpen((prevState) => !prevState)}>
-            {userInfo.data.name}
-            { 
-              isMenuOpen ? 
-              <GoTriangleUp /> :
-              <GoTriangleDown />
-            }
-          </button>
+            <button className="text-button text-grey" onClick={() => setIsMenuOpen((prevState) => !prevState)}>
+              {userInfo.data.name}
+              { 
+                isMenuOpen ? 
+                <GoTriangleUp /> :
+                <GoTriangleDown />
+              }
+            </button>
             {
               isMenuOpen && <aside className="aside-menu">
                 {
@@ -181,7 +181,7 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
                         </button>
                       </>
                     ) :
-                    userInfo && (
+                    userInfo ? (
                       <>
                         <Link 
                           className="no-decoration text-white hover-grey anchor-margin" 
@@ -194,6 +194,15 @@ export default function Drawer({ cartItems, userInfo, handleLogout }: IDrawer): 
                           onClick={handleLogout}
                         >Logout
                         </button>
+                      </>
+                    ) : (
+                      <>
+                        <Link 
+                          className="no-decoration text-white hover-grey anchor-margin" 
+                          to="/login"
+                          onClick={() => handleResetWindow()}
+                        ><FaUser/> Sign In
+                        </Link>
                       </>
                     )
                   }

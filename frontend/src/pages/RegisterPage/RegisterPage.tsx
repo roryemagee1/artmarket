@@ -129,7 +129,7 @@ export default function RegisterPage(): JSX.Element {
             Already a Customer? <Link to={ redirect ? `/login?redirect=${redirect}` : `/login`}>Login</Link>
           </p>
         </div>
-        { isLoading && <Loader width="100%" />}
+        { isLoading && <Loader width="40vw" />}
       </section>
     </>
   )

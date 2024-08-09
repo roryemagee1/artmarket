@@ -61,7 +61,7 @@ export default function LoginPage(): JSX.Element {
     <>
       <Background variant="museum" whiteBackground={false} />
       <section className="login-styling">
-        <h1>Create Account</h1>
+        <h1>Login</h1>
         <form>
           <div>
             <label htmlFor={id + "-email"}>Email Address</label>
@@ -103,7 +103,7 @@ export default function LoginPage(): JSX.Element {
             New Customer? <Link to={ redirect ? `/register?redirect=${redirect}` : `/register`}>Register</Link>
           </p>
         </div>
-        { isLoading && <Loader width="100%"/>}
+        { isLoading && <Loader width="40vw"/>}
       </section>
     </>
   )
