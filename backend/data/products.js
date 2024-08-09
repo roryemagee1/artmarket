@@ -839,7 +839,7 @@ const products = [
     "name": "Zinca",
     "image": "/images/pexels-steve-2942792.webp",
     "description": "Id aute aute ut eu consequat est labore sit incididunt consequat elit. Sit anim ullamco cillum eu in dolore ut qui laboris nulla culpa Lorem consequat ad. Officia Lorem cillum aliqua nostrud non ut cupidatat minim officia quis nulla. Et occaecat culpa dolor incididunt enim deserunt. Ut adipisicing consequat commodo ea culpa culpa est. Sint reprehenderit aliquip anim ullamco cupidatat incididunt ea nulla fugiat non aliqua cillum dolore Lorem.\r\n",
-    "artist": "Gwendolyn Hampton",
+    "artist": "Steve Johnson",
     "category": "Painting",
     "price": 1737.35,
     "countInStock": 1,
