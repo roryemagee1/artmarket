@@ -26,9 +26,6 @@
   background-color: var(--card-color);
 
   width: 100%;
-
-  /* margin: 1rem 0 0 0; */
-  /* box-shadow: var(--card-box-shadow); */
 }
 
 .shopping-cart > ol > li > span {

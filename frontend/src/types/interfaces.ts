@@ -9,7 +9,6 @@ export interface IProduct {
       countInStock: number;
       rating: number;
       numReviews: number;
-
       reviews?: [];
       createdAt?: string;
       updatedAt?: string;
