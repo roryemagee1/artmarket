@@ -94,6 +94,8 @@ export default function ProductPage(): JSX.Element {
                 <div>
                   <h3>{data?.name}</h3>
                   <hr />
+                  <p><strong>By {data?.artist}</strong></p>
+                  <hr />
                   <Rating rating={data?.rating} text={`${data?.numReviews} reviews`}/>
                   <hr />
                   <p>

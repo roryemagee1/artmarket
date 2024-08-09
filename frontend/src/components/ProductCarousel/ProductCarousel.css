@@ -34,6 +34,12 @@
   }
 }
 
+@media (min-width: 1200px) {
+  .carousel-container {
+    width: 1000px;
+  }
+}
+
 .awssld {
   --organic-arrow-thickness: 4px;
   --organic-arrow-height: 40px;
