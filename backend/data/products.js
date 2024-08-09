@@ -940,7 +940,7 @@ const products = [
     "description": "Labore excepteur et voluptate et aute ex nulla nulla non reprehenderit. Velit do elit nisi id nisi irure et mollit tempor dolore commodo anim fugiat proident. Sunt esse sint ipsum pariatur enim do nostrud veniam. Laboris magna nostrud magna ad.\r\n",
     "artist": "Steve Johnson",
     "category": "Painting",
-    "price": "$2,187.73",
+    "price": 2187.73,
     "countInStock": 6,
     "rating": 3.4,
     "numReview": 20
