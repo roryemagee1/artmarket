@@ -1,11 +1,15 @@
-import asyncHandler from '../middleware/asyncHandler.js';
-import Product from '../models/productModel.js';
+import asyncHandler from '../middleware/asyncHandler.js'
+import Product from '../models/productModel.js'
+import express from 'express'
+import path from 'path'
+import fs from 'fs'
 
 // @desc   Fetch all products
 // @routes GET /api/products
 // @access Public
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 8;
+  
+  const pageSize = 24;
   const page = Number(req.query.pageNumber) || 1;
 
   const keyword = req.query.keyword ? { name: { $regex: req.query.keyword, $options: "i" } } : {};
@@ -50,8 +54,8 @@ const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
     user: req.user._id,
     name: "Sample name",
-    image: "/images/sample.jpg",
-    brand: "Sample brand",
+    image: "/images/sample.webp",
+    artist: "Sample artist",
     category: "Sample category",
     description: "Sample description",
     price: 0,
@@ -75,7 +79,7 @@ const updateProduct = asyncHandler(async (req, res) => {
   const {  
     name, 
     image, 
-    brand, 
+    artist, 
     category, 
     description, 
     price, 
@@ -90,7 +94,7 @@ const updateProduct = asyncHandler(async (req, res) => {
   } else {
     product.name = name;
     product.image = image;
-    product.brand = brand;
+    product.artist = artist;
     product.category = category;
     product.description = description;
     product.price = price;
@@ -114,6 +118,14 @@ const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
   if (product) {
+    const __dirname = path.resolve();
+    const removalPath = path.join(__dirname, product.image)
+    try {
+      fs.unlinkSync(removalPath);
+      console.log("File removed successfully: ", removalPath);
+    } catch (err) {
+      console.error(err);
+    }
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json({
       message: "Product deleted!",
@@ -133,13 +145,8 @@ const createProductReview = asyncHandler(async (req, res) => {
 
   if (product) {
     const alreadyReviewed = product.reviews.find((review) => (
-      review.user.toString() = req.user._id.toString()
+      review.user.toString() === req.user._id.toString()
     ));
-
-    if (alreadyReviewed) {
-      res.status(400);
-      throw new Error("Product already reviewed by user.");
-    }
 
     const review = {
       name: req.user.name,
@@ -148,16 +155,29 @@ const createProductReview = asyncHandler(async (req, res) => {
       user: req.user._id,
     }
 
-    product.reviews.push(review);
+    if (alreadyReviewed) {
+      const updatedReviews = product.reviews.filter((review) => (
+        review.user.toString() !== req.user._id.toString()
+      ));
+      product.reviews = updatedReviews;
+      product.reviews.push(review);
+      product.rating = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length;
+      await product.save();
+      res.status(201).json({
+        message: "Review updated!",
+      })
+    } else {
+      product.reviews.push(review);
 
-    product.numReviews = product.reviews.length;
+      product.numReviews = product.reviews.length;
 
-    product.rating = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length;
+      product.rating = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length;
 
-    await product.save();
-    res.status(201).json({
-      message: "Review added!",
-    });
+      await product.save();
+      res.status(201).json({
+        message: "Review added!",
+      });
+    }
   } else {
     res.status(404);
     throw new Error("Review submission failed.");
@@ -165,13 +185,15 @@ const createProductReview = asyncHandler(async (req, res) => {
 })
 
 // @desc   Get top rated products.
-// @routes GET /api/products/top
+// @routes GET /api/products/top/:number
 // @access Public
 const getTopProducts = asyncHandler(async (req, res) => {
+  const num = req.params.num;
+  
   const products = await Product
     .find({})
     .sort({ rating: -1 })
-    .limit(3);
+    .limit(num);
   if (products) {
     res.status(200).json(products);
   } else {

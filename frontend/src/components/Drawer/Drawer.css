@@ -1,0 +1,142 @@
+.header-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.header-nav-wide {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.header-nav-wide > button {
+  width: 150px;
+}
+
+.cart-icon-container {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.cart-icon-container > div {
+  width: 25px;
+  background-color: #28A745;
+  border-radius: 20px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-icon-container > div > p {
+  margin: 0 5px;
+  text-align: center;
+  color: white;
+}
+
+.cart-icon {
+  margin: 0 5px;
+}
+
+.aside-menu {
+  position: absolute;
+  top: 8vh;
+  left: calc(100vw - 160px);
+  z-index: 102;
+
+  background-color: white;
+  border-radius: 5px;
+  border: 0.5px solid lightgrey;
+}
+
+.aside-menu > div { 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px;
+}
+
+.hover-gainsboro:hover {
+  background-color: gainsboro;
+  border-radius: 5px;
+}
+
+.hover-grey:hover {
+  background-color: grey;
+  border-radius: 5px;
+}
+
+.login-text {
+  min-width: 120px;
+  margin: 0 5px;
+}
+
+.header-nav-narrow {
+  display: none;
+}
+
+.text-button {
+  min-width: 120px;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .header-nav-wide {
+    display: none;
+  }
+}
+
+@media (min-width: 767px) {
+  .drawer-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-nav-narrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .drawer-menu {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    z-index: 102;
+    width: 100vw;
+    background-color: var(--banner-dark);
+  }
+  
+  .drawer-menu > div { 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 15px 0;
+  }
+
+  .drawer-menu > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .drawer-menu > div {
+    margin: 0 35px 0 0;
+  }
+}

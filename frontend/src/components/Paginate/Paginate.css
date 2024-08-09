@@ -1,0 +1,23 @@
+.active {
+  text-decoration: underline;
+}
+
+.page-tile {
+  min-width: 40px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  box-shadow: var(--card-box-shadow);
+  margin: 5px 1px;
+  font-size: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-nav {
+  display: flex;
+  flex-direction: row;
+}

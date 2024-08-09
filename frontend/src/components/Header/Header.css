@@ -1,0 +1,42 @@
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8vw;
+  width: 85vw;
+  height: 5.5rem;
+
+  background-color: var(--banner-dark);
+}
+
+.brand-box {
+  display: flex;
+  align-items: center;
+  margin: 0 20px 0 0;
+}
+
+.brand-box > h1 {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  
+  margin: 0;
+}
+
+.brand-box > img {
+  height: 5rem;
+  margin: -5px 8px;
+}
+
+header {
+  position: fixed;
+  z-index: 101;
+  
+  width: 100vw;
+}
+
+.header-spacer {
+  width: 100vw;
+  height: 5.5rem;
+}

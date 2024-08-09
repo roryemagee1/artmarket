@@ -1,0 +1,73 @@
+/* .test-class {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+} */
+
+/* .home-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-image: url('@src/assets/artExhibit.jpeg');
+  background-repeat: no-repeat;
+  background-size: 150vh;
+  background-size: cover;
+  background-position: 56% 50%;
+} */
+
+.masonry-container {
+  padding: 0 0 1rem 0;
+  
+  width: 100%;
+  column-count: 1;
+  gap: 8px;
+ }
+
+ /* @media (max-width: 2000px) {
+  .masonry-container {
+    column-count: 7;
+  }
+}
+
+ @media (max-width: 1700px) {
+  .masonry-container {
+    column-count: 6;
+  }
+} */
+
+ @media (width > 1200px) {
+  .masonry-container {
+    column-count: 5;
+  }
+}
+
+@media (max-width: 1200px) {
+  .masonry-container {
+    column-count: 4;
+  }
+}
+
+@media (max-width: 992px) {
+  .masonry-container {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .masonry-container {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 576px) {
+  .masonry-container {
+    column-count: 1;
+  }
+}
+
+ 

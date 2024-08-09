@@ -1,0 +1,20 @@
+.alert {
+  width: 95%;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+
+  padding: 10px 2%;
+  color: black;
+}
+
+.info {
+  background-color: var(--info-blue);
+}
+
+.success {
+  background-color: var(--success-green);
+}
+
+.danger {
+  background-color: var(--danger-red);
+}

@@ -1,0 +1,31 @@
+.rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rating > span {
+  color: black;
+
+  display: flex;
+}
+
+.star {
+  color: yellow;
+
+  filter: 
+    drop-shadow(-1px 1px 0px black) 
+    drop-shadow(1px -2px 0px black) 
+    drop-shadow(1px 1px 0px black)
+    drop-shadow(-1px 1px 0px black)
+}
+
+.empty-star {
+  color: black;
+}
+
+.rating-text {
+  text-align: center;
+  margin: 5px;
+}

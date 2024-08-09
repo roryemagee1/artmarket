@@ -1,0 +1,152 @@
+.cart-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+}
+
+.shopping-cart {
+  min-height: 70.7vh;
+  width: 50vw;
+
+  padding: 1rem;
+}
+
+.shopping-cart > ol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shopping-cart > ol > li {
+  border: solid lightgrey 1px;
+  border-radius: 5px;
+  padding: 5px;
+
+  background-color: var(--card-color);
+
+  width: 100%;
+}
+
+.shopping-cart > ol > li > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shopping-cart > ol > li > span > p {
+  text-align: center;
+  min-width: 70px;
+}
+
+.checkout {
+  min-height: 70.7vh;
+  width: 30vw;
+
+  padding: 1rem;
+}
+
+/* .cart-text {
+  width: 30vw;
+} */
+
+.cart-image > img {
+  width: 10vw;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.select-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  height: 20px;
+}
+
+.select-quantity > select {
+  background-color: white;
+  color: black;
+
+  height: 2rem;
+  width: 2rem;
+
+  margin: 0;
+
+  border-radius: 5px;
+
+}
+
+.trash-button, .checkout-button {
+  background-color: var(--button-blue);
+  border: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.trash-button {
+  background-color: red;
+}
+
+.checkout-box {
+  background-color: white;
+  border: solid lightgrey 1px;
+  border-radius: 5px;
+
+  padding: 1rem;
+}
+
+.checkout-box > div > span {
+  display: flex;
+  justify-content: space-around;
+}
+
+.checkout-box > div > span > p {
+  padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+  .cart-container {
+    /* display: block; */
+    height: 75.7vh;
+    width: 100%;
+
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .shopping-cart {
+    min-width: 85vw;
+    min-height: 0;
+  }
+
+  .checkout {
+    min-width: 85vw;
+    min-height: 0;
+  }
+
+  .checkout-button {
+    width: 95%;
+  }
+
+  .trash-button {
+    margin: 0;
+  }
+
+  .shopping-cart > ol > li > span > div {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .shopping-cart > ol > li > span > p {
+    text-align: center;
+    min-width: 0;
+  }
+
+  .shopping-cart > ol > li > span > div > select {
+    margin: 0 5px;
+  }
+}
+
+
+

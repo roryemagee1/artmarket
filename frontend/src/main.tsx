@@ -6,27 +6,24 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { HelmetProvider } from 'react-helmet-async'
 import store from './store';
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-// import '@src/assets/styles/bootstrap.custom.css'
-import '@src/assets/styles/index.css'
-// import './index.css'
+import './index.css'
 
 import App from '@src/App.tsx'
-import HomePage from '@src/pages/HomePage'
-import ProductPage from '@src/pages/ProductPage'
-import CartPage from '@src/pages/CartPage'
-import LoginPage from '@src/pages/LoginPage'
-import RegisterPage from '@src/pages/RegisterPage'
-import ShippingPage from '@src/pages/ShippingPage'
-import PaymentPage from '@src/pages/PaymentPage'
-import PlaceOrderPage from '@src/pages/PlaceOrderPage'
-import OrderPage from '@src/pages/OrderPage'
-import ProfilePage from '@src/pages/ProfilePage'
-import OrderListPage from '@src/pages/admin/OrderListPage'
-import ProductListPage from '@src/pages/admin/ProductListPage'
-import ProductEditPage from '@src/pages/admin/ProductEditPage'
-import UserListPage from '@src/pages/admin/UserListPage'
-import UserEditPage from '@src/pages/admin/UserEditPage'
+import HomePage from '@src/pages/HomePage/HomePage'
+import ProductPage from '@src/pages/ProductPage/ProductPage'
+import CartPage from '@src/pages/CartPage/CartPage'
+import LoginPage from '@src/pages/LoginPage/LoginPage'
+import RegisterPage from '@src/pages/RegisterPage/RegisterPage'
+import ShippingPage from '@src/pages/ShippingPage/ShippingPage'
+import PaymentPage from '@src/pages/PaymentPage/PaymentPage'
+import PlaceOrderPage from '@src/pages/PlaceOrderPage/PlaceOrderPage'
+import OrderPage from '@src/pages/OrderPage/OrderPage'
+import ProfilePage from '@src/pages/ProfilePage/ProfilePage'
+import OrderListPage from '@src/pages/admin/OrderListPage/OrderListPage'
+import ProductListPage from '@src/pages/admin/ProductListPage/ProductListPage'
+import ProductEditPage from '@src/pages/admin/ProductEditPage/ProductEditPage'
+import UserListPage from '@src/pages/admin/UserListPage/UserListPage'
+import UserEditPage from '@src/pages/admin/UserEditPage/UserEditPage'
 
 import PrivateRoute from '@src/components/PrivateRoute'
 import AdminRoute from '@src/components/AdminRoute'
@@ -37,8 +34,6 @@ const router = createBrowserRouter(
       <Route index element={ <HomePage /> } />
       <Route path="/search" element={ <HomePage /> } />
       <Route path="/search/:keyword" element={ <HomePage /> } />
-      <Route path="/page/:pageNumber" element={ <HomePage /> } />
-      <Route path="/search/:keyword/page/:pageNumber" element={ <HomePage /> } />
       <Route path="/product/:id" element={ <ProductPage /> } />
       <Route path="/cart" element={ <CartPage /> } />
       <Route path="/login" element={ <LoginPage /> } />

@@ -5,4 +5,21 @@ declare module "*.png" {
   export = value;
 }
 
+declare module "*.jpeg" {
+  const value: import('react').ImageSourcePropType;
+  export = value;
+}
+
+declare module "*.jpg" {
+  const value: import('react').ImageSourcePropType;
+  export = value;
+}
+
+declare module "*.webp" {
+  const value: import('react').ImageSourcePropType;
+  export = value;
+}
+
 declare module "react-dom/client";
+
+declare module "react-awesome-slider/dist/autoplay"

@@ -1,0 +1,27 @@
+.checkout-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 10px 10px 0;
+  max-width: 440px;
+  width: 100%;
+}
+
+.checkout-nav > svg {
+  color: black;
+}
+
+.checkout-link-active {
+  text-decoration: underline;
+}
+
+.checkout-link-inactive { 
+  color: grey;
+}
+
+@media (min-width: 768px) {
+  .checkout-nav {
+    margin: 0 10px 10px;
+  }
+}

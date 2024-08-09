@@ -1,0 +1,34 @@
+.masonry-item {
+  display: inline-block;
+  /* display: block; Looks funky */
+  width: 100%;
+
+  background-color: white;
+  padding: 20px 10px;
+  margin: 1rem 0 0 0;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  
+  background-color: rgba(255, 255, 255, 95%);
+
+
+  box-sizing: border-box;
+ }
+
+ .masonry-item-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ }
+
+ .masonry-item-heading > h3 {
+  color: black;
+  margin: 0;
+ }
+
+ .masonry-image {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+ }
