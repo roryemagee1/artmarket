@@ -12,7 +12,10 @@ export default function Product({ product }: IProduct): JSX.Element {
   return (
     <>
       <div className="masonry-item">
-        <h3>{product.name}</h3>
+        <div className="masonry-item-heading">
+          <h3>{product.name}</h3>
+          <h3>${product.price}</h3>
+        </div>
 
         <Link to={`/product/${product._id}`} onClick={() => handleResetWindow()}>
           <img className="masonry-image" src={product.image} />
@@ -20,8 +23,8 @@ export default function Product({ product }: IProduct): JSX.Element {
 
         <div>
           <Link to={`/product/${product._id}`} onClick={() => handleResetWindow()}>
-            <div className="product-title">
-              <strong>{product.name}</strong>
+            <div className="product-artist">
+              <strong>By {product.artist}</strong>
             </div>
           </Link>
 
@@ -30,10 +33,6 @@ export default function Product({ product }: IProduct): JSX.Element {
           </div>
 
         </div>
-
-        <h3>
-          ${product.price}
-        </h3>
 
       </div>
     </>

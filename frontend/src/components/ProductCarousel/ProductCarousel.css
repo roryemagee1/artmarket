@@ -53,7 +53,7 @@
   --control-button-background: transparent;
   --transition-bezier: cubic-bezier(0.5, 0.075, 0.25, 0.95);
   --slider-transition-duration: 575ms;
-  --organic-arrow-color: #6a6a6a;
+  --organic-arrow-color: white;
   --organic-arrow-border-radius: 0;
   --control-bullet-color: white;
   --control-bullet-active-color: silver;

@@ -16,7 +16,13 @@
   box-sizing: border-box;
  }
 
- .masonry-item > h3 {
+ .masonry-item-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ }
+
+ .masonry-item-heading > h3 {
   color: black;
   margin: 0;
  }
