@@ -518,7 +518,7 @@ const products = [
   },
   {
     "name": "Bugsall",
-    "image": "/images/frontend/public/images/pexels-merlin-11139214.webp",
+    "image": "/images/pexels-merlin-11139214.webp",
     "description": "Dolore quis dolore eiusmod do. Ullamco officia in duis in. Nulla nisi minim ex pariatur culpa consequat. Laboris veniam in laborum sit cillum eu magna. Aute exercitation nisi non ad. Cillum sit aute minim excepteur esse quis commodo. Laboris sint aliquip amet eu enim nostrud ullamco elit sit sit laborum.\r\n",
     "artist": "Merlin Lightpainting",
     "category": "Painting",
