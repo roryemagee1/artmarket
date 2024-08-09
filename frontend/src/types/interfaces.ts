@@ -3,8 +3,7 @@ export interface IProduct {
       _id: string;
       name: string;
       image: string;
-      description: string;
-      brand: string;
+      description: string;artist: string;
       category: string;
       price: number;
       countInStock: number;
@@ -24,7 +23,7 @@ export interface IProduct {
     name: string;
     image: string;
     description: string;
-    brand: string;
+    artist: string;
     category: string;
     price: number;
     countInStock: number;
@@ -59,7 +58,7 @@ export interface IProduct {
       name: string;
       image: string;
       description: string;
-      brand: string;
+      artist: string;
       category: string;
       price: number;
       countInStock: number;

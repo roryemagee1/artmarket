@@ -105,7 +105,7 @@ export default function ProductListPage(): JSX.Element {
                   <th>NAME</th>
                   <th>PRICE</th>
                   <th>CATEGORY</th>
-                  <th>BRAND</th>
+                  <th>ARTIST</th>
                   <th></th>
                 </tr>
               </thead>
@@ -117,7 +117,7 @@ export default function ProductListPage(): JSX.Element {
                       <td>{product.name}</td>
                       <td>{product.price}</td>
                       <td>{product.category}</td>
-                      <td>{product.brand}</td>
+                      <td>{product.artist}</td>
                       <td>
                         <button 
                           className="edit-button" 

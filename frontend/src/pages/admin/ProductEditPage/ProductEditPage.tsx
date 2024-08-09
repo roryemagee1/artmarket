@@ -22,7 +22,7 @@ export default function ProductEditPage(): JSX.Element {
   const [ name, setName ] = useState<string>("");
   const [ price, setPrice ] = useState<number>(0);
   const [ image, setImage ] = useState<string>("/images/sample.jpg");
-  const [ brand, setBrand ] = useState<string>("");
+  const [ artist, setArtist ] = useState<string>("");
   const [ category, setCategory ] = useState<string>("");
   const [ countInStock, setCountInStock ] = useState<number>(0);
   const [ description, setDescription ] = useState<string>("");
@@ -40,7 +40,7 @@ export default function ProductEditPage(): JSX.Element {
       setName(product.name);
       setPrice(product.price);
       setImage(product.image);
-      setBrand(product.brand);
+      setArtist(product.artist);
       setCategory(product.category);
       setCountInStock(product.countInStock);
       setDescription(product.description);
@@ -54,7 +54,7 @@ export default function ProductEditPage(): JSX.Element {
       name,
       price,
       image,
-      brand,
+      artist,
       category,
       countInStock,
       description
@@ -173,14 +173,14 @@ export default function ProductEditPage(): JSX.Element {
                 
 
                 <div>
-                  <label htmlFor={id + "-brand"}>Brand</label>
+                  <label htmlFor={id + "-artist"}>Artist</label>
                   <input
-                    id={id + "-brand"}
-                    name="brand"
+                    id={id + "-artist"}
+                    name="artist"
                     type="text"
-                    placeholder="Enter brand"
-                    value={brand}
-                    onChange={(event) => setBrand(event.target.value)}
+                    placeholder="Enter artist"
+                    value={artist}
+                    onChange={(event) => setArtist(event.target.value)}
                   >
                   </input>
                 </div>
