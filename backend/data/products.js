@@ -357,7 +357,7 @@ const products = [
     "description": "Cillum in cillum est proident incididunt minim enim dolore cupidatat magna voluptate pariatur deserunt. Voluptate occaecat anim ad deserunt deserunt dolor cillum quis pariatur elit. Dolor dolor aute enim sint magna enim eiusmod id minim deserunt et consectetur irure irure.\r\n",
     "artist": "Engin Akyurt",
     "category": "Painting",
-    "price": 2,350.04,
+    "price": 2350.04,
     "countInStock": 2,
     "rating": 2.3,
     "numReview": 18
