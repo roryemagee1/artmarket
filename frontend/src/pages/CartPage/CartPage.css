@@ -127,10 +127,16 @@
 
   .checkout-button {
     width: 95%;
+
+    color: white;
+    height: 40px;
   }
 
   .trash-button {
     margin: 0;
+
+    color: white;
+    height: 40px;
   }
 
   .shopping-cart > ol > li > span > div {

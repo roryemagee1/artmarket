@@ -53,6 +53,7 @@
   margin: 10px 0;
   width: 100px;
   height: 40px;
+  color: white;
 }
 
 @media (width > 1200px) {
@@ -73,5 +74,7 @@
 
   .shipping-form-button {
     width: 100%;
+    color: white;
+    height: 40px;
   }
 }

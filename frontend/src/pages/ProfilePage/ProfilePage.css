@@ -48,6 +48,7 @@
   padding: 5px 10px;
   margin: 10px 0;
   width: 100px;
+  color: white;
 }
 
 .details-button {
@@ -56,6 +57,7 @@
   border-radius: 5px;
   padding: 5px 10px;
   margin: 10px 0;
+  color: white;
 }
 
 .orders-table {
@@ -88,5 +90,7 @@
 
   .profile-form-button {
     width: 100%;
+    color: white;
+    height: 40px;
   }
 }

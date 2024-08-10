@@ -61,6 +61,8 @@
   margin: 10px;
   width: 100px;
   height: 35px;
+
+  color: white;
 }
 
 @media (width > 1200px) {
@@ -76,5 +78,8 @@
 
   .payment-form-button {
     width: 95%;
+
+    color: white;
+    height: 40px;
   }
 }
