@@ -103,7 +103,7 @@ export default function LoginPage(): JSX.Element {
             New Customer? <Link to={ redirect ? `/register?redirect=${redirect}` : `/register`}>Register</Link>
           </p>
         </div>
-        { isLoading && <Loader width="40vw"/>}
+        { isLoading && <Loader width="30vw" /> }
       </section>
     </>
   )

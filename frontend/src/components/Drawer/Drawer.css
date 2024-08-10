@@ -47,7 +47,7 @@
 .aside-menu {
   position: absolute;
   top: 8vh;
-  left: calc(100vw - 160px);
+  left: cakc(80vw + 50px);
   z-index: 102;
 
   background-color: white;
