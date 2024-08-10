@@ -60,15 +60,15 @@
 
 @media (width > 1200px) {
   .login-styling > form {
-    padding: 0 20vw;
+    padding: 0 25vw;
   }
 
   .login-styling > div {
-    padding: 0 20vw;
+    padding: 0 25vw;
   }
 
   .login-styling > h1 {
-    padding: 0 20vw;
+    padding: 0 25vw;
   }
 }
 
