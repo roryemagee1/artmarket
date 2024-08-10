@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { HelmetProvider } from 'react-helmet-async'
 import store from './store';
+
 import './index.css'
 
 import App from '@src/App.tsx'
