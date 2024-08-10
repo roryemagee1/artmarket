@@ -37,8 +37,9 @@ const cartSlice = createSlice({
       state.cartItems = [];
       return updateCart(state);
     },
-    resetCart: () => {
-      return initialState
+    resetCart: (state) => {
+      state = initialState
+      return state;
     },
   },
 });
