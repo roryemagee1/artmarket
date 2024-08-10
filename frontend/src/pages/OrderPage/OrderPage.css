@@ -53,6 +53,7 @@
   border: 5px;
   border-radius: 5px;
   padding: 5px 10px;
+  color: white;
 
   height: 40px;
 }
@@ -151,6 +152,9 @@
   .order-summary-button {
     width: 95%;
     padding: 0;
+
+    color: white;
+    height: 40px;
   }
 
   .order-items > ol > li > span {

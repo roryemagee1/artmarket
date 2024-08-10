@@ -9,6 +9,7 @@
   padding: 5px 10px;
   margin: 10px 0;
   width: 100px;
+  color: white;
 }
 
 .edit-product-styling {
@@ -78,10 +79,16 @@
   .back-button, .update-button {
     width: 90%;
     padding: 5%;
+
+    color: white;
+    height: 40px;
   }
 
   .product-edit-list-container > button {
     width: 90%;
     margin: 10px 5% 0 5%;
+
+    color: white;
+    height: 40px;
   }
 }
