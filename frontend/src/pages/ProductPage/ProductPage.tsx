@@ -48,20 +48,20 @@ export default function ProductPage(): JSX.Element {
       if (res?.error) {
         const dataObj = res?.error as { data: { message: string, stack: string }};
         message = dataObj.data.message as string;
-        console.log(dataObj);
         toast.error(`${message}`);
       } else {
-        const dataObj = res?.data as { data: { message: string }}
-        message = dataObj.data.message as string;
+        const dataObj = res?.data as { message: string }
+        message = dataObj?.message as string;
         toast.success(`${message}`);
       }
       refetch();
     } catch(err) {
       if (err instanceof Error && "data" in err) {
+        console.log(err)
         const output = err?.data as { message: string }
-        message = output.message;
+        message = output?.message;
       }
-      toast.error(message);
+      toast.error(message || "An Unknown Error has occured.");
     }
   }
 
