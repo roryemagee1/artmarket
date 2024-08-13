@@ -212,7 +212,7 @@ export default function OrderPage() {
             </div>
 
             <div style={{ margin: "10px 0 0 0"}}>
-              <Message variant="danger" ><strong>Disclaimer:</strong> The PayPal buttons are for testing purposes only.  Submission of a purchase record in the system does not authorize a real purchase nor does it create an obligation to deliver any goods or sevices.</Message>
+              <Message variant="danger" ><strong>Disclaimer:</strong> The PayPal and payment buttons are for testing purposes only.  Submission of a purchase record in the system does not authorize a real purchase nor does it create an obligation to deliver any goods or sevices.</Message>
             </div>
 
             <section className="order-items">
