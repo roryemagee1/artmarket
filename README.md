@@ -6,6 +6,10 @@ ArtMarket is a prototype fullstack ecommerce application designed to enable inde
 
 However, I do not intend to use the website for this stated purpose.  Instead, the real goal is to build a portfolio project that I can continuously add features to indefinitely.  That way I will always be building my skills as a developer while also having a well-documented code base showing my development over time.
 
+## Deployment
+
+Version 2.24 of the application is currently deployed at [artvolia.com](artvolia.com).
+
 ## Developer Environment Installation
 
 Follow these steps to setup up the project on your local machine:
@@ -52,12 +56,47 @@ But after realizing the project used too many new technologies at once and was t
 
 Here is the original design prototype for Artvolia, a social media ecommerce application for independent artists:
 
-![Artvolia Design](frontend/public/images/artvolia-artmarket-design.png)
-![Artvolia Design Zoomed In](frontend/public/images/artvolia-artmarket-zoomed-in.png)
+![Artvolia Design](frontend/src/assets/artvolia-artmarket-design.png)
+![Artvolia Design Zoomed In](frontend/src/assets/artvolia-artmarket-zoomed-in.png)
 
 ## ArtMarket MVP Features
 
 ### Frontend Architecture
+
+The frontend has the following folder structure:
+
+<pre>
+frontend
+├── public
+│   └── images
+│     
+├── src
+│   ├── assets
+│   ├── components
+│   ├── pages
+│   ├── slices
+│   ├── types
+│   ├── utils
+│   ├── App.tsx
+│   ├── index.css
+│   ├── store.ts
+│   ├── main.tsx
+│   └── ... configuration files
+├── README.md
+└── ... configuration files
+</pre>
+
+1. **public/images:** contains the publicly available stock images used for the products in the project.
+2. **src/assets:** contains the images used as functional assets within the project and the README.md file.
+3. **src/components:** contains all of the non-page-speicific React components with each component in a folder bearing the same name if the component also has CSS file associated with it.
+4. **src/pages:** contains the individual page components which each have their own route in main.tsx.
+5. **src/slices:** contains the individual slice files for Redux Toolkit functionality.
+6. **src/types:** contains the type files for Typescript.
+7. **src/utils:** contains miscellaneous helper functions used throughout the project.
+8. **App.tsx:** contains the styling for the vieport, including the Header, body, and Footer.
+9. **index.css:** contains global style classes and CSS variables.
+10. **store.ts:** contains the code for configuring the Redux Toolkit store.
+11. **main.tsx:** contains the React Router DOM routes used in the project.
 
 ### Frontend Features by User Story
 
@@ -88,6 +127,7 @@ Here is the original design prototype for Artvolia, a social media ecommerce app
 
 ## Artvolia Features Left to Implement
 
+- New grid layout
 - Messaging chat functionality implemented with Websockets
 - Unit Testing, End to End Testing with Mocha, Chai, and Cypress
 - Continuous Integration testing with GitHub Actions
@@ -103,5 +143,8 @@ Here is the original design prototype for Artvolia, a social media ecommerce app
 
 ### Technology
 
-## Credit 
+## Credits
+
+<img src="https://avatars.githubusercontent.com/u/92283709?v=4" alt="Rory Magee GitHub"
+ width="150" height="auto" />
 
