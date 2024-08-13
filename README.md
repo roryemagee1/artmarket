@@ -59,7 +59,7 @@ Here is the original design prototype for Artvolia, a social media ecommerce app
 ![Artvolia Design](frontend/src/assets/artvolia-artmarket-design.png)
 ![Artvolia Design Zoomed In](frontend/src/assets/artvolia-artmarket-zoomed-in.png)
 
-## ArtMarket MVP Features
+## ArtMarket Minimum Viable Product (MVP)
 
 ### Frontend Architecture
 
@@ -130,7 +130,6 @@ frontend
 
 ## Artvolia Features Left to Implement
 
-- New grid layout
 - Messaging chat functionality implemented with Websockets
 - Unit Testing, End to End Testing with Mocha, Chai, and Cypress
 - Continuous Integration testing with GitHub Actions
@@ -141,6 +140,7 @@ frontend
 - Email integration for account information and password reset functionality
 - Comprehensive Settings functionality including profile customization and privacy
 - Search engine optimization
+- New mortar grid layout
 
 ### Features
 
