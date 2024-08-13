@@ -106,6 +106,9 @@ frontend
 - Redux Toolkit
 - TypeScript
 - PayPal
+
+### React Component Libraries
+
 - React Router
 - React Loading
 - React Awesome Slider
