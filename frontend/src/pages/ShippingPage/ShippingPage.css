@@ -11,7 +11,7 @@
   padding: 20px 20vw;
 
 
-  height: 72vh;
+  min-height: 72vh;
 }
 
 .shipping-form-styling > h1, nav {

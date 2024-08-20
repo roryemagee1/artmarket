@@ -1,3 +1,9 @@
+### Note: this README.md doc is the default for Vite.  
+
+### The project README.md file can be found in the root directory.
+
+<hr />
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
