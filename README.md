@@ -62,16 +62,16 @@ Here is the original design prototype for Artvolia, a social media ecommerce app
 ## ArtMarket Minimum Viable Product (MVP)
 
 Anonymous Users are able to:
-- View indie artist paintings in an endless feed similar to the one used by Pinterest.
+- View indie artists' paintings in an endless feed similar to the one used by Pinterest.
 - View individual product pages and reviews for each piece of art.
-- Add works of art to their cart which are saved in local storage.
-- Login as existing Account Users.
-- Register as new Account Users.
+- Add works of art to their shopping cart which is saved in local storage.
+- Log in as an existing Account Users.
+- Register as a new Account Users.
 
 Account Users are able to:
 - Complete all of the actions that Anonymous Users are able to complete.
-- Submit and update ratings and reviews in the system.
-- Save shipping and payment order data to the system.
+- Submit and update their own ratings and reviews in the system.
+- Save their shipping and payment order data to the system.
 - Proceed through the checkout process simulating the purchase of a piece of art.
 - Create an order in the MongoDB database.
 - Simulate updating orders to "Paid" using a PayPal developer sandbox account.
@@ -81,7 +81,7 @@ Account Users are able to:
 Administrators are able to:
 - Complete all of the actions that Anonymous Users and Account Users are able to complete.
 - View all past orders in the database.
-- Update the status of orders to "Delivered".
+- Update the statuses of orders to "Delivered".
 - View, create, update, and delete all products and their information.
 - View, update, and delete all Account Users and their information.
 
@@ -116,19 +116,19 @@ Administrators are able to:
 
 ## 1. Landing Page
 
-When the user arrives at the website, they are greeted by a product carousel made with React Awesome Slider and beautiful collage of artwork inspired by Pinterest landing page.
+When the user arrives at the website, they are greeted by a product carousel made with React Awesome Slider and a beautiful collage of artwork inspired by Pinterest's landing page.
 
 ![](frontend/src/assets/artmarket-landingpage.gif)
 
-From here, the user has the option to scroll down through the art feed as it procedurally loads 24 pieces of art at a time.  Once they find a piece of art that they like, they can click it to view it's Product Page.  
+From there, the user has the option to scroll down through the art feed as it procedurally loads 24 pieces of art at a time.  Once they find a piece of art that they like, they can click it to view it's Product Page.  
 
 Each Product Page includes the work of art, details about it, a list of ratings and reviews by other users, and the option to leave a review or replace a previously submitted review.
 
-If the user desires to purchase the piece, they may start process by adding it to their cart.
+If the user desires to purchase the piece, they may start the process by adding it to their cart.
 
 ## 2. User Authorization
 
-Any user may add art to their cart and the application will save it to both local storage and the Redux store. However, if the user chooses to click the "Proceed to Checkout" button, the application redirects them to Login Page where they have the option to either login or register an account using a separate form.
+Any user may add works of art to their cart and the application will save it to both local storage and the Redux store. However, if the user chooses to click the "Proceed to Checkout" button, the application redirects them to the Login Page where they have the option to either log in or register an account using a separate form.
 
 <span style="display:flex;">
    <img src="frontend/src/assets/1-login-screenshot.png" alt="Login Page Screenshot"
@@ -136,14 +136,15 @@ Any user may add art to their cart and the application will save it to both loca
    <img src="frontend/src/assets/2-register-screenshot.png"" alt="Register Page Screenshot"
    width="50%" height="auto" />
 </span>
+<br />
 
-As a developer, you may choose to create new account or you can login as johndoe@email.com with as password of 123456.  All passwords are saved to the database with Bcrypt and salted for added security. However, I still recommend just using 123456 as a default password anyway.
+As a developer, you may choose to create a new account or you can log in as johndoe@email.com with as password of 123456.  All passwords are saved to the database with Bcrypt and salted for added security. However, if you choose to make your own account, I recommend using a dummy email and 123456 as a default password rather than storing your own personal password or data in the database.
 
 ## 3. Checkout
 
 Once the user has been authorized with a unique JSON Web Token (JWT) stored on the server, the application will redirect the user to the next steps in the checkout process: adding a shipping address and making a payment selection.  
 
-In each section, input validation on both the frontend and the backend prevent the user from submitting invalid information.
+In each section, input validation on both the frontend and the backend prevent the user from submitting invalid information.  If you put in invalid data, a Toastify message will indicate this to you in the uppder righthand corner of the screen.
 
 As the user completes these steps, the breadcrumb at the top of the page will update to reflect their progress and allow navigation back to previous steps.
 
@@ -153,8 +154,9 @@ As the user completes these steps, the breadcrumb at the top of the page will up
    <img src="frontend/src/assets/4-payment-selection-screenshot.png"" alt="Payment Page Screesnhot"
    width="50%" height="auto" />
 </span>
+<br />
 
-Once the user completes adding the information needed for the order, they arrive at the Place Order Page.  Here they have the option to do one final look over of the order before submitting it with the "Place Order" button.
+Once the user completes adding the information needed for the order, they arrive at the Place Order Page.  Here, they have the option to do one final look-over of the order before submitting it with the "Place Order" button.
 
 <span style="display:flex;">
    <img src="frontend/src/assets/5-place-order-screenshot.png" alt="Place Order Page Screenshot"
@@ -162,12 +164,13 @@ Once the user completes adding the information needed for the order, they arrive
    <img src="frontend/src/assets/6-unpaid-order-screenshot.png"" alt="Unpaid Order Screenshot"
    width="50%" height="auto" />
 </span>
+<br />
 
 Once the user submits the order, they are redirected to the Order Page where the unique Order ID is found in the URL.
 
 ## 4. Order Payment
 
-On the Order Page, the user will see the option to pay with PayPal.  However, no actual transaction will occur if the user logs into PayPal because PayPal API is currently set to sandbox mode.
+On the Order Page, the user will see the option to pay with PayPal.  However, no actual transaction will occur if the user logs into PayPal because the PayPal API is currently set to sandbox mode.
 
 <span style="display:flex;">
    <img src="frontend/src/assets/7-paypal-login-screenshot.png" alt="PayPal Login Screenshot"
@@ -175,6 +178,7 @@ On the Order Page, the user will see the option to pay with PayPal.  However, no
    <img src="frontend/src/assets/8-paypal-order-screenshot.png" alt="Paypal Payment Screenshot"
    width="50%" height="auto" />
 </span>
+<br />
 
 As a developer, you may use the sanbox credentials in the screenshot above to simulate a payment.  Doing so will update the status of the order in the database to "Paid" and the frontend will update accordingly.
 
@@ -184,6 +188,7 @@ As a developer, you may use the sanbox credentials in the screenshot above to si
    <img src="frontend/src/assets/10-user-profile-screenshot.png" alt="Profile Page Screenshot"
    width="50%" height="auto" />
 </span>
+<br />
 
 If you would like to view any previous orders made by your active account or if you would like to update your account, you can click the dropdown next to your name in the navigation bar and select the Profile option. This will take you to your Profile Page as pictured above.
 
@@ -191,7 +196,7 @@ If you would like to view any previous orders made by your active account or if 
 
 In order to complete an order in the system, you must logout and login as an Administrator.  To do so, you may login as admin@email.com with the password 123456.
 
-After logging in, click on the Admin dropdown and select the Orders option. Then on the Order Page, find the order that you just put in and click the "Details" button.  This will navigate you to the Order Page again, but now you will have the option to complete delivery.
+After logging in, click on the Admin dropdown in the navigation bar and select the "Orders" option. Then on the Order Page, find the order that you just put in and click the "Details" button.  This will navigate you to the Order Page again, but now you will have the option to complete delivery.
 
 <span style="display:flex;">
    <img src="frontend/src/assets/11-order-list-screenshot.png" alt="Order List Page Screenshot"
@@ -199,8 +204,9 @@ After logging in, click on the Admin dropdown and select the Orders option. Then
    <img src="frontend/src/assets/12-order-delivered-screenshot.png" alt="Order Delivered Screenshot"
    width="50%" height="auto" />
 </span>
+<br />
 
-Once you click the delivery button, the application will update the delivery status in the system and update the frontend accordingly. Now if you login as a user, the order will be marked as "Delivered" as if the user had received the product in real life.
+Once you click the delivery button, the application will update the delivery status in the system and update the frontend accordingly. Now if you log in as a user, the order will be marked as "Delivered" as if the user had received the product in real life.
 
 ## 6. Administrator Product Functionality
 
@@ -215,12 +221,13 @@ The Product Page contains a table with each individual product and the option to
    <img src="frontend/src/assets/14-edit-product-screenshot.png" alt="Product Edit Page Screenshot"
    width="50%" height="auto" />
 </span>
+<br />
 
 If you click the edit product icon, it will take you to the Product Edit Page.  The form on this page allows the administrator to change all of the product's fields in the database, except for the database ID used in MongoDB.
 
-It is worth noting here that there is an option to upload a new image for the selected product. This option is unique because it uses a 3rd party package called Multer to save the uploaded image directly to Express server, instead of sending it to the MongoDB database.  
+It is worth noting here that there is an option to upload a new image for the selected product. This option is unique because it uses a 3rd party package called Multer to save the uploaded image directly to the Express server, instead of sending it to the MongoDB database.  
 
-Due to the way form data is normally handled by HTML forms when doing API requests, sending images has to be done separately using a multipart data system.  Multer adds the option to easily send multipart data to the API where can be correctly stored locally.  Instead of sending the image to the MongoDB database directly, the application sends a reference to where the image is stored locally on the project.  This reference is then used for retrieving the image when using the application.
+Due to the way form data is normally handled by HTML forms when doing API requests, sending images has to be done separately using a multipart data system.  Multer adds the option to easily send multipart data to the API where it can be correctly stored locally.  Instead of sending the image to the MongoDB database directly, the application sends a reference to where the image is stored locally in the production version of the project.  This reference is then used to retrieve the image when requested by the frontend.
 
 ## 7. Administrator User Functionality
 
@@ -232,12 +239,13 @@ Adminstrator accounts also have the ability to edit user accounts and administra
    <img src="frontend/src/assets/16-edit-user-screenshot.png" alt="User Edit Page Screenshot"
    width="50%" height="auto" />
 </span>
+<br />
 
-A familiar form is used on the "User Edit Page" to update users as desired.
+A form similar to the Product Edit Form is used on the User Edit Page to update users as desired.
 
 ## 8. Responsive Design
 
-In this project, I made extensive use of vanilla CSS and media queries to make the page layout responsive.  The layout is dynamic enough to accomodate all common screen types and is previewed in the gif below:
+In this project, I made extensive use of vanilla CSS and media queries to make the page layout responsive.  The layout is dynamic enough to accomodate all common screen types as demonstrated by the gif below:
 
 ![](frontend/src/assets/responsive-design.gif) 
 
